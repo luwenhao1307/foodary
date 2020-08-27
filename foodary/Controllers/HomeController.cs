@@ -20,11 +20,19 @@ namespace foodary.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Test()
         {
             ViewBag.Message = "Your contact page.";
 
             return View();
         }
+        public ActionResult Map()
+        {
+            ViewBag.Message = "Map page.";
+
+            return View();
+        }
+
+
     }
 }
