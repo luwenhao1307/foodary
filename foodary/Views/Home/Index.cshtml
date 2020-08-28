@@ -1,24 +1,30 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<html>
+    <head>
 
-<div class="header_section">
-    <div class="header_left">
-       
-        <div class="banner_main">
-            <h1 class="banner_taital">Welcome to <br>Foodary</h1>
-            <p class="banner_text">We are here to help you with food insecurity. <br /> Find food now!</p>
-            <div class="btn_main">
-                <div class="more_bt"><a href="#">Find Food </a></div>
-                <div class="contact_bt"><a href="#">Feedback</a></div>
+    </head>
+    <body>
+        <div class="header_section">
+            <div class="banner_main">
+                <h1 class="banner_title">Welcome to <b>Foodary</b>!</h1>
+                <p class="banner_description">Find free meals and cheap food options in Melbourne!</p>
+                <div class="col-4 offset-4 d-flex">
+                    <input class="form-control" style="color:#999999; background-color: #e1f5fe; border-color: #0277bd; border-radius: 0" type="text" placeholder="Search" aria-label="Search">
+                    <div class="input-group-append">
+                        <span class="input-group-text" style="background-color: #e1f5fe; border-color: #0277bd; border-radius: 0">
+                            <a href="~/Home/About">GO!</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="header_right">
+                @*<img src="~/images/result.png" class="banner_img" style="width:861px;height:786px;">*@
             </div>
         </div>
-    </div>
-    <div class="header_right">
-        <img src="~/images/result.png" class="banner_img" style="width:861px;height:786px;">
-    </div>
-</div>
-
+    </body>
+</html>
 <script src="js/jquery.min.js"></script>
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>

@@ -38,8 +38,8 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link" href="~/Home/Index">Home</a>
                         </li>
@@ -50,41 +50,41 @@
                             <a class="nav-link" href="~/Home/Contact">Self-Test</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="~/Home/Contact">Log in</a>
+                            <a class="nav-link" href="~/Home/Contact">Find Recipes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="~/Home/Contact">Register</a>
+                            <a class="nav-link" href="~/Home/Contact">Sign in</a>
                         </li>
 
 
                     </ul>
                 </div>
             </nav>
-            
-    </div>
-  
+
+        </div>
 
 
 
-    <div>
-        @RenderBody()
-        <hr />
-        @*<footer>
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-            </footer>*@
-    </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery-3.0.0.min.js"></script>
-    <script src="js/plugin.js"></script>
-    <!-- sidebar -->
-    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="js/custom.js"></script>
-    <!-- javascript -->
-    <script src="js/owl.carousel.js"></script>
-    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 
-    @RenderSection("scripts", required: false)
+        <div>
+            @RenderBody()
+            <hr />
+            @*<footer>
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                </footer>*@
+        </div>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/jquery-3.0.0.min.js"></script>
+        <script src="js/plugin.js"></script>
+        <!-- sidebar -->
+        <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="js/custom.js"></script>
+        <!-- javascript -->
+        <script src="js/owl.carousel.js"></script>
+        <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+        @RenderSection("scripts", required: false)
 </body>
 </html>
