@@ -22,7 +22,14 @@ namespace foodary.Models
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            throw new UnintentionalCodeFirstException();
+            modelBuilder.Entity<FoodEvent>()
+                   .Property(e => e.Latitude)
+                   .HasPrecision(10, 8);
+
+            modelBuilder.Entity<FoodEvent>()
+                .Property(e => e.Longitude)
+                .HasPrecision(11, 8);
+            ////throw new UnintentionalCodeFirstException();
         }
     
         public virtual DbSet<FoodEvent> FoodEventSet { get; set; }

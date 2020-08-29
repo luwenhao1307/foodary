@@ -1,23 +1,24 @@
-﻿<!DOCTYPE html>
-<html>
-<body>
-    <p id="demo">Get your location：</p>
-    <button onclick="getLocation()">Allow</button>
-    <script>
-var x=document.getElementById("demo");
-function getLocation()
-  {
-  if (navigator.geolocation)
-    {
-    navigator.geolocation.getCurrentPosition(showPosition);
-    }
-  else{x.innerHTML="Geolocation is not supported by this browser.";}
-  }
-function showPosition(position)
-  {
-  x.innerHTML="Latitude: " + position.coords.latitude +
-  "<br />Longitude: " + position.coords.longitude;
-  }
+﻿<html>
+<head>
+    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyDJW4jsPlNKgv6jFm3B5Edp5ywgdqLWdmc&sensor=false">
     </script>
+
+    <script>
+        function initialize() {
+            var mapOpt = {
+                center: new google.maps.LatLng(51.508742, -0.120850),
+                zoom: 5,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("googleMap"), mapOpt);
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+</head>
+
+<body>
+    <div id="googleMap" style="width:500px;height:380px;"></div>
+
 </body>
 </html>
