@@ -12,156 +12,179 @@
     <link href="~/DataTables-1.10.21/media/css/dataTables.bootstrap.css" rel="stylesheet" />
     <!-- DataTables CSS -->
     <link rel="stylesheet" type="text/css" href="~/DataTables-1.10.21/media/css/jquery.dataTables.css" />
-   
+
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBB60Ip9iv28WTdf-vLI1guI2wM0GxyS5Y" type="text/javascript"></script>
+    <style type="text/css">
+            table {
+                margin: 0px;
+                padding: 0px;
+                width: 30%;
+                border-collapse: collapse;
+                table-layout: fixed; /*不添加此样式，会全部显示    */
+            }
+
+                table td {
+                    border: 1px solid #eef2e9;
+                    /* text-overflow: ellipsis; */ /* 加上，显示省略号*/
+                    white-space: nowrap;
+                    overflow: hidden;
+                }
+
+                    table td:hover { /* 鼠标滑过  显示隐藏的内容  伴有横向的滚动条 */
+                        overflow: auto;
+                        text-overflow: clip;
+                    }
+        </style>
 </head>
 <body onload="load()" onunload="GUnload()">
     <div style="width:100%;height:50px;margin-top:200px;margin-left:300px">
         @*<h1 id="demo">Get your location：</h1>*@
         <button onclick="getLocation()">Get your location</button>
     </div>
+    <div style="padding:10px">
+        <!--以下id为googleMap的DIV元素即为Google地图的容器-->
+        <div id="googleMap" style="width:40%;height:600px;display:inline-block;margin-bottom:-30px;margin-left:10px;"></div>
 
-    <!--以下id为googleMap的DIV元素即为Google地图的容器-->
-    <div id="googleMap" style="width:40%;height:600px;margin-left:50px"></div>
-    <div style="margin-top:100px;">
-        <table class="table" id="table" >
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.What)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Address)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Suburb)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Phone)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Website)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Monday)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Tuesday)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Wednesday)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Thursday)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Friday)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Saturday)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Sunday)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Public_holidays)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Cost)
-                    </th>
-                    @*<th>
-                        @Html.DisplayNameFor(model => model.Longitude)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Latitude)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Geocoded_location)
-                    </th>*@
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
+        <div style="width:56%;display:inline-block;margin-left:20px;">
+            <table class="table" id="table">
+                <thead>
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td style="text-overflow:clip;overflow:hidden;width:15px;">
-                            @Html.DisplayFor(modelItem => item.What)
-                        </td>
-                        <td style="text-overflow:clip;overflow:hidden;width:15px;">
-                            @Html.DisplayFor(modelItem => item.Address)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Suburb)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Phone)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Website)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Monday)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Tuesday)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Wednesday)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Thursday)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Friday)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Saturday)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Sunday)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Public_holidays)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Cost)
-                        </td>
-                        @*<td>
-                            @Html.DisplayFor(modelItem => item.Longitude)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Latitude)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Geocoded_location)
-                        </td>*@
-                        <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                        </td>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.What)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Address)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Suburb)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Phone)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Website)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Monday)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Tuesday)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Wednesday)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Thursday)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Friday)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Saturday)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Sunday)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Public_holidays)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Cost)
+                        </th>
+                        @*<th>
+                                @Html.DisplayNameFor(model => model.Longitude)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Latitude)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Geocoded_location)
+                            </th>
+                        <th></th>*@
                     </tr>
-                }
-            </tbody>
-        </table>
-
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.What)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Suburb)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Phone)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Website)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Monday)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Tuesday)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Wednesday)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Thursday)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Friday)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Saturday)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Sunday)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Public_holidays)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Cost)
+                            </td>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.Longitude)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Latitude)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Geocoded_location)
+                            </td>*@
+                            @*<td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                            </td>*@
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
     <script src="~/js/bootstrap.min.js"></script>
     <script type="text/javascript" charset="utf8" src="~/DataTables-1.10.21/media/js/jquery.js"></script>
     <!-- DataTables -->
     <script type="text/javascript" charset="utf8" src="~/DataTables-1.10.21/media/js/jquery.dataTables.js"></script>
     <script type="text/javascript">
-
         $(document).ready(function () {
-            $('#table').DataTable();
+            $('#table').DataTable({
+                sScrollX: true
+            });
         });
 
         // 初始化地图
