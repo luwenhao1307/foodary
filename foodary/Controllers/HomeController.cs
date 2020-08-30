@@ -11,7 +11,7 @@ namespace foodary.Controllers
 {
     public class HomeController : Controller
     {
-        private Model1Container db = new Model1Container();
+        private webModel db = new webModel();
         public ActionResult Index()
         {
             return View();
@@ -32,18 +32,22 @@ namespace foodary.Controllers
         }
         public ActionResult Map()
         {
-            List<FoodEvent> models = db.FoodEventSet.ToList();
+            List<FoodEvent> models = db.FoodEvents.ToList();
             List<List<decimal>> dataList = new List<List<decimal>>();
             List<decimal> latList = new List<decimal>();
             List<decimal> lngList = new List<decimal>();
+            List<string> nameList=new List<string>();
             foreach (FoodEvent item in models) {
                 latList.Add(item.Latitude);
                 lngList.Add(item.Longitude);
+                nameList.Add(item.Name);
             }
             dataList.Add(latList);
             dataList.Add(lngList);
+            ViewBag.name = JsonConvert.SerializeObject(nameList);
             ViewBag.data = JsonConvert.SerializeObject(dataList);
-            return View(db.FoodEventSet.ToList());
+            ViewBag.models = JsonConvert.SerializeObject(models);
+            return View(db.FoodEvents.ToList());
         }
 
 
