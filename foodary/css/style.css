@@ -39,7 +39,6 @@ html {
 
 body {
     color: #666666;
-    background-color: #e1f5fe;
     font-size: 14px;
     font-family: Poppins;
     line-height: 1.80857;
@@ -252,7 +251,7 @@ button {
 }
 
 .logo {
-    width: 15%;
+    width: 25%;
     float: left;
 }
 
@@ -263,40 +262,19 @@ button {
 .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: 13px;
     padding-left: 13px;
-    font-family: 'Source Sans Pro';
-    font-size: 20px;
-    font-weight: bold;
-    color: #01579b;
+    font-size: 18px;
+    color: #2e2d2e;
     text-transform: uppercase;
 }
 
 .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
-    color: #0277bd;
+    color: #1b5a8d;
 }
 
 .banner_main {
     width: 100%;
     float: left;
-    padding-left: 50px;
-    padding-right: 50px;
-}
-
-.banner_title {
-    width: 100%;
-    margin-top: 1%;
-    font-size: 60px;
-    font-family: 'Lato';
-    color: #0277bd;
-    text-align: center;
-}
-
-.banner_description {
-    width: 100%;
-    float: left;
-    font-size: 16px;
-    color: #0277bd;
-    margin-left: 0px;
-    text-align: center;
+    padding-left: 100px;
 }
 
 .banner_taital {
@@ -1004,14 +982,4 @@ button {
 
 .margin_top_90 {
     margin-top: 90px;
-
-    @ {
-        ViewBag .Title = "Home Page";
-    }
-
-    <html> <head> </head> <body> <div class="header_section"> <div class="banner_main"> <h1 class="banner_title">Welcome to <b>Foodary</b> !</h1> <p class="banner_description">Find free meals and cheap food options in Melbourne!</p> </div> <div class="header_left"> <div class="banner_main"> <div class="btn_main"> <div class="more_bt"><a href="#">Find Food </a></div> <div class="contact_bt"><a href="#">Feedback</a></div> </div> </div> </div> <div class="header_right"> @*<img src="~/images/result.png" class="banner_img" style="width:861px;height:786px;">*@ </div> </div> </body> </html> <script src="js/jquery.min.js"></script> <script src="js/popper.min.js"></script> <script src="js/bootstrap.bundle.min.js"></script> <script src="js/jquery-3.0.0.min.js"></script> <script src="js/plugin.js"></script>
-    <!-- sidebar -->
-    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script> <script src="js/custom.js"></script>
-    <!-- javascript -->
-    <script src="js/owl.carousel.js"></script> <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 }
