@@ -1,59 +1,93 @@
-﻿
-<html>
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-    <title>password protection</title>
+    <title></title>
 </head>
 <body>
-    <SCRIPT LANGUAGE="JavaScript">
-        function password() {
-            var testV = 1;
-            var pass1 = prompt('Please enter password:', '');
-            while (testV < 3) {
-                if (!pass1)
-                    history.go(-1);
-                if (pass1 == "tp7") {
-                    alert('correct');
-                    break;
-                }
-                testV += 1;
-                var pass1 =
-                    prompt('Wrong,please enter again:');
-            }
-            if (pass1 != "password" & testV == 3)
-                history.go(-1);
-            return " ";
-        }
-        document.write(password());
-    </SCRIPT>
-</body>
-</html>
-
-<div class="header_section">
-    <div class="header_left">
-
-        <div class="banner_main">
-            <h1 class="banner_taital">Welcome to <br>Foodary</h1>
-            <p class="banner_text">We are here to help you with food insecurity. <br /> Find food now!</p>
-            <div class="btn_main">
-                <div class="more_bt"><a href="#">Find Food </a></div>
-                <div class="contact_bt"><a href="#">Feedback</a></div>
+    <div>
+        <img src="~/images/home_cover.jpg">
+    </div>
+    <div class="container">
+        <div class="row my-3">
+            <h1 class="banner_title">Food security among international students</h1>
+            <h1 class="banner_text">Three main components of food security</h1>
+        </div>
+        <div class="row my-3">
+            <div class="col-md-4 py-1">
+                <div class="card bg-card h-100">
+                    <div class="card-body">
+                        <h1 class="card_title">
+                            Food access
+                        </h1>
+                        <div class="card_text">
+                            <p class="card_text">&#9642; The ability to buy and transport food</p>
+                            <p class="card_text">&#9642; Preparation and cooking facilities</p>
+                            <p class="card_text">&#9642; Knowledge and skills to make appropriate choices</p>
+                            <p class="card_text">&#9642; Time and mobility to shop for and prepare food</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 py-1">
+                <div class="card bg-card h-100">
+                    <div class="card-body">
+                        <h1 class="card_title">
+                            Food availability
+                        </h1>
+                        <div class="card_text">
+                            <p class="card_text">&#9642; Location of food outlets</p>
+                            <p class="card_text">&#9642; Availability of food within stores</p>
+                            <p class="card_text">&#9642; Price, quality and variety of available food</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 py-1">
+                <div class="card bg-card h-100">
+                    <div class="card-body">
+                        <h1 class="card_title">
+                            Food use
+                        </h1>
+                        <div>
+                            <p class="card_text">&#9642; Secure </p>
+                            <p class="card_text">&#9642; Insecure but without hunger</p>
+                            <p class="card_text">&#9642; Insecure with extreme hunger</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p>
+                Source:
+                <a href="https://aifs.gov.au/cfca/publications/food-insecurity-australia-what-it-who-experiences-it-and-how-can-child">
+                    https://aifs.gov.au/cfca/publications/food-insecurity-australia-what-it-who-experiences-it-and-how-can-child
+                </a>
+            </p>
+        </div>
+        <div class="row my-3">
+            <h1 class="banner_text">Food insecurity: Is it an issue among international students?</h1>
+            <div class="col-md-12 py-1">
+                <div class="card bg-card">
+                    <div class="card-body">
+                        <p class="card_text">&#9642; International students are not fully aware of the food expenditure before they come to Australia.</p>
+                        <p class="card_text">&#9642; Less availability and higher price of their traditional foods lead them to choose cheaper and less nutritious food.</p>
+                        <p class="card_text">&#9642; New international students are not familiar with food places and struggling with their study. Thus, they tend to skip their meals. </p>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="row my-3">
+            <h1 class="banner_text">It is better to be aware of food expenditure before you come in Australia!</h1>
+        </div>
+        <div class="row my-3">
+            <div class="col-md-12 py-1">
+                <div class="card bg-card h-100">
+                    <div class="card-body">
+                        <div class='tableauPlaceholder' id='viz1598830897765' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Av&#47;AverageFoodExpenditure_15988301350080&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='AverageFoodExpenditure_15988301350080&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Av&#47;AverageFoodExpenditure_15988301350080&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en' /><param name='filter' value='publish=yes' /></object></div>
+                        <script type='text/javascript'>var divElement = document.getElementById('viz1598830897765'); var vizElement = divElement.getElementsByTagName('object')[0]; if (divElement.offsetWidth > 800) { vizElement.style.minWidth = '386px'; vizElement.style.maxWidth = '2500px'; vizElement.style.width = '100%'; vizElement.style.minHeight = '397px'; vizElement.style.maxHeight = '1227px'; vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px'; } else if (divElement.offsetWidth > 500) { vizElement.style.minWidth = '386px'; vizElement.style.maxWidth = '2500px'; vizElement.style.width = '100%'; vizElement.style.minHeight = '397px'; vizElement.style.maxHeight = '1227px'; vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px'; } else { vizElement.style.width = '100%'; vizElement.style.height = '827px'; } var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);</script>
+                    </div>
+                </div>
+            </div>
+            <script type='text/javascript'>var divElement = document.getElementById('viz1598827025564'); var vizElement = divElement.getElementsByTagName('object')[0]; if (divElement.offsetWidth > 800) { vizElement.style.minWidth = '1620px'; vizElement.style.maxWidth = '1920px'; vizElement.style.width = '100%'; vizElement.style.minHeight = '587px'; vizElement.style.maxHeight = '887px'; vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px'; } else if (divElement.offsetWidth > 500) { vizElement.style.minWidth = '1620px'; vizElement.style.maxWidth = '1920px'; vizElement.style.width = '100%'; vizElement.style.minHeight = '587px'; vizElement.style.maxHeight = '887px'; vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px'; } else { vizElement.style.width = '100%'; vizElement.style.height = '827px'; } var scriptElement = document.createElement('script'); scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js'; vizElement.parentNode.insertBefore(scriptElement, vizElement);</script>
+        </div>
     </div>
-    <div class="header_right">
-        <img src="~/images/result.png" class="banner_img" style="width:861px;height:786px;">
-    </div>
-</div>
-
-<script src="js/jquery.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/jquery-3.0.0.min.js"></script>
-<script src="js/plugin.js"></script>
-<!-- sidebar -->
-<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-<script src="js/custom.js"></script>
-<!-- javascript -->
-<script src="js/owl.carousel.js"></script>
-<script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+</body>
+</html>
