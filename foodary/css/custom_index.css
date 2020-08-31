@@ -11,8 +11,7 @@
     padding-right: 13px;
     padding-left: 13px;
     font-size: 18px;
-    font-family: Lato;
-    font-weight: 600;
+    font-family: OpenSans-Bold;
     color: whitesmoke;
     text-transform: uppercase;
 }
@@ -24,8 +23,7 @@
 .banner_title {
     width: 100%;
     font-size: 40px;
-    font-family: Lato;
-    font-weight: bolder;
+    font-family: OpenSans-Bold;
     color: #444444;
     margin-left: 0px;
     text-align: center;
@@ -35,7 +33,7 @@
 .banner_text {
     width: 100%;
     font-size: 30px;
-    font-family: Lato;
+    font-family: OpenSans-Light;
     color: #232323;
     margin-left: 0px;
     text-align: center;
@@ -43,13 +41,13 @@
 }
 
 .card_title {
-    font-family: Lato;
+    font-family: OpenSans-Bold;
     color: #01579b;
     text-align: center;
     font-weight: bolder;
 }
 
 .card_text {
-    font-family: Lato;
+    font-family: OpenSans-Light;
     font-size: 20px;
 }
