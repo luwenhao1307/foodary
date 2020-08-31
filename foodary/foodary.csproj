@@ -232,6 +232,7 @@
     <Content Include="css\bootstrap-reboot.min.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\custom_index.css" />
     <Content Include="css\default-skin.css" />
     <Content Include="css\font-awesome.min.css" />
     <Content Include="css\icomoon.css" />
@@ -434,6 +435,7 @@
     <Content Include="images\fb-icon.png" />
     <Content Include="images\fb-icon1.png" />
     <Content Include="images\FBAU_HR19_National-4.png" />
+    <Content Include="images\home_cover.jpg" />
     <Content Include="images\icon-1.png" />
     <Content Include="images\icon-2.png" />
     <Content Include="images\icon-3.png" />
@@ -453,6 +455,7 @@
     <Content Include="images\linkedin-icon.png" />
     <Content Include="images\linkedin-icon1.png" />
     <Content Include="images\logo.png" />
+    <Content Include="images\logo_small.png" />
     <Content Include="images\mail-icon.png" />
     <Content Include="images\map-icon.png" />
     <Content Include="images\marker.png" />
