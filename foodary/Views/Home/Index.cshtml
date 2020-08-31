@@ -2,6 +2,36 @@
 <head>
     <title></title>
 </head>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>Password protection</title>
+</head>
+<body>
+    <SCRIPT LANGUAGE="JavaScript">
+        function password() {
+            var testV = 1;
+            var pass1 = prompt('Please enter the password:', '');
+            while (testV < 3) {
+                if (!pass1)
+                    history.go(-1);
+                if (pass1 == "tp7") {
+                    alert('correct');
+                    break;
+                }
+                testV += 1;
+                var pass1 =
+                    prompt('incorrect');
+            }
+            if (pass1 != "password" & testV == 3)
+                history.go(-1);
+            return " ";
+        }
+        document.write(password());
+    </SCRIPT>
+</body>
+</html>
 <body>
     <div>
         <img src="~/images/home_cover.jpg">
