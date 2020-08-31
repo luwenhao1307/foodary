@@ -14,22 +14,30 @@
     <meta name="author" content="">
     <!-- bootstrap css -->
     <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css">
+    <link href="~/DataTables-1.10.21/media/css/jquery.dataTables.css" rel="stylesheet" type="text/css"/>
     <!-- style css -->
     <link rel="stylesheet" type="text/css" href="~/css/style.css">
     <!-- Responsive-->
+    
     <link rel="stylesheet" href="~/css/responsive.css">
     <!-- fevicon -->
     <link rel="icon" href="images/fevicon.png" type="image/gif" />
     <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    @*<link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">*@
     <!-- Tweaks for older IEs-->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
     <!-- owl stylesheets -->
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
 
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyBB60Ip9iv28WTdf-vLI1guI2wM0GxyS5Y"></script>
 </head>
+
 <body>
     <div class="header_section">
         <div>
@@ -38,22 +46,22 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                    <ul class="navbar-nav">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="~/Home/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="~/Home/About">Map</a>
+                            <a class="nav-link" href="~/Home/Map">Map</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="~/Home/Contact">Self-Test</a>
+                            <a class="nav-link" href="~/Home/Test">Self-Test</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="~/Home/Contact">Find Recipes</a>
+                            <a class="nav-link" href="~/Home/Contact">Log in</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="~/Home/Contact">Sign in</a>
+                            <a class="nav-link" href="~/Home/Contact">Register</a>
                         </li>
 
 
@@ -62,29 +70,35 @@
             </nav>
 
         </div>
+    </div>
 
 
 
+    <div>
+        @RenderBody()
+        <hr />
+        @*<footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>*@
+    </div>
+    @*<script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>*@
+    <script src="~/DataTables-1.10.21/media/js/jquery.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <script src="~/DataTables-1.10.21/media/js/jquery.dataTables.js"></script>
+    
 
-        <div>
-            @RenderBody()
-            <hr />
-            @*<footer>
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-                </footer>*@
-        </div>
-        <script src="js/jquery.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/jquery-3.0.0.min.js"></script>
-        <script src="js/plugin.js"></script>
-        <!-- sidebar -->
-        <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-        <script src="js/custom.js"></script>
-        <!-- javascript -->
-        <script src="js/owl.carousel.js"></script>
-        <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <!--<script src="js/jquery-3.0.0.min.js"></script>
+    <script src="js/plugin.js"></script>-->
+    <!-- sidebar -->
+    <!--<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/custom.js"></script>-->
+    <!-- javascript -->
+    <!--<script src="js/owl.carousel.js"></script>
+    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>-->
 
-        @RenderSection("scripts", required: false)
+    @*<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyBB60Ip9iv28WTdf-vLI1guI2wM0GxyS5Y"></script>*@
+    @RenderSection("scripts", required: false)
 </body>
 </html>
