@@ -455,6 +455,9 @@
     <Content Include="images\logo.png" />
     <Content Include="images\mail-icon.png" />
     <Content Include="images\map-icon.png" />
+    <Content Include="images\marker.png" />
+    <Content Include="images\restlogo.png" />
+    <Content Include="images\rest_foodary.png" />
     <Content Include="images\result.png" />
     <Content Include="images\round-1.png" />
     <Content Include="images\round-2.png" />
@@ -462,6 +465,7 @@
     <Content Include="images\services-bg.png" />
     <Content Include="images\twitter-icon.png" />
     <Content Include="images\twitter-icon1.png" />
+    <Content Include="images\yourlocation_foodary.png" />
     <Content Include="images\youtub-icon1.png" />
     <Content Include="js\bootstrap.bundle.js" />
     <Content Include="js\bootstrap.bundle.min.js" />

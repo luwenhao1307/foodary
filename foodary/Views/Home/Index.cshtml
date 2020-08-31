@@ -1,10 +1,37 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>password protection</title>
+</head>
+<body>
+    <SCRIPT LANGUAGE="JavaScript">
+        function password() {
+            var testV = 1;
+            var pass1 = prompt('Please enter password:', '');
+            while (testV < 3) {
+                if (!pass1)
+                    history.go(-1);
+                if (pass1 == "tp7") {
+                    alert('correct');
+                    break;
+                }
+                testV += 1;
+                var pass1 =
+                    prompt('Wrong,please enter again:');
+            }
+            if (pass1 != "password" & testV == 3)
+                history.go(-1);
+            return " ";
+        }
+        document.write(password());
+    </SCRIPT>
+</body>
+</html>
 
 <div class="header_section">
     <div class="header_left">
-       
+
         <div class="banner_main">
             <h1 class="banner_taital">Welcome to <br>Foodary</h1>
             <p class="banner_text">We are here to help you with food insecurity. <br /> Find food now!</p>
