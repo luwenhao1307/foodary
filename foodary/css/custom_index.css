@@ -22,7 +22,7 @@
 
 .banner_title {
     width: 100%;
-    font-size: 40px;
+    font-size: 35px;
     font-family: OpenSans-Bold;
     color: #444444;
     margin-left: 0px;
@@ -32,7 +32,7 @@
 
 .banner_text {
     width: 100%;
-    font-size: 30px;
+    font-size: 25px;
     font-family: OpenSans-Light;
     color: #232323;
     margin-left: 0px;
@@ -49,5 +49,5 @@
 
 .card_text {
     font-family: OpenSans-Light;
-    font-size: 20px;
+    font-size: 15px;
 }
