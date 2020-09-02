@@ -8,6 +8,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    
     <meta http-equiv="content-type" content="text/html; charset=gb2312" />
     <link href="~/DataTables-1.10.21/media/css/dataTables.bootstrap.css" rel="stylesheet" />
     <!-- DataTables CSS -->
@@ -23,7 +24,7 @@
             border-collapse: collapse;
             table-layout: fixed;
         }
-           
+
             table td {
                 border: 1px solid #eef2e9;
                 white-space: nowrap;
@@ -38,7 +39,13 @@
     </style>
 </head>
 <body onload="load()" onunload="GUnload()">
-    <div style="width:100%;height:50px;margin-top:200px;margin-left:300px">
+    <div class="container" style="padding-top:3em; margin-top:100px">
+        <div class="row my-3">
+            <h1 class="banner_title">Food Event Map</h1>
+        </div>
+    </div>
+    <div style="width:100%;height:20px;margin-top:100px;margin-left:300px">
+
         @*<h1 id="demo">Get your location：</h1>*@
         <button onclick="getLocation()">Get your location</button>
     </div>
@@ -58,6 +65,9 @@
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Suburb)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Cost)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Website)
@@ -86,9 +96,7 @@
                         <th>
                             @Html.DisplayNameFor(model => model.Public_holidays)
                         </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Cost)
-                        </th>
+
                         <th>
                             @Html.DisplayNameFor(model => model.Phone)
                         </th>
@@ -101,56 +109,57 @@
                 <tbody class="names">
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td id="name">
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
+                    <tr>
+                        <td id="name">
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
 
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Address)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Suburb)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Website)
-                            </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Suburb)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cost)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Website)
+                        </td>
 
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Monday)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Tuesday)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Wednesday)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Thursday)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Friday)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Saturday)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Sunday)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Public_holidays)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Cost)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Phone)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.What)
-                            </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Monday)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tuesday)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Wednesday)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Thursday)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Friday)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Saturday)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Sunday)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Public_holidays)
+                        </td>
 
-                        </tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Phone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.What)
+                        </td>
+
+                    </tr>
                     }
                 </tbody>
             </table>
