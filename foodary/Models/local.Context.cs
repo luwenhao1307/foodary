@@ -13,25 +13,18 @@ namespace foodary.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Model1Container : DbContext
+    public partial class Entities : DbContext
     {
-        public Model1Container()
-            : base("name=Model1Container")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<FoodEvent>()
-                   .Property(e => e.Latitude)
-                   .HasPrecision(10, 8);
-
-            modelBuilder.Entity<FoodEvent>()
-                .Property(e => e.Longitude)
-                .HasPrecision(11, 8);
-            ////throw new UnintentionalCodeFirstException();
+            throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<FoodEvent> FoodEventSet { get; set; }
+        public virtual DbSet<FoodEventSet> FoodEventSet { get; set; }
     }
 }

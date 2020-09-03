@@ -6,7 +6,8 @@ namespace foodary.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class FoodEvents
+    [Table("FoodEventSet")]
+    public partial class FoodEventSet
     {
         public int Id { get; set; }
 
@@ -18,7 +19,7 @@ namespace foodary.Models
 
         public string Suburb { get; set; }
 
-        public long Phone { get; set; }
+        public long? Phone { get; set; }
 
         public string Website { get; set; }
 
@@ -40,17 +41,14 @@ namespace foodary.Models
 
         public string Cost { get; set; }
 
-        public decimal Longitude { get; set; }
+        public decimal? Longitude { get; set; }
 
-        public decimal Latitude { get; set; }
+        public decimal? Latitude { get; set; }
 
-        [StringLength(255)]
-        public string Category { get; set; }
+        public string Geocoded_location { get; set; }
 
-        [StringLength(500)]
         public string Timetable { get; set; }
 
-        [StringLength(255)]
-        public string Geocoded_location { get; set; }
+        public string Category { get; set; }
     }
 }

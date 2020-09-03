@@ -10,107 +10,107 @@ using foodary.Models;
 
 namespace foodary.Controllers
 {
-    public class FoodEventsController : Controller
+    public class FoodEventSetsController : Controller
     {
-        private webModel db = new webModel();
+        private Entities db = new Entities();
 
-        // GET: FoodEvents
+        // GET: FoodEventSets
         public ActionResult Index()
         {
-            return View(db.FoodEvents.ToList());
+            return View(db.FoodEventSet.ToList());
         }
 
-        // GET: FoodEvents/Details/5
+        // GET: FoodEventSets/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            FoodEvent foodEvent = db.FoodEvents.Find(id);
-            if (foodEvent == null)
+            FoodEventSet foodEventSet = db.FoodEventSet.Find(id);
+            if (foodEventSet == null)
             {
                 return HttpNotFound();
             }
-            return View(foodEvent);
+            return View(foodEventSet);
         }
 
-        // GET: FoodEvents/Create
+        // GET: FoodEventSets/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: FoodEvents/Create
+        // POST: FoodEventSets/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,What,Address,Suburb,Phone,Website,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday,Public_holidays,Cost,Longitude,Latitude,Geocoded_location")] FoodEvent foodEvent)
+        public ActionResult Create([Bind(Include = "Id,Name,What,Address,Suburb,Phone,Website,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday,Public_holidays,Cost,Longitude,Latitude,Geocoded_location,Timetable,Category")] FoodEventSet foodEventSet)
         {
             if (ModelState.IsValid)
             {
-                db.FoodEvents.Add(foodEvent);
+                db.FoodEventSet.Add(foodEventSet);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(foodEvent);
+            return View(foodEventSet);
         }
 
-        // GET: FoodEvents/Edit/5
+        // GET: FoodEventSets/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            FoodEvent foodEvent = db.FoodEvents.Find(id);
-            if (foodEvent == null)
+            FoodEventSet foodEventSet = db.FoodEventSet.Find(id);
+            if (foodEventSet == null)
             {
                 return HttpNotFound();
             }
-            return View(foodEvent);
+            return View(foodEventSet);
         }
 
-        // POST: FoodEvents/Edit/5
+        // POST: FoodEventSets/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,What,Address,Suburb,Phone,Website,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday,Public_holidays,Cost,Longitude,Latitude,Geocoded_location")] FoodEvent foodEvent)
+        public ActionResult Edit([Bind(Include = "Id,Name,What,Address,Suburb,Phone,Website,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday,Public_holidays,Cost,Longitude,Latitude,Geocoded_location,Timetable,Category")] FoodEventSet foodEventSet)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(foodEvent).State = EntityState.Modified;
+                db.Entry(foodEventSet).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(foodEvent);
+            return View(foodEventSet);
         }
 
-        // GET: FoodEvents/Delete/5
+        // GET: FoodEventSets/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            FoodEvent foodEvent = db.FoodEvents.Find(id);
-            if (foodEvent == null)
+            FoodEventSet foodEventSet = db.FoodEventSet.Find(id);
+            if (foodEventSet == null)
             {
                 return HttpNotFound();
             }
-            return View(foodEvent);
+            return View(foodEventSet);
         }
 
-        // POST: FoodEvents/Delete/5
+        // POST: FoodEventSets/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            FoodEvent foodEvent = db.FoodEvents.Find(id);
-            db.FoodEvents.Remove(foodEvent);
+            FoodEventSet foodEventSet = db.FoodEventSet.Find(id);
+            db.FoodEventSet.Remove(foodEventSet);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

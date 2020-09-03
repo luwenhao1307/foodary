@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0e0d51dc60814b2b903158abcc0370eb" Name="Diagram1" >
-        <EntityTypeShape EntityType="Model1.FoodEvent" Width="1.5" PointX="8.375" PointY="2.125" />
+      <Diagram DiagramId="7567b96679f243a9adeb27ff372bffb9" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.FoodEventSet" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

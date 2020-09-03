@@ -3,7 +3,7 @@
     "mssql1": {
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/foodarydbserver/databases/foodary_db",
       "type": "mssql.azure",
-      "connectionId": "Model1Container",
+      "connectionId": "foodary",
       "secretStore": "AzureAppSettings"
     }
   }

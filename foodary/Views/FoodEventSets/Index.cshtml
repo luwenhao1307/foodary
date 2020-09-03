@@ -1,4 +1,4 @@
-﻿@model IEnumerable<foodary.Models.FoodEvent>
+﻿@model IEnumerable<foodary.Models.FoodEventSet>
 
 @{
     ViewBag.Title = "Index";
@@ -66,6 +66,12 @@
         <th>
             @Html.DisplayNameFor(model => model.Geocoded_location)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Timetable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
         <th></th>
     </tr>
 
@@ -124,6 +130,12 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Geocoded_location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Timetable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

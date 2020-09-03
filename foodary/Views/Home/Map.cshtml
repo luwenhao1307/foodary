@@ -1,4 +1,4 @@
-﻿@model IEnumerable<foodary.Models.FoodEvent>
+﻿@model IEnumerable<foodary.Models.FoodEventSet>
 
 @{
     ViewBag.Title = "Map";
@@ -70,7 +70,7 @@
                             @Html.DisplayNameFor(model => model.Cost)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Website)
+                            @Html.DisplayNameFor(model => model.Category)
                         </th>
                         <th>
                             @Html.DisplayNameFor(model => model.Monday)
@@ -124,7 +124,7 @@
                             @Html.DisplayFor(modelItem => item.Cost)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Website)
+                            @Html.DisplayFor(modelItem => item.Category)
                         </td>
 
                         <td>

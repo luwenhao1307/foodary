@@ -5,10 +5,10 @@ namespace foodary.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class Model1 : DbContext
+    public partial class Model2 : DbContext
     {
-        public Model1()
-            : base("name=Foodevents")
+        public Model2()
+            : base("name=Model2")
         {
         }
 
