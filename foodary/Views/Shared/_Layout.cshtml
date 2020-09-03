@@ -55,23 +55,23 @@
                         <a class="nav-link" href="~/Home/Home">Home</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="~/Home/FoodSpend">Food spend</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="~/Home/Map">Find food</a>
                     </li>
-                    <li class="nav-item">
+                    @*<li class="nav-item">
                         <a class="nav-link" href="~/Home/About">About us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="~/Home/FoodEvents">Food events</a>
-                    </li>
+                    </li>*@
                 </ul>
             </div>
         </nav>
     </div>
     <div>
         @RenderBody()
-       <footer class="footer_section" style="background-color: whitesmoke">
-                <p>&copy; @DateTime.Now.Year - Foodary</p>
-            </footer>
+       <footer class="footer_section footer">
+            <p>&copy; @DateTime.Now.Year - Foodary</p>
+        </footer>
     </div>
     @*<script src="js/jquery.min.js"></script>
         <script src="js/popper.min.js"></script>*@

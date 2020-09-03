@@ -411,6 +411,7 @@
     <Content Include="Views\FoodEventSets\Details.cshtml" />
     <Content Include="Views\FoodEventSets\Edit.cshtml" />
     <Content Include="Views\FoodEventSets\Index.cshtml" />
+    <Content Include="Views\Home\FoodExpenditure.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\App_LocalResources\" />

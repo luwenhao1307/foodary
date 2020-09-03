@@ -39,6 +39,10 @@
     src: url('../fonts/PoiretOne-Regular.ttf');
 }
 
+@font-face {
+    font-family: "Helvetica";
+    src: url('../fonts/Helvetica.ttf');
+}
 /*--------------------------------------------------------------------- skeleton ---------------------------------------------------------------------*/
 * {
     box-sizing: border-box !important;

@@ -85,12 +85,11 @@
                                     @Html.DisplayFor(modelItem => item.Phone)
                                 </td>
                                 <td id="schedule">
-                                    Monday: @Html.DisplayFor(modelItem => item.Monday)<br>
-                                    Tuesday: @Html.DisplayFor(modelItem => item.Tuesday) <br>
+                                    @Html.DisplayFor(modelItem => item.Timetable)
                                 </td>
                                 <td id="cost">
                                     @Html.DisplayFor(modelItem => item.Cost)<br>
-                                    Food Parcel
+                                    @Html.DisplayFor(modelItem => item.Category)
                                 </td>
                             </tr>
                         }

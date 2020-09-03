@@ -16,153 +16,99 @@
 
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBB60Ip9iv28WTdf-vLI1guI2wM0GxyS5Y" type="text/javascript"></script>
-    <style type="text/css">
-        table {
-            margin: 0px;
-            padding: 0px;
-            width: 3000px !important;
-            border-collapse: collapse;
-            table-layout: fixed;
-        }
-
-            table td {
-                border: 1px solid #eef2e9;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: clip
-            }
-
-                table td:hover {
-                    overflow: auto;
-                    text-overflow: clip;
-                }
-    </style>
 </head>
 <body onload="load()" onunload="GUnload()">
-    <div class="container" style="padding-top:3em; margin-top:100px">
+    <div class="container" style="padding-top:6em;">
+        <h1 class="banner_title" style="font-family:PoiretOne-Regular; font-weight: bold">Food availability</h1>
+        <p class="banner_text">Lots of places in Melbourne provide free food to the community in<br /> the form of Food Parcels, Community meals, Open Tables, etc</p>
+        <h1 class="card_title" style="font-family:PoiretOne-Regular; font-weight: bold; color: #0277bd">FIND FREE MEALS IN VICTORIA!</h1>
         <div class="row my-3">
-            <h1 class="banner_title">Food Event Map</h1>
+            <div class="col-md-4 py-1 tile-padding-8">
+                <div class="tile text-center">
+                    <img src="~/images/food-parcel.png" alt="Card image cap" />
+                    <div>
+                        <p>Food parcel</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 py-1 tile-padding-8">
+                <div class="tile text-center">
+                    <img src="~/images/community-meal.png" alt="Card image cap" />
+                    <div>
+                        <p>Community meal</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 py-1 tile-padding-8">
+                <div class="tile text-center">
+                    <img src="~/images/food-van.png" alt="Card image cap" />
+                    <div>
+                        <p>Food van</p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div style="width:100%;height:20px;margin-top:100px;margin-left:300px">
-
-        @*<h1 id="demo">Get your location：</h1>*@
-        <button onclick="getLocation()">Get your location</button>
-    </div>
-    <div style="padding:10px">
-
-        <div id="googleMap" style="width:40%;height:600px;display:inline-block;margin-bottom:-30px;margin-left:10px;"></div>
-
-        <div style="width:56%;display:inline-block;margin-left:20px;">
-            <table class="table" id="table">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Name)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Address)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Suburb)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Cost)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Category)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Timetable)
-                        </th>
-                        @*<th>
-                            @Html.DisplayNameFor(model => model.Tuesday)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Wednesday)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Thursday)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Friday)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Saturday)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Sunday)
-                        </th>*@
-                        <th>
-                            @Html.DisplayNameFor(model => model.Public_holidays)
-                        </th>
-
-                        <th>
-                            @Html.DisplayNameFor(model => model.Phone)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.What)
-                        </th>
-
-                    </tr>
-                </thead>
-                <tbody class="names">
-                    @foreach (var item in Model)
-                    {
-                    <tr>
-                        <td id="name">
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Address)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Suburb)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Cost)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Category)
-                        </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Timetable)
-                        </td>
-                        @*<td>
-                            @Html.DisplayFor(modelItem => item.Tuesday)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Wednesday)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Thursday)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Friday)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Saturday)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Sunday)
-                        </td>*@
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Public_holidays)
-                        </td>
-
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Phone)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.What)
-                        </td>
-
-                    </tr>
-                    }
-                </tbody>
-            </table>
+        <div class="row my-3">
+            <div class="col-md-12 py-1">
+                <form>
+                    <div class="input-group padding-25">
+                        <input type="text" class="search-input form-control" placeholder="Fitzroy" />
+                        <div class="input-group-btn">
+                            <button class="btn btn-default search-button" type="submit">
+                                GO!
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row my-3">
+            <button onclick="getLocation()">Get your location</button>
+        </div>
+        <div class="row my-3">
+            <div id="googleMap" style="height: 400px; width: 100%"></div>
+            <div class="col-md-12">
+                <table class="table table-map" id="table">
+                    <thead style="display:none">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Phone)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Monday)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Cost)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="names">
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td id="name">
+                                    @Html.DisplayFor(modelItem => item.Name)<br />
+                                    <img src="~/images/pin.png"/> @Html.DisplayFor(modelItem => item.Address),
+                                    @Html.DisplayFor(modelItem => item.Suburb)
+                                </td>
+                                <td id="phone">
+                                    @Html.DisplayFor(modelItem => item.Phone)
+                                </td>
+                                <td id="schedule">
+                                    @Html.DisplayFor(modelItem => item.Timetable)
+                                </td>
+                                <td id="cost">
+                                    @Html.DisplayFor(modelItem => item.Cost)<br />
+                                    @Html.DisplayFor(modelItem => item.Category)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div id="food" style="display:none">
             @foreach (var item in Model)
