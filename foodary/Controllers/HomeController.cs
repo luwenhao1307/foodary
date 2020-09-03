@@ -54,6 +54,11 @@ namespace foodary.Controllers
             return View(db.FoodEvents.ToList());
         }
 
+        public ActionResult FoodEvents()
+        {
+            return View(db.FoodEvents.ToList());
+        }
+
 
     }
 }

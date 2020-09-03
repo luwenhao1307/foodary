@@ -34,9 +34,12 @@
     font-family: "OpenSans-Light";
     src: url('../fonts/OpenSans-Light.ttf');
 }
+@font-face {
+    font-family: "PoiretOne-Regular";
+    src: url('../fonts/PoiretOne-Regular.ttf');
+}
 
 /*--------------------------------------------------------------------- skeleton ---------------------------------------------------------------------*/
-
 * {
     box-sizing: border-box !important;
     transition: ease all 0.5s;
@@ -163,7 +166,7 @@ a,
 }
 
 img {
-    width: 100%;
+    max-width: 100%;
     height: auto;
 }
 
