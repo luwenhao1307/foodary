@@ -12,12 +12,12 @@ namespace foodary.Controllers
 {
     public class FoodEventsController : Controller
     {
-        private Model1Container db = new Model1Container();
+        private webModel db = new webModel();
 
         // GET: FoodEvents
         public ActionResult Index()
         {
-            return View(db.FoodEventSet.ToList());
+            return View(db.FoodEvents.ToList());
         }
 
         // GET: FoodEvents/Details/5
@@ -27,7 +27,7 @@ namespace foodary.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            FoodEvent foodEvent = db.FoodEventSet.Find(id);
+            FoodEvent foodEvent = db.FoodEvents.Find(id);
             if (foodEvent == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace foodary.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.FoodEventSet.Add(foodEvent);
+                db.FoodEvents.Add(foodEvent);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace foodary.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            FoodEvent foodEvent = db.FoodEventSet.Find(id);
+            FoodEvent foodEvent = db.FoodEvents.Find(id);
             if (foodEvent == null)
             {
                 return HttpNotFound();
@@ -96,7 +96,7 @@ namespace foodary.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            FoodEvent foodEvent = db.FoodEventSet.Find(id);
+            FoodEvent foodEvent = db.FoodEvents.Find(id);
             if (foodEvent == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace foodary.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            FoodEvent foodEvent = db.FoodEventSet.Find(id);
-            db.FoodEventSet.Remove(foodEvent);
+            FoodEvent foodEvent = db.FoodEvents.Find(id);
+            db.FoodEvents.Remove(foodEvent);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
