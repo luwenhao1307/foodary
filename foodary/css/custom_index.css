@@ -27,7 +27,6 @@
     color: #444444;
     margin-left: 0px;
     text-align: center;
-    text-shadow: 2px 2px whitesmoke;
 }
 
 .banner_text {
@@ -37,7 +36,6 @@
     color: #232323;
     margin-left: 0px;
     text-align: center;
-    text-shadow: 2px 2px whitesmoke;
 }
 
 .card_title {
@@ -50,4 +48,41 @@
 .card_text {
     font-family: OpenSans-Light;
     font-size: 15px;
+}
+.tile {
+    border: solid;
+    border-width: 1px;
+    background-color: #f7f6f6;
+    font-size: 15px;
+}
+.tile-padding-8{
+    padding-left: 7em;
+    padding-right: 7em;
+}
+
+.table-map {
+    color: #0277bd
+}
+
+.search-input {
+    border-color: #0277bd;
+    border-radius: 0px;
+}
+
+.search-button {
+    background-color: white;
+    color: #0277bd;
+    border-color: #0277bd;
+    border-radius: 0px;
+    border-left: 0px;
+}
+
+.form-control .search-input:focus {
+    border-color: #0277bd;
+    border-radius: 0px;
+}
+
+.padding-25 {
+    padding-left: 25em;
+    padding-right: 25em;
 }

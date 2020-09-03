@@ -408,12 +408,13 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Map.cshtml" />
-    <Content Include="Views\Home\Home.cshtml" />
     <Content Include="Views\FoodEvents\Create.cshtml" />
     <Content Include="Views\FoodEvents\Delete.cshtml" />
     <Content Include="Views\FoodEvents\Details.cshtml" />
     <Content Include="Views\FoodEvents\Edit.cshtml" />
     <Content Include="Views\FoodEvents\Index.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
+    <Content Include="Views\Home\FoodEvents.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\App_LocalResources\" />
