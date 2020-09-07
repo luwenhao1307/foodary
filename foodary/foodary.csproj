@@ -267,6 +267,8 @@
     <Content Include="css\slicknav.min.css" />
     <Content Include="css\style.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\ElegantIcons.svg" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -275,9 +277,9 @@
     <Content Include="images\fb-icon.png" />
     <Content Include="images\fb-icon1.png" />
     <Content Include="images\FBAU_HR19_National-4.png" />
+    <Content Include="images\foodary-banner.png" />
     <Content Include="images\home_cover.jpg" />
     <Content Include="images\home_cover2.jpeg" />
-    <Content Include="images\home_cover3.jpeg" />
     <Content Include="images\icon-1.png" />
     <Content Include="images\icon-2.png" />
     <Content Include="images\icon-3.png" />
@@ -308,12 +310,11 @@
     <Content Include="images\round-1.png" />
     <Content Include="images\round-2.png" />
     <Content Include="images\search-icon.png" />
-    <Content Include="images\ser2.jpeg" />
-    <Content Include="images\serv1 %281%29.png" />
-    <Content Include="images\serv1 %282%29.png" />
+    <Content Include="images\ser1.png" />
+    <Content Include="images\ser2.png" />
+    <Content Include="images\ser3.jpeg" />
     <Content Include="images\serv1.jpeg" />
     <Content Include="images\serv2.jpg" />
-    <Content Include="images\serv3.jpeg" />
     <Content Include="images\services-bg.png" />
     <Content Include="images\twitter-icon.png" />
     <Content Include="images\twitter-icon1.png" />
@@ -377,7 +378,16 @@
       <DependentUpon>local.edmx</DependentUpon>
     </Content>
     <Content Include="css\style.css.map" />
+    <Content Include="fonts\ElegantIcons.eot" />
+    <Content Include="fonts\ElegantIcons.ttf" />
+    <Content Include="fonts\ElegantIcons.woff" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\foodary20200825225747 - Web Deploy.pubxml" />
+    <Content Include="sass\style.scss" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
