@@ -2,7 +2,9 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI.WebControls;
@@ -34,9 +36,27 @@ namespace foodary.Controllers
 
             return View();
         }
+        //[HttpPost]
+        //public async Task OnGetAsync(String SearchString)
+        //{
+        //    var Food = from f in db.FoodEventSet
+        //                 select f;
+        //    Food = Food.Where(f => f.Category.Contains(SearchString));
+        //    List<FoodEventSet> models = await Food.ToListAsync();
+        //}
+        [HttpPost]
+        public async Task<ActionResult> GetData(String SearchString)
+        {
+            var Food = from f in db.FoodEventSet
+                       select f;
+            Food = Food.Where(f => f.Category.Contains(SearchString));
+            List<FoodEventSet> models = await Food.ToListAsync();
+            return Content(JsonConvert.SerializeObject(models));
+        }
         public ActionResult Map()
         {
             List<FoodEventSet> models = db.FoodEventSet.ToList();
+
             List<List<decimal>> dataList = new List<List<decimal>>();
             List<decimal> latList = new List<decimal>();
             List<decimal> lngList = new List<decimal>();
