@@ -247,6 +247,8 @@
     <Content Include="css\dataTables.uikit.css" />
     <Content Include="css\dataTables.uikit.min.css" />
     <Content Include="css\default-skin.css" />
+    <Content Include="css\elegant-icons.css" />
+    <Content Include="css\flaticon.css" />
     <Content Include="css\font-awesome.min.css" />
     <Content Include="css\icomoon.css" />
     <Content Include="css\jquery-ui.css" />
@@ -255,14 +257,18 @@
     <Content Include="css\jquery.dataTables_themeroller.css" />
     <Content Include="css\jquery.fancybox.min.css" />
     <Content Include="css\jquery.mCustomScrollbar.min.css" />
+    <Content Include="css\magnific-popup.css" />
     <Content Include="css\meanmenu.css" />
     <Content Include="css\nice-select.css" />
     <Content Include="css\normalize.css" />
     <Content Include="css\owl.carousel.min.css" />
     <Content Include="css\responsive.css" />
     <Content Include="css\slick.css" />
+    <Content Include="css\slicknav.min.css" />
     <Content Include="css\style.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\ElegantIcons.svg" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -271,7 +277,9 @@
     <Content Include="images\fb-icon.png" />
     <Content Include="images\fb-icon1.png" />
     <Content Include="images\FBAU_HR19_National-4.png" />
+    <Content Include="images\foodary-banner.png" />
     <Content Include="images\home_cover.jpg" />
+    <Content Include="images\home_cover2.jpeg" />
     <Content Include="images\icon-1.png" />
     <Content Include="images\icon-2.png" />
     <Content Include="images\icon-3.png" />
@@ -302,6 +310,11 @@
     <Content Include="images\round-1.png" />
     <Content Include="images\round-2.png" />
     <Content Include="images\search-icon.png" />
+    <Content Include="images\ser1.png" />
+    <Content Include="images\ser2.png" />
+    <Content Include="images\ser3.jpeg" />
+    <Content Include="images\serv1.jpeg" />
+    <Content Include="images\serv2.jpg" />
     <Content Include="images\services-bg.png" />
     <Content Include="images\twitter-icon.png" />
     <Content Include="images\twitter-icon1.png" />
@@ -315,12 +328,19 @@
     <Content Include="js\bootstrap.js" />
     <Content Include="js\bootstrap.min.js" />
     <Content Include="js\custom.js" />
+    <Content Include="js\isotope.pkgd.min.js" />
     <Content Include="js\jquery-3.0.0.min.js" />
+    <Content Include="js\jquery-3.3.1.min.js" />
     <Content Include="js\jquery.dataTables.js" />
+    <Content Include="js\jquery.magnific-popup.min.js" />
     <Content Include="js\jquery.mCustomScrollbar.concat.min.js" />
     <Content Include="js\jquery.min.js" />
+    <Content Include="js\jquery.slicknav.js" />
     <Content Include="js\jquery.validate.js" />
+    <Content Include="js\main.js" />
+    <Content Include="js\masonry.pkgd.min.js" />
     <Content Include="js\modernizer.js" />
+    <Content Include="js\owl.carousel.min.js" />
     <Content Include="js\plugin.js" />
     <Content Include="js\popper.min.js" />
     <Content Include="js\slider-setting.js" />
@@ -357,7 +377,17 @@
     <Content Include="Models\local.edmx.diagram">
       <DependentUpon>local.edmx</DependentUpon>
     </Content>
+    <Content Include="css\style.css.map" />
+    <Content Include="fonts\ElegantIcons.eot" />
+    <Content Include="fonts\ElegantIcons.ttf" />
+    <Content Include="fonts\ElegantIcons.woff" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Properties\PublishProfiles\foodary20200825225747 - Web Deploy.pubxml" />
+    <Content Include="sass\style.scss" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
