@@ -62,10 +62,17 @@
                 <!--</form>
             </div>
         </div>-->
-        <div class="row my-3">
-            <button type ="button" style="width:150px;height:40px;border:3px orange double;background-color:white;"onclick="getLocation()" width="50px">Your location</button>
-            <button type ="button" margin-left:50px  onclick="showAll()" width="50px">Show all</button>
+    <div class="row my-3">
+        <div class="col-md-4 py-1 tile-padding-8">
+            <button type="button" style="width:150px;height:40px;border:3px orange double;background-color:white;" onclick="getLocation()" width="50px">Your location</button>
         </div>
+        <div class="col-md-6 py-1 tile-padding-8">
+
+        </div>
+        <div class="col-md-2 py-1 tile-padding-8">
+            <button type="button" style="width:150px;height:40px;border:3px orange double;background-color:white;" onclick="showAll()" width="50px">Show all</button>
+        </div>
+    </div>
         
         <div class="row my-3">
             <div id="googleMap" style="height: 400px; width: 100%"></div>
@@ -114,9 +121,9 @@
                             <td id="Category">
                                 @Html.DisplayFor(modelItem => item.Category)
                             </td>
-                            <td>                           
+                            @*<td>                           
                                 @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                            </td>
+                            </td>*@
                         </tr>
                             count = count + 1;
                         }
