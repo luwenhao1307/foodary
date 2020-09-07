@@ -63,8 +63,8 @@
             </div>
         </div>-->
         <div class="row my-3">
-            <button type ="button" style="width:120px;height:40px;border:3px orange double;background-color:white;"onclick="getLocation()" width="50px">Your location</button>
-            @*<button type ="button" onclick="showAll()" width="50px">Show all</button>*@
+            <button type ="button" style="width:150px;height:40px;border:3px orange double;background-color:white;"onclick="getLocation()" width="50px">Your location</button>
+            <button type ="button" margin-left:50px  onclick="showAll()" width="50px">Show all</button>
         </div>
         
         <div class="row my-3">
@@ -96,25 +96,28 @@
                         {
                             int count = 0;
 
-                            <tr>
-                                <td id="name">
-                                    @Html.DisplayFor(modelItem => item.Name)<br />
-                                    <img src="~/images/pin.png" onclick="showEventPosition(@Html.DisplayFor(modelItem => item.Id))" /> @Html.DisplayFor(modelItem => item.Id) @Html.DisplayFor(modelItem => item.Address),
-                                    @Html.DisplayFor(modelItem => item.Suburb)
-                                </td>
-                                <td id="phone">
-                                    @Html.DisplayFor(modelItem => item.Phone)
-                                </td>
-                                <td id="schedule">
-                                    @Html.DisplayFor(modelItem => item.Timetable)
-                                </td>
-                                <td id="cost">
-                                    @Html.DisplayFor(modelItem => item.Cost)
-                                </td>
-                                <td id="Category">
-                                    @Html.DisplayFor(modelItem => item.Category)
-                                </td>
-                            </tr>
+                        <tr>
+                            <td id="name">
+                                @Html.DisplayFor(modelItem => item.Name)<br />
+                                <img src="~/images/pin.png" onclick="showEventPosition(@Html.DisplayFor(modelItem => item.Id))" /> @Html.DisplayFor(modelItem => item.Id) @Html.DisplayFor(modelItem => item.Address),
+                                @Html.DisplayFor(modelItem => item.Suburb)
+                            </td>
+                            <td id="phone">
+                                @Html.DisplayFor(modelItem => item.Phone)
+                            </td>
+                            <td id="schedule">
+                                @Html.DisplayFor(modelItem => item.Timetable)
+                            </td>
+                            <td id="cost">
+                                @Html.DisplayFor(modelItem => item.Cost)
+                            </td>
+                            <td id="Category">
+                                @Html.DisplayFor(modelItem => item.Category)
+                            </td>
+                            <td>                           
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            </td>
+                        </tr>
                             count = count + 1;
                         }
                     </tbody>
@@ -162,25 +165,33 @@
                 });
 
         });
-
-        var names = [];//名字String数组
-        var item = document.getElementById("food");
-        var itemson = item.getElementsByTagName('div');
-        for (var i = 0; i < itemson.length; i++) {
-            var itemGson = itemson[i].getElementsByTagName('p');
-            for (var a = 0; a < itemGson.length; a++) {
-                var name = itemGson[a].innerText;
-                names.push(name);
-            }
-        }
-        var data = JSON.parse('@ViewBag.data');//标点数组
-        var locations = [];
-        for (var i = 0; i < 50; i++) {
-                var point = {
-                    "lat": data[0][i],
-                    "lng": data[1][i],
+            var names = [];
+            var namesSta = [];
+                var item = document.getElementById("food");
+                var itemson = item.getElementsByTagName('div');
+                for (var i = 0; i < itemson.length; i++) {
+                    var itemGson = itemson[i].getElementsByTagName('p');
+                    for (var a = 0; a < itemGson.length; a++) {
+                        var name = itemGson[a].innerText;
+                        names.push(name);
+                        namesSta.push(name);
+                    }
+                }
+                var data = JSON.parse('@ViewBag.data');
+            var locations = [];//标点数组
+            var locationSta = [];
+                for (var i = 0; i < 50; i++) {
+                    var point = {
+                        "lat": data[0][i],
+                        "lng": data[1][i],
+                    };
+                    locations.push(point);
+                    locationSta.push(point);
                 };
-                locations.push(point);
+            function showAll() {
+               locations = locationSta;
+               names = namesSta;
+               initialize();
             };
         $(".type").click(function (e) {
                 var SearchString = $(this).find('p').html();
@@ -206,18 +217,7 @@
                     })
             });
 
-            function showAll() {
-                var data = JSON.parse('@ViewBag.data');//标点数组
-                var locations = [];
-                for (var i = 0; i < 50; i++) {
-                var point = {
-                    "lat": data[0][i],
-                    "lng": data[1][i],
-                };
-                locations.push(point);
-                };
-                initialize();
-            }
+
         // 初始化地图
         function initialize() {
 

@@ -89,5 +89,15 @@ namespace foodary.Controllers
         {
             return View();
         }
+        public ActionResult Details(int? id)
+        {
+           
+            FoodEventSet foodEventSet = db.FoodEventSet.Find(id);
+            if (foodEventSet == null)
+            {
+                return HttpNotFound();
+            }
+            return View(foodEventSet);
+        }
     }
 }
