@@ -309,6 +309,7 @@
     <Content Include="images\map-icon.png" />
     <Content Include="images\marker.png" />
     <Content Include="images\nancy_photo.jpg" />
+    <Content Include="images\pin.png" />
     <Content Include="images\restlogo.png" />
     <Content Include="images\rest_foodary.png" />
     <Content Include="images\result.png" />
