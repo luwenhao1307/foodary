@@ -8,12 +8,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    
+
     <meta http-equiv="content-type" content="text/html; charset=gb2312" />
     <link href="~/DataTables-1.10.21/media/css/dataTables.bootstrap.css" rel="stylesheet" />
     <!-- DataTables CSS -->
     <link rel="stylesheet" type="text/css" href="~/css/jquery.dataTables.css" />
-
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css" />
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBB60Ip9iv28WTdf-vLI1guI2wM0GxyS5Y" type="text/javascript"></script>
 </head>
@@ -24,7 +24,7 @@
         <h1 class="card_title" style="font-family:PoiretOne-Regular; font-weight: bold; color: #0277bd">FIND FREE MEALS IN VICTORIA!</h1>
         <div class="row my-3">
             <div class="col-md-4 py-1 tile-padding-8">
-                <div class="tile text-center" onclick="getLocation()">
+                <div class="tile text-center type">
                     <img src="~/images/food-parcel.png" alt="Card image cap" />
                     <div>
                         <p>Food parcel</p>
@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="col-md-4 py-1 tile-padding-8">
-                <div class="tile text-center">
+                <div class="tile text-center type">
                     <img src="~/images/community-meal.png" alt="Card image cap" />
                     <div>
                         <p>Community meal</p>
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="col-md-4 py-1 tile-padding-8">
-                <div class="tile text-center">
+                <div class="tile text-center type">
                     <img src="~/images/food-van.png" alt="Card image cap" />
                     <div>
                         <p>Food van</p>
@@ -63,13 +63,15 @@
             </div>
         </div>
         <div class="row my-3">
-            <button onclick="getLocation()">Get your location</button>
+            <button type ="button" style="width:120px;height:40px;border:3px orange double;background-color:white;"onclick="getLocation()" width="50px">Your location</button>
+            @*<button type ="button" onclick="showAll()" width="50px">Show all</button>*@
         </div>
+        
         <div class="row my-3">
             <div id="googleMap" style="height: 400px; width: 100%"></div>
             <div class="col-md-12">
-                <table class="table table-map" id="table">
-                    <thead style="display:none">
+                <table class="table table-map display" id="table" cellspacing="0" width="100%">
+                    <thead>
                         <tr>
                             <th>
                                 @Html.DisplayNameFor(model => model.Name)
@@ -78,13 +80,17 @@
                                 @Html.DisplayNameFor(model => model.Phone)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.Monday)
+                                Business Hours
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.Cost)
                             </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Category)
+                            </th>
                         </tr>
                     </thead>
+
                     <tbody class="names">
                         @foreach (var item in Model)
                         {
@@ -103,11 +109,13 @@
                                     @Html.DisplayFor(modelItem => item.Timetable)
                                 </td>
                                 <td id="cost">
-                                    @Html.DisplayFor(modelItem => item.Cost)<br />
+                                    @Html.DisplayFor(modelItem => item.Cost)
+                                </td>
+                                <td id="Category">
                                     @Html.DisplayFor(modelItem => item.Category)
                                 </td>
                             </tr>
-                            count = count+1;
+                            count = count + 1;
                         }
                     </tbody>
                 </table>
@@ -124,14 +132,38 @@
         <script type="text/javascript" charset="utf8" src="~/js/jquery.min.js"></script>
         <!-- DataTables -->
         <script type="text/javascript" charset="utf8" src="~/js/jquery.dataTables.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript">
-        $(document).ready(function () {
-            $('#table').DataTable({
-                sScrollX: true
-            });
+            $(document).ready(function () {
+
+                $('#table').DataTable({
+                    sScrollX: true,
+                    initComplete: function () {
+                        var api = this.api();
+                       this.api().columns([3,4]).every( function (i) {
+                            var column = api.column(i);
+                            var select = $('<select><option value=""></option></select>')
+                                .appendTo( $(column.header()))
+                                .on('change', function () {
+                                    var val = $.fn.dataTable.util.escapeRegex(
+                                        $(this).val()
+                                    );
+                                    column
+                                        .search(val ? '^' + val + '$' : '', true, false)
+                                        .draw();
+                                });
+                            column.data().unique().sort().each(function (d, j) {
+                                select.append('<option value="' + d + '">' + d.substr(0,8) + '</option>')
+                            });
+
+                        });
+                    }
+                });
+
         });
 
-        var names = [];
+        var names = [];//名字String数组
         var item = document.getElementById("food");
         var itemson = item.getElementsByTagName('div');
         for (var i = 0; i < itemson.length; i++) {
@@ -141,14 +173,50 @@
                 names.push(name);
             }
         }
-            var data = JSON.parse('@ViewBag.data');
-            var locations = [];
-            for (var i = 0; i < 50; i++) {
+        var data = JSON.parse('@ViewBag.data');//标点数组
+        var locations = [];
+        for (var i = 0; i < 50; i++) {
                 var point = {
                     "lat": data[0][i],
                     "lng": data[1][i],
                 };
                 locations.push(point);
+            };
+        $(".type").click(function (e) {
+                var SearchString = $(this).find('p').html();
+                $.ajax(
+                    {
+                        url: '/Home/GetData',
+                        method: 'post',
+                        data: { 'SearchString': SearchString },
+                        success: function (data) {
+                            var new1 = JSON.parse(data);
+                            locations = [];
+                            names = [];
+                            for (var i = 0; i < new1.length; i++) {
+                                 var point = {
+                                     "lat": new1[i]["Latitude"],
+                                     "lng": new1[i]["Longitude"],
+                                 };
+                                locations.push(point);
+                                names.push(new1[i]["Name"]);
+                            };
+                            initialize();
+                        },
+                    })
+            });
+
+            function showAll() {
+                var data = JSON.parse('@ViewBag.data');//标点数组
+                var locations = [];
+                for (var i = 0; i < 50; i++) {
+                var point = {
+                    "lat": data[0][i],
+                    "lng": data[1][i],
+                };
+                locations.push(point);
+                };
+                initialize();
             }
         // 初始化地图
         function initialize() {
@@ -160,7 +228,7 @@
             };
             map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
-            
+
 
             // Push them all into an array.
             //var img = "/images/rest_foodary.png"
@@ -209,7 +277,7 @@
             });
             };
             function showEventPosition(id) {
-         
+
                 map.setCenter(new google.maps.LatLng(data[0][id-1], data[1][id-1])),
                     map.setZoom(16);
             }
