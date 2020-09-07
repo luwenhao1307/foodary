@@ -37,59 +37,83 @@
 
 
     @*<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyBB60Ip9iv28WTdf-vLI1guI2wM0GxyS5Y"></script>*@
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyBB60Ip9iv28WTdf-vLI1guI2wM0GxyS5Y"></script>*@
+
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Quantico:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
 </head>
 
 <body>
-    <div class="header_section">
-        <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-navbar">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-brand">
-                <a href="~/Home/Home"><img src="~/images/logo_small.png"></a>
+    <header class="header-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="logo">
+                        <a href="./index.html">
+                            <img src="~/images/logo_small.png" alt="">
+                        </a>
+                    </div>
+                    <nav class="nav-menu mobile-menu">
+                        <ul>
+                            <li class="active"><a href="~/Home/Index">Home</a></li>
+                            <li><a href="~/Home/Map">Find Food</a></li>
+                            <li><a href="~/Home/Recipe">Recipe</a></li>
+                            <li><a href="~/Home/Feedback">Feedback</a></li>
+                            <li><a href="~/Home/About">About</a></li>
+                        </ul>
+                    </nav>
+                    <div class="top-search search-switch">
+                        <i class="fa fa-search"></i>
+                    </div>
+                    <div id="mobile-menu-wrap"></div>
+                </div>
             </div>
-            <div class="collapse navbar-collapse navbar-right" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="~/Home/Home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="~/Home/FoodSpend">Food spend</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="~/Home/Map">Find food</a>
-                    </li>
-                    @*<li class="nav-item">
-                        <a class="nav-link" href="~/Home/About">About us</a>
-                    </li>*@
-                </ul>
-            </div>
-        </nav>
-    </div>
+        </div>
+    </header>
     <div>
         @RenderBody()
-       <footer class="footer_section footer">
+        <footer class="footer_section footer">
             <p>&copy; @DateTime.Now.Year - Foodary</p>
         </footer>
     </div>
-    @*<script src="js/jquery.min.js"></script>
-        <script src="js/popper.min.js"></script>*@
-    <script src="~/DataTables-1.10.21/media/js/jquery.js"></script>
-    <script src="~/js/bootstrap.min.js"></script>
-    <script src="~/js/bootstrap.bundle.min.js"></script>
-    <script src="~/DataTables-1.10.21/media/js/jquery.dataTables.js"></script>
+    @*<script src="/js/jquery.min.js"></script>
+        <script src="/js/popper.min.js"></script>*@
+    <script src="/DataTables-1.10.21/media/js/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/DataTables-1.10.21/media/js/jquery.dataTables.js"></script>
 
 
-    <!--<script src="js/jquery-3.0.0.min.js"></script>
-    <script src="js/plugin.js"></script>-->
+    <!--<script src="/js/jquery-3.0.0.min.js"></script>
+    <script src="/js/plugin.js"></script>-->
     <!-- sidebar -->
-    <!--<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="js/custom.js"></script>-->
+    <!--<script src="/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/js/custom.js"></script>-->
     <!-- javascript -->
-    <!--<script src="js/owl.carousel.js"></script>
+    <!--<script src="/js/owl.carousel.js"></script>
     <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>-->
     @*<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyBB60Ip9iv28WTdf-vLI1guI2wM0GxyS5Y"></script>*@
     @RenderSection("scripts", required: false)
+
+    <!-- Js Plugins -->
+    <script src="/js/jquery-3.3.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jquery.magnific-popup.min.js"></script>
+    <script src="/js/isotope.pkgd.min.js"></script>
+    <script src="/js/masonry.pkgd.min.js"></script>
+    <script src="/js/jquery.slicknav.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 </html>
