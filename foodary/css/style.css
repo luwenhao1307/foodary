@@ -186,6 +186,16 @@ ol {
 	font-family: "Quantico", sans-serif;
 }
 
+.slogan-btn {
+	display: inline-block;
+	font-size: 12px;
+	padding: 14px 30px;
+	color: #000000;
+	background-color: rgba(255,255,255, 0.7);
+	text-transform: uppercase;
+	font-weight: 700;
+	font-family: "Quantico", sans-serif;
+}
 .site-btn {
 	font-size: 15px;
 	color: #ffffff;
@@ -508,7 +518,7 @@ ol {
 }
 
 	.hs-item .hs-text h2 {
-		font-size: 60px;
+		font-size: 45px;
 		color: #ffffff;
 		font-weight: 700;
 		text-transform: uppercase;
