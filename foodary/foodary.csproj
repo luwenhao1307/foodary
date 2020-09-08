@@ -391,6 +391,8 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\Helvetica.ttf" />
+    <Content Include="fonts\PoiretOne-Regular.ttf" />
     <None Include="Properties\PublishProfiles\foodary20200825225747 - Web Deploy.pubxml" />
     <Content Include="sass\style.scss" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
