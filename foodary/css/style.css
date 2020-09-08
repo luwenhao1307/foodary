@@ -26,7 +26,25 @@
 10.  Footer Style
 
 -------------------------------------------------------------------*/
+@font-face {
+	font-family: "OpenSans-Bold";
+	src: url('../fonts/OpenSans-Bold.ttf');
+}
 
+@font-face {
+	font-family: "OpenSans-Light";
+	src: url('../fonts/OpenSans-Light.ttf');
+}
+
+@font-face {
+	font-family: "PoiretOne-Regular";
+	src: url('../fonts/PoiretOne-Regular.ttf');
+}
+
+@font-face {
+	font-family: "Helvetica";
+	src: url('../fonts/Helvetica.ttf');
+}
 /*----------------------------------------*/
 
 /* Template default CSS
