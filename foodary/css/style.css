@@ -56,6 +56,11 @@ body {
 	font-smoothing: antialiased;
 }
 
+hand:hover {
+	cursor: hand
+}
+
+
 h1,
 h2,
 h3,
