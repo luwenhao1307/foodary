@@ -99,5 +99,10 @@ namespace foodary.Controllers
             }
             return View(foodEventSet);
         }
+
+        public ActionResult FindRecipe()
+        {
+            return View();
+        }
     }
 }

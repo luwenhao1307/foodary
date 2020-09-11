@@ -1,0 +1,208 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Find recipe</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+
+</head>
+    <body>
+        <div class="container">
+            <h1 class="banner_title">Find Recipe</h1>
+
+            <p class="banner_text">
+                There many simple and cheap recipes to help you save money, time and keep adequate nutrition.
+            </p>
+            <p class="banner_text" style="font-weight: bold; text-align: left;">
+                Choose what type of meal you would like to cook
+            </p>
+            <div class="text-center">
+                <button class="btn btn-filter-default">Non-vegetarian</button>
+                <button class="btn btn-filter-active">Vegetarian</button>
+            </div>
+            <br>
+            <p class="banner_text" style="font-weight: bold; text-align: left;">
+                Select ingredients you would like to cook with
+            </p>
+            <div class="row my-3 text-center">
+                <div class="row col-md-4">
+                    <div class="col-md-3">
+                        <p>Meat</p>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="selectpicker" multiple>
+                            <option value="1">Beef (steaks)</option>
+                            <option value="2">Beef (ground)</option>
+                            <option value="3">Chicken (breast)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row col-md-4">
+                    <div class="col-md-3">
+                        <p>Vegetables</p>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="selectpicker" multiple>
+                            <option value="1">Asparagus</option>
+                            <option value="2">Carrots</option>
+                            <option value="3">Spinach</option>
+                            <option value="4">Tomatoes</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row col-md-4">
+                    <div class="col-md-3">
+                        <p>Others</p>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="selectpicker" multiple>
+                            <option value="1">Cheese (Cheddar)</option>
+                            <option value="2">Cheese (Parmesan)</option>
+                            <option value="3">Eggs</option>
+                            <option value="4">Thickened cream</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-3 text-center">
+                <div class="col-md-4">
+                    <span class="col-md-6 tile-product py-1">Beef (steak)</span><br>
+                    <span class="col-md-6 tile-product py-1">Beef (ground)</span><br>
+                    <span class="col-md-6 tile-product py-1">Chicken (breast)</span><br>
+                    <span class="col-md-6 tile-product py-1">Salmon</span><br>
+                </div>
+                <div class="col-md-4">
+                    <span class="col-md-6 tile-product py-1">Tomatoes</span>
+                </div>
+                <div class="col-md-4">
+                    <span class="col-md-6 tile-product py-1">Cheese (Cheddar)</span>
+                    <span class="col-md-6 tile-product py-1">Eggs</span>
+                    <span class="col-md-6 tile-product py-1">Thickened cream</span>
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-red">Recommend Recipes</button>
+            </div>
+            <br>
+            <p class="banner_text" style="font-weight: bold; text-align: left;">
+                Recommended Recipes
+            </p>
+            <div class="row text-center col-md-8">
+                <div class="col-md-3">
+                    <p>Sort By:</p>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-filter-default">Preparation time</button>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-filter-active">Cost</button>
+                </div>
+                <div class="col-md-3">
+                    <button class="btn btn-filter-default">Serving size</button>
+                </div>
+            </div>            
+            <br>
+            <div id="accordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                1. Beef Sauted with Rice
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <img src="~/images/img-recipe1.jpg" />
+                            <table class="table table-map display text-center" id="table" cellspacing="0" width="100%" style="margin-top: 2em">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Servings
+                                        </th>
+                                        <th>
+                                            Preparation time
+                                        </th>
+                                        <th>
+                                            Approximate cost
+                                        </th>
+                                    </tr>
+                                <thead>
+                                <tbody class="names">
+                                    <tr>
+                                        <th>2</th>
+                                        <th>40 minutes</th>
+                                        <th>$8</th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            Ingredients
+                                            <div class="text-left">
+                                                <p>| Beef</p>
+                                                <p>| Tomato</p>
+                                                <p>| Onion</p>
+                                                <p>| Vinegar</p>
+                                                <p>| Rice</p>
+                                            </div>
+                                        </th>
+                                        <th colspan="2">
+                                            Directions
+                                            <div class="text-left">
+                                                <p>| Step 1</p>
+                                                <p>| Step 2</p>
+                                                <p>| Step 3</p>
+                                            </div>
+                                        </th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                2. Roasted Beef
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                            <img src="#" />
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                3. Fried Chicken
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                        <div class="card-body">
+                            <img src="#" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+    </body>
+</html>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('select').selectpicker();
+    });
+</script>
