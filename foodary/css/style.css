@@ -1,7 +1,7 @@
 /******************************************************************
   Template Name: Phozogy
   Description:  Phozogy photography HTML Template
-  Author: Colorlib
+  Author: Colorlibhero-section
   Author URI: https://colorlib.com
   Version: 1.0
   Created: Colorlib
@@ -512,7 +512,7 @@ ol {
 	}
 
 .hs-item {
-	height: 900px;
+	height:700px;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -523,7 +523,7 @@ ol {
 }
 
 	.hs-item .hs-text h2 {
-		font-size: 45px;
+		font-size: 42px;
 		color: #ffffff;
 		font-weight: 700;
 		text-transform: uppercase;
