@@ -106,6 +106,31 @@ p {
 	margin: 0 0 15px 0;
 }
 
+pa {
+	font-size: 15px;
+	font-family: "Open Sans", sans-serif;
+	color: #666666;
+	font-weight: 400;
+	line-height: 26px;
+	margin: 0 0 15px 0;
+}
+
+pb {
+	font-size: 15px;
+	font-family: "Open Sans", sans-serif;
+	color: #666666;
+	font-weight: 400;
+	line-height: 26px;
+	margin: 0 0 15px 0;
+}
+pc {
+	font-size: 15px;
+	font-family: "Open Sans", sans-serif;
+	color: #666666;
+	font-weight: 400;
+	line-height: 26px;
+	margin: 0 0 15px 0;
+}
 img {
 	max-width: 100%;
 }
@@ -149,6 +174,10 @@ ol {
 		color: #666666;
 	}
 
+	.section-title pa {
+		color: #666666;
+	}
+
 .set-bg {
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -172,6 +201,7 @@ ol {
 .text-white h5,
 .text-white h6,
 .text-white p,
+.text-white pa,
 .text-white span,
 .text-white li,
 .text-white a {
@@ -483,7 +513,10 @@ ol {
 	top: 0;
 	opacity: 1;
 }
-
+.hs-slider.owl-carousel .owl-item.active .hs-text pa {
+	top: 0;
+	opacity: 1;
+}
 .hs-slider.owl-carousel .owl-item.active .hs-text .primary-btn {
 	top: 0;
 	opacity: 1;
@@ -537,6 +570,19 @@ ol {
 	}
 
 	.hs-item .hs-text p {
+		color: #ffffff;
+		line-height: 30px;
+		margin-bottom: 32px;
+		position: relative;
+		top: 100px;
+		-webkit-transition: all 0.5s ease-out;
+		-o-transition: all 0.5s ease-out;
+		transition: all 0.5s ease-out;
+		opacity: 0;
+	}
+
+
+	.hs-item .hs-text pa {
 		color: #ffffff;
 		line-height: 30px;
 		margin-bottom: 32px;
