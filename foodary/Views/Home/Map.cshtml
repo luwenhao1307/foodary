@@ -19,132 +19,137 @@
 </head>
 <body onload="load()" onunload="GUnload()">
     <div class="container">
-        <h1 class="banner_title" style="font-family:PoiretOne-Regular; font-weight: bold">Find food</h1>
-        <p class="banner_text">Lots of places in Melbourne provide free food to the community in<br /> the form of Food Parcels, Community meals, Open Tables, etc</p>
-        <h1 class="card_title" style="font-family:PoiretOne-Regular; font-weight: bold; color: #0277bd; font-size:50px">FIND FREE MEALS IN VICTORIA!</h1>
-        <div class="row my-3" >
-            <div class="col-md-4 py-1 tile-padding-8">
-                <div class="tile text-center type" style="cursor:pointer;">
-                    <img src="~/images/food-parcel.png" alt="Card image cap" />
-                    <div>
-                        <p>Food parcel</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 py-1 tile-padding-8" style="cursor:pointer;">
-                <div class="tile text-center type">
-                    <img src="~/images/community-meal.png" alt="Card image cap" />
-                    <div>
-                        <p>Community meal</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 py-1 tile-padding-8" style="cursor:pointer;">
-                <div class="tile text-center type">
-                    <img src="~/images/food-van.png" alt="Card image cap" />
-                    <div>
-                        <p>Food van</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--<div class="row my-3">
-            <div class="col-md-12 py-1">
-                <form>-->
-                    @*<div class="input-group padding-25">
-                        <input type="text" class="search-input form-control" placeholder="Fitzroy" />
-                        <div class="input-group-btn">
-                            <button class="btn btn-default search-button" type="submit">
-                                GO!
-                            </button>
+        <div class="hs-text">
+            @*<h1 class="banner_title" style="font-family:PoiretOne-Regular; font-weight: bold">Find food</h1>*@
+            <h1 class="card_title" style="font-weight: bold; color: #0277bd; font-size:45px">FIND FREE MEALS IN VICTORIA!</h1> @*"font-family:PoiretOne-Regular;*@
+            <br />
+            <center>
+                <p style="font-size:18px">Lots of places in Melbourne provide free food to the community in the form of Food Parcels, Community meals, Open Tables, etc</p>
+            </center>
+            <div class="row my-3">
+                <div class="col-md-4 py-1 tile-padding-8">
+                    <div class="tile text-center type" style="cursor:pointer;">
+                        <img src="~/images/food-parcel.png" alt="Card image cap" />
+                        <div>
+                            <p>Food parcel</p>
                         </div>
-                    </div>*@
-                <!--</form>
+                    </div>
+                </div>
+                <div class="col-md-4 py-1 tile-padding-8" style="cursor:pointer;">
+                    <div class="tile text-center type">
+                        <img src="~/images/community-meal.png" alt="Card image cap" />
+                        <div>
+                            <p>Community meal</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 py-1 tile-padding-8" style="cursor:pointer;">
+                    <div class="tile text-center type">
+                        <img src="~/images/food-van.png" alt="Card image cap" />
+                        <div>
+                            <p>Food van</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>-->
-    <div class="row my-3">
-        <div class="col-md-2 py-1 tile-padding-8" style="cursor:pointer;">
-            <button type="button" style="width:150px;height:40px;border:3px orange double;background-color:white; cursor:pointer;" onclick="getLocation()" width="50px">Your location</button>
-        </div>
-        <div class="col-md-8 py-1 tile-padding-8">
 
-        </div>
-        <div class="col-md-2 py-1 tile-padding-8">
-            <button type="button" style="width:150px;height:40px;border:3px orange double;background-color:white;" onclick="showAll()" width="50px">Show all</button>
-        </div>
-    </div>
-        
-        <div class="row my-3">
-            <div id="googleMap" style="height: 400px; width: 100%"></div>
-            <div class="col-md-12">
-                <table class="table table-map display" id="table" cellspacing="0" width="100%">
-                    <thead>
-                        <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Name)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Phone)
-                            </th>
-                            <th>
-                                Business Hours
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Cost)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Category)
-                            </th>
-                        </tr>
-                    </thead>
-
-                    <tbody class="names">
-                        @foreach (var item in Model)
-                        {
-                            int count = 0;
-
-                        <tr>
-                            <td id="name">
-                                @Html.DisplayFor(modelItem => item.Name)<br />
-                                <img style="cursor:pointer;" src="~/images/pin.png" onclick="showEventPosition(@Html.DisplayFor(modelItem => item.Id))" /> @Html.DisplayFor(modelItem => item.Id) @Html.DisplayFor(modelItem => item.Address),
-                                @Html.DisplayFor(modelItem => item.Suburb)
-                            </td>
-                            <td id="phone">
-                                @Html.DisplayFor(modelItem => item.Phone)
-                            </td>
-                            <td id="schedule">
-                                @Html.DisplayFor(modelItem => item.Timetable)
-                            </td>
-                            <td id="cost">
-                                @Html.DisplayFor(modelItem => item.Cost)
-                            </td>
-                            <td id="Category">
-                                @Html.DisplayFor(modelItem => item.Category)
-                            </td>
-                            @*<td>                           
-                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                            </td>*@
-                        </tr>
-                            count = count + 1;
-                        }
-                    </tbody>
-                </table>
+            <!--<div class="row my-3">
+    <div class="col-md-12 py-1">
+        <form>-->
+            @*<div class="input-group padding-25">
+            <input type="text" class="search-input form-control" placeholder="Fitzroy" />
+            <div class="input-group-btn">
+                <button class="btn btn-default search-button" type="submit">
+                    GO!
+                </button>
             </div>
+        </div>*@
+            <!--</form>
         </div>
-        <div id="food" style="display:none">
-            @foreach (var item in Model)
-            {
-                <div id="locations">
-                    <p id="name">@Html.DisplayFor(modelItem => item.Name)</p>
-                </div>}
-        </div>
-        <script src="~/js/bootstrap.min.js"></script>
-        <script type="text/javascript" charset="utf8" src="~/js/jquery.min.js"></script>
-        <!-- DataTables -->
-        <script type="text/javascript" charset="utf8" src="~/js/jquery.dataTables.js"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-        <script type="text/javascript">
+    </div>-->
+            <div class="row my-3">
+                <div class="col-md-2 py-1 tile-padding-8" style="cursor:pointer;">
+                    <button type="button" style="width:150px;height:40px;border:3px orange double;background-color:white; cursor:pointer;" onclick="getLocation()" width="50px">Your location</button>
+                </div>
+                <div class="col-md-8 py-1 tile-padding-8">
+
+                </div>
+                <div class="col-md-2 py-1 tile-padding-8">
+                    <button type="button" style="width:150px;height:40px;border:3px orange double;background-color:white;" onclick="showAll()" width="50px">Show all</button>
+                </div>
+            </div>
+
+            <div class="row my-3">
+                <div id="googleMap" style="height: 400px; width: 100%"></div>
+                <div class="col-md-12">
+                    <table class="table table-map display" id="table" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Phone)
+                                </th>
+                                <th>
+                                    Business Hours
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Cost)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Category)
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="names">
+                            @foreach (var item in Model)
+                            {
+                                int count = 0;
+
+                                <tr>
+                                    <td id="name">
+                                        @Html.DisplayFor(modelItem => item.Name)<br />
+                                        <img style="cursor:pointer;" src="~/images/pin.png" onclick="showEventPosition(@Html.DisplayFor(modelItem => item.Id))" /> @Html.DisplayFor(modelItem => item.Id) @Html.DisplayFor(modelItem => item.Address),
+                                        @Html.DisplayFor(modelItem => item.Suburb)
+                                    </td>
+                                    <td id="phone">
+                                        @Html.DisplayFor(modelItem => item.Phone)
+                                    </td>
+                                    <td id="schedule">
+                                        @Html.DisplayFor(modelItem => item.Timetable)
+                                    </td>
+                                    <td id="cost">
+                                        @Html.DisplayFor(modelItem => item.Cost)
+                                    </td>
+                                    <td id="Category">
+                                        @Html.DisplayFor(modelItem => item.Category)
+                                    </td>
+                                    @*<td>
+                                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                </td>*@
+                                </tr>
+                                count = count + 1;
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="food" style="display:none">
+                @foreach (var item in Model)
+                {
+                    <div id="locations">
+                        <p id="name">@Html.DisplayFor(modelItem => item.Name)</p>
+                    </div>}
+            </div>
+            <script src="~/js/bootstrap.min.js"></script>
+            <script type="text/javascript" charset="utf8" src="~/js/jquery.min.js"></script>
+            <!-- DataTables -->
+            <script type="text/javascript" charset="utf8" src="~/js/jquery.dataTables.js"></script>
+            <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+            <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+            <script type="text/javascript">
             $(document).ready(function () {
 
                 $('#table').DataTable({
@@ -262,7 +267,7 @@
                 return point;
             });
 
- 
+
         };
         google.maps.event.addDomListener(window, 'load', initialize);
 
@@ -296,7 +301,8 @@
                 map.setCenter(new google.maps.LatLng(data[0][id-1], data[1][id-1])),
                     map.setZoom(16);
             }
-        </script>
+            </script>
+        </div>
     </div>
 </body>
 </html>
