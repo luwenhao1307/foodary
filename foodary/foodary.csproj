@@ -287,6 +287,7 @@
     <Content Include="images\food-parcel.png" />
     <Content Include="images\food-van.png" />
     <Content Include="images\foodary-banner.png" />
+    <Content Include="images\foodicon2.png" />
     <Content Include="images\home_cover.jpg" />
     <Content Include="images\home_cover2.jpeg" />
     <Content Include="images\icon-1.png" />
@@ -307,6 +308,7 @@
     <Content Include="images\img-9.png" />
     <Content Include="images\linkedin-icon.png" />
     <Content Include="images\linkedin-icon1.png" />
+    <Content Include="images\locate.png" />
     <Content Include="images\logo.png" />
     <Content Include="images\logo_small.png" />
     <Content Include="images\mail-icon.png" />
@@ -327,6 +329,7 @@
     <Content Include="images\twitter-icon.png" />
     <Content Include="images\twitter-icon1.png" />
     <Content Include="images\vansh_photo.png" />
+    <Content Include="images\vegetablesmall.png" />
     <Content Include="images\wenhao_photo.png" />
     <Content Include="images\yingqi_photo.jpg" />
     <Content Include="images\yourlocation_foodary.png" />
