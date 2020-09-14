@@ -1,4 +1,5 @@
 ﻿using foodary.Models;
+using Highsoft.Web.Mvc.Charts;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace foodary.Controllers
     {
         private Model2 db = new Model2();
         private Model3 db1 = new Model3();
+        private food_price_model dbFoodPrice = new food_price_model();
         public ActionResult Index()
         {
             return View();
@@ -89,6 +91,26 @@ namespace foodary.Controllers
 
         public ActionResult FoodSpend()
         {
+            List<food_price> foodPriceModel = dbFoodPrice.food_price.ToList();
+            
+            List<string> productList = new List<string>();
+            List<double> priceList = new List<double>();
+            foreach (food_price item in foodPriceModel)
+            {
+                productList.Add(item.Product + " (" + item.Measure + ")");
+                priceList.Add((double)item.Price);
+            }
+
+            List<ColumnSeriesData> productPriceData = new List<ColumnSeriesData>();
+
+            priceList.ForEach(p => productPriceData.Add(new ColumnSeriesData
+            {
+                Y = p
+            }));
+
+            ViewData["productData"] = productList;
+            ViewData["priceData"] = productPriceData;
+
             return View();
         }
         public ActionResult Details(int? id)
