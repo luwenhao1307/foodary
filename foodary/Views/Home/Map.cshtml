@@ -41,13 +41,13 @@
                 <div class="container1" style="border:1px #b78846 double; background-color: #f7f6f6; font-size: 15px; text-align: center!important; cursor: pointer;">
                     <img src="~/images/vegetablesmall.png" alt="Card image cap" style="height:71px" />
                     <div>
-                        <p type="button" onclick="showAll()" style ="font-weight: bold;">Show all events</p>
+                        <p type="button" onclick="showAll()" style="font-weight: bold;">Show all events</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 py-1 tile-padding-8">
                 <div class="tile text-center type" style="cursor:pointer; ">
-                    <img src="~/images/food-parcel.png" alt="Card image cap"  />
+                    <img src="~/images/food-parcel.png" alt="Card image cap" />
                     <div>
                         <pa>Food parcel</pa>
                     </div>
@@ -75,24 +75,24 @@
         </div>
 
         <!--<div class="row my-3">
-        <div class="col-md-12 py-1">
-            <form>-->
+    <div class="col-md-12 py-1">
+        <form>-->
         @*<div class="input-group padding-25">
-                <input type="text" class="search-input form-control" placeholder="Fitzroy" />
-                <div class="input-group-btn">
-                    <button class="btn btn-default search-button" type="submit">
-                        GO!
-                    </button>
-                </div>
-            </div>*@
-        <!--</form>
+            <input type="text" class="search-input form-control" placeholder="Fitzroy" />
+            <div class="input-group-btn">
+                <button class="btn btn-default search-button" type="submit">
+                    GO!
+                </button>
             </div>
-        </div>-->
+        </div>*@
+        <!--</form>
+        </div>
+    </div>-->
         @*<div class="row my-3">
-                <div class="col-md-2 py-1 tile-padding-8">
-                    <button type="button" style="width:150px;height:40px;border:3px orange double;background-color:white;" onclick="showAll()" width="50px">Show all</button>
-                </div>
-            </div>*@
+            <div class="col-md-2 py-1 tile-padding-8">
+                <button type="button" style="width:150px;height:40px;border:3px orange double;background-color:white;" onclick="showAll()" width="50px">Show all</button>
+            </div>
+        </div>*@
 
         <div class="row my-3">
             <div id="googleMap" style="height: 400px; width: 100%"></div>
@@ -144,8 +144,8 @@
                                     @Html.DisplayFor(modelItem => item.Category)
                                 </td>
                                 @*<td>
-                                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                    </td>*@
+                                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                </td>*@
                             </tr>
                             count = count + 1;
                         }
@@ -158,6 +158,15 @@
             {
                 <div id="locations">
                     <p id="name">@Html.DisplayFor(modelItem => item.Name)</p>
+                </div>}
+        </div>
+
+
+        <div id="Time" style="display:none">
+            @foreach (var item in Model)
+            {
+                <div id="locations">
+                    <p id="time">@Html.DisplayFor(modelItem => item.Timetable)</p>
                 </div>}
         </div>
 
@@ -210,11 +219,23 @@
                     }
             }
 
+            var tames = [];
+            var tamesSta = [];
+            var titem = document.getElementById("Time");
+            var titemson = titem.getElementsByTagName('div');
+            for (var i = 0; i < titemson.length; i++) {
+                var titemGson = titemson[i].getElementsByTagName('p');
+                for (var a = 0; a < titemGson.length; a++) {
+                    var tame = titemGson[a].innerText;
+                    tames.push(tame);
+                    tamesSta.push(tame);
+                }
+            }
 
-                var data = JSON.parse('@ViewBag.data');
+            var data = JSON.parse('@ViewBag.data');
             var locations = [];//标点数组
-                 var location0 = [];//标点数组
-               var location1 = [];//标点数组
+            var location0 = [];//标点数组
+            var location1 = [];//标点数组
             var location2 = [];//标点数组
 
 
@@ -231,6 +252,7 @@
             function showAll() {
                locations = locationSta;
                 names = namesSta;
+                tames = tamesSta;
                 location0 = [];
                 location1 = [];
                 location2 = [];
@@ -296,14 +318,14 @@
                             success: function (data) {
                                 var new2 = JSON.parse(data);
                                 location1 = [];
-                                names1 = [];
+                                names = [];
                                 for (var i = 0; i < new2.length; i++) {
                                     var point = {
                                         "lat": new2[i]["Latitude"],
                                         "lng": new2[i]["Longitude"],
                                     };
                                     location1.push(point);
-                                    names1.push(new2[i]["Name"]);
+                                    names.push(new2[i]["Name"]);
                                 };
                                 initialize();
                             },
@@ -320,14 +342,14 @@
                         success: function (data) {
                             var new3 = JSON.parse(data);
                             location2 = [];
-                            names2 = [];
+                            names = [];
                             for (var i = 0; i < new3.length; i++) {
                                 var point = {
                                     "lat": new3[i]["Latitude"],
                                     "lng": new3[i]["Longitude"],
                                 };
                                 location2.push(point);
-                                names2.push(new3[i]["Name"]);
+                                names.push(new3[i]["Name"]);
                             };
                             initialize();
                         },
@@ -386,7 +408,7 @@
 
                 //---------自定义信息窗口显示-----------
                 let iw = new google.maps.InfoWindow({
-                    content: "<div><p>Event name:" + names[i] + "</p><p>Latlng：" + locations[i]["lat"] + "," + locations[i]["lng"] + "</p></div>"
+                    content: "<div><p>Event name:" + names[i] + "</p><p>Event Time：" + tames[i] + "</p></div>"
                 });
                 //点击信息窗口显示
                 google.maps.event.addListener(point, "click", function (e) { iw.open(map, point); });
@@ -404,7 +426,7 @@
 
                 //---------自定义信息窗口显示-----------
                 let iw = new google.maps.InfoWindow({
-                    content: "<div><p>Event name:" + names[i] + "</p><p>Latlng：" + locations0[i]["lat"] + "," + locations0[i]["lng"] + "</p></div>"
+                    content: "<div><p>Event name:" + names[i] + "</p><p>Event Time：" + tames[i] + "</p></div> "
                 });
                 //点击信息窗口显示
                 google.maps.event.addListener(point, "click", function (e) { iw.open(map, point); });
@@ -415,13 +437,13 @@
                 var point = new google.maps.Marker({
                     position: location,
                     map: map,
-                    title: names1[i],
+                    title: names[i],
                     icon: imgb
                 });
 
                 //---------自定义信息窗口显示-----------
                 let iw = new google.maps.InfoWindow({
-                    content: "<div><p>Event name:" + names1[i] + "</p><p>Latlng：" + location1[i]["lat"] + "," + location1[i]["lng"] + "</p></div>"
+                    content: "<div><p>Event name:" + names[i] + "</p><p>Event Time：" + tames[i] + "</p></div>"
                 });
                 //点击信息窗口显示
                 google.maps.event.addListener(point, "click", function (e) { iw.open(map, point); });
@@ -432,13 +454,13 @@
                 var point = new google.maps.Marker({
                     position: location,
                     map: map,
-                    title: names2[i],
+                    title: names[i],
                     icon: imgc
                 });
 
                 //---------自定义信息窗口显示-----------
                 let iw = new google.maps.InfoWindow({
-                    content: "<div><p>Event name:" + names2[i] + "</p><p>Latlng：" + location2[i]["lat"] + "," + location2[i]["lng"] + "</p></div>"
+                    content: "<div><p>Event name:" + names[i] + "</p><p>Event Time：" + tames[i] + "</p></div>"
                 });
                 //点击信息窗口显示
                 google.maps.event.addListener(point, "click", function (e) { iw.open(map, point); });
