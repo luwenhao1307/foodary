@@ -43,6 +43,10 @@
 	font-family: "Helvetica";
 	src: url('../fonts/Helvetica.ttf');
 }
+@font-face {
+	font-family: "SansSerif";
+	src: url('../fonts/SansSerif.ttf');
+}
 /*----------------------------------------*/
 
 /* Template default CSS
@@ -51,7 +55,7 @@
 html,
 body {
 	height: 100%;
-	font-family: "Open Sans", sans-serif;
+	font-family: SansSerif;
 	-webkit-font-smoothing: antialiased;
 	font-smoothing: antialiased;
 }
@@ -70,7 +74,7 @@ h6 {
 	margin: 0;
 	color: #111111;
 	font-weight: 400;
-	font-family: "Quantico", sans-serif;
+	font-family: SansSerif;
 }
 
 h1 {
@@ -99,7 +103,7 @@ h6 {
 
 p {
 	font-size: 15px;
-	font-family: "Open Sans", sans-serif;
+	font-family: SansSerif;
 	color: #666666;
 	font-weight: 400;
 	line-height: 26px;
@@ -108,7 +112,7 @@ p {
 
 pa {
 	font-size: 15px;
-	font-family: "Open Sans", sans-serif;
+	font-family: SansSerif;
 	color: #666666;
 	font-weight: 400;
 	line-height: 26px;
@@ -117,7 +121,7 @@ pa {
 
 pb {
 	font-size: 15px;
-	font-family: "Open Sans", sans-serif;
+	font-family: SansSerif;
 	color: #666666;
 	font-weight: 400;
 	line-height: 26px;
@@ -125,7 +129,7 @@ pb {
 }
 pc {
 	font-size: 15px;
-	font-family: "Open Sans", sans-serif;
+	font-family: SansSerif;
 	color: #666666;
 	font-weight: 400;
 	line-height: 26px;
@@ -218,7 +222,7 @@ ol {
 	background: #009603;
 	text-transform: uppercase;
 	font-weight: 700;
-	font-family: "Quantico", sans-serif;
+	font-family: SansSerif;
 }
 
 .slogan-btn {
@@ -229,7 +233,7 @@ ol {
 	color: #000000;
 	background-color: rgba(255,255,255, 0.7);
 	font-weight: 700;
-	font-family: "Quantico", sans-serif;
+	font-family: SansSerif;
 	text-align: center;
 }
 .site-btn {
@@ -238,7 +242,7 @@ ol {
 	font-weight: 700;
 	text-transform: uppercase;
 	letter-spacing: 2px;
-	font-family: "Quantico", sans-serif;
+	font-family: SansSerif;
 	display: inline-block;
 	padding: 14px 30px 12px;
 	background: #009603;
@@ -437,7 +441,7 @@ ol {
 			display: block;
 			padding: 32px 8px 30px;
 			position: relative;
-			font-family: "Quantico", sans-serif;
+			font-family: SansSerif;
 		}
 
 			.nav-menu ul li a:after {
@@ -894,7 +898,7 @@ ol {
 		display: inline-block;
 		padding: 15px 102px 13px;
 		background: #000606;
-		font-family: "Quantico", sans-serif;
+		font-family: SansSerif;
 	}
 
 /*---------------------

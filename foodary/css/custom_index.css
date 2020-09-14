@@ -14,7 +14,8 @@
     padding-right: 13px;
     padding-left: 13px;
     font-size: 18px;
-    font-family: OpenSans-Bold;
+    font-family: SansSerif;
+    font-weight: bold;
     color: #01579b;
     text-transform: uppercase;
 }
@@ -22,7 +23,7 @@
 .banner_title {
     width: 100%;
     font-size: 35px;
-    font-family: PoiretOne-Regular;
+    font-family: SansSerif;
     font-weight: bold;
     color: #444444;
     margin-left: 0px;
@@ -32,21 +33,22 @@
 .banner_text {
     width: 100%;
     font-size: 25px;
-    font-family: PoiretOne-Regular;
+    font-family: SansSerif;
     color: #232323;
     margin-left: 0px;
     text-align: center;
 }
 
 .card_title {
-    font-family: OpenSans-Bold;
+    font-family: SansSerif;
+    font-weight: bold;
     color: #01579b;
     text-align: center;
     font-weight: bolder;
 }
 
 .card_text {
-    font-family: OpenSans-Light;
+    font-family: SansSerif;
     font-size: 15px;
 }
 .tile {
@@ -104,15 +106,15 @@
     border-color: #d5d0d0;
     box-shadow: 0px 6px 6px #d5d0d0;
 }
-.home-tile-text{
-    font-family: PoiretOne-Regular;
+.home-tile-text {
+    font-family: SansSerif;
     font-weight: bold;
     font-size: 25px;
     color: #000000;
 }
 
 .home-tile-more {
-    font-family: PoiretOne-Regular;
+    font-family: SansSerif;
     font-weight: bold;
     font-size: 20px;
 }
