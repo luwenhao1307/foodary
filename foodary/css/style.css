@@ -222,14 +222,15 @@ ol {
 }
 
 .slogan-btn {
+	width: 100%;
 	display: inline-block;
-	font-size: 12px;
+	position: relative;
 	padding: 14px 30px;
 	color: #000000;
 	background-color: rgba(255,255,255, 0.7);
-	text-transform: uppercase;
 	font-weight: 700;
 	font-family: "Quantico", sans-serif;
+	text-align: center;
 }
 .site-btn {
 	font-size: 15px;
