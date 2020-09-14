@@ -36,10 +36,10 @@
         </center>
         <div class="row my-3">
             <div class="col-md-3 py-1 tile-padding-8">
-                <div class="tile text-center type" style="cursor:pointer;">
-                    <img src="~/images/vegetablesmall.png" alt="Card image cap" style="height:71px" />
+                <div class="tile text-center"  style="cursor:pointer;">
+                    <img src="~/images/vegetablesmall.png" onclick="showAll()" alt="Card image cap" style="height:71px" />
                     <div>
-                        <p ="button" onclick="showAll()" >Show all events</p>
+                        <a>Show all events</a>
                     </div>
                 </div>
             </div>
@@ -87,11 +87,11 @@
         </div>
     </div>-->
 
-        @*<div class="row my-3">
+        <div class="row my-3">
             <div class="col-md-2 py-1 tile-padding-8">
                 <button type="button" style="width:150px;height:40px;border:3px orange double;background-color:white;" onclick="showAll()" width="50px">Show all</button>
             </div>
-        </div>*@
+        </div>
 
         <div class="row my-3">
             <div id="googleMap" style="height: 400px; width: 100%"></div>
@@ -228,8 +228,10 @@
             };
 
             function showAll() {
-               locations = locationSta;
-               names = namesSta;
+                locations = locationSta;
+                
+                names = namesSta;
+                alert(names);
                initialize();
                 };
 
