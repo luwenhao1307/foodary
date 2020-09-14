@@ -53,10 +53,10 @@
       <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Highcharts">
-      <HintPath>C:\Users\Nandia\Downloads\HighchartsStandard\Highcharts.dll</HintPath>
+      <HintPath>C:\Users\Administrator\Downloads\Highcharts.dll</HintPath>
     </Reference>
     <Reference Include="Highstock">
-      <HintPath>C:\Users\Nandia\Downloads\HighchartsStandard\Highstock.dll</HintPath>
+      <HintPath>C:\Users\Administrator\Downloads\Highstock.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
