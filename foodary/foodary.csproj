@@ -195,6 +195,8 @@
     <Compile Include="Models\FoodEventSet.cs">
       <DependentUpon>local.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\food_price.cs" />
+    <Compile Include="Models\food_price_model.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\local.Context.cs">
       <AutoGen>True</AutoGen>
