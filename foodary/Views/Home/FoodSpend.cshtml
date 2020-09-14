@@ -21,6 +21,9 @@
 <body>
     <div class="container">
         <h1 class="card_title" style="font-weight: bold; color: #0277bd; font-size:35px">FOOD EXPENSE</h1>
+        <center>
+            <p style="font-size:18px">Let's have a look at grocery prices in Australia</p>
+        </center>
         <div id="demo" class="carousel slide" data-ride="carousel">
 
             <!-- Indicators -->
@@ -58,10 +61,10 @@
                 {
                     Title = new Title
                     {
-                        Text = "Food price information in Australia"
+                        Text = "Grocery prices in Australia"
                     },
                     XAxis = new List<XAxis>
-                            {
+                                {
                         new XAxis
                         {
                             Type = "category" ,
@@ -72,7 +75,7 @@
                         }
                     },
                     YAxis = new List<YAxis>
-                            {
+                                {
                         new YAxis
                         {
                             Min = 0,
@@ -82,7 +85,7 @@
                         }
                     },
                     Series = new List<Series>
-                            {
+                                {
                         new ColumnSeries
                         {
                             Name = "Product's price (AUD)",
