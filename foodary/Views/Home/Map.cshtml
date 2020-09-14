@@ -36,62 +36,61 @@
         </center>
         <div class="row my-3">
             <div class="col-md-3 py-1 tile-padding-8">
-                <div class="tile text-center type" style="cursor:pointer;">
+                <div class="container1" style="border:1px #b78846 double; background-color: #f7f6f6; font-size: 15px; text-align: center!important; cursor: pointer;">
                     <img src="~/images/vegetablesmall.png" alt="Card image cap" style="height:71px" />
                     <div>
-                        <p ="button" onclick="showAll()" >Show all events</p>
+                        <p type="button" onclick="showAll()" style ="font-weight: bold;">Show all events</p>
                     </div>
                 </div>
             </div>
-                <div class="col-md-3 py-1 tile-padding-8">
-                    <div class="tile text-center type" style="cursor:pointer;">
-                        <img src="~/images/food-parcel.png" alt="Card image cap" />
-                        <div>
-                            <pa>Food parcel</pa>
-                        </div>
-                        <br />
+            <div class="col-md-3 py-1 tile-padding-8">
+                <div class="tile text-center type" style="cursor:pointer; ">
+                    <img src="~/images/food-parcel.png" alt="Card image cap"  />
+                    <div>
+                        <pa>Food parcel</pa>
                     </div>
-                </div>
-                <div class="col-md-3 py-1 tile-padding-8" style="cursor:pointer;">
-                    <div class="tile text-center type">
-                        <img src="~/images/community-meal.png" alt="Card image cap" />
-                        <div>
-                            <pb>Community meal</pb>
-                        </div>
-                        <br />
-                    </div>
-                </div>
-                <div class="col-md-3 py-1 tile-padding-8" style="cursor:pointer;">
-                    <div class="tile text-center type">
-                        <img src="~/images/food-van.png" alt="Card image cap" />
-                        <div>
-                            <pc>Food van</pc>
-                        </div>
-                        <br />
-                    </div>
+                    <br />
                 </div>
             </div>
+            <div class="col-md-3 py-1 tile-padding-8" style="cursor:pointer;">
+                <div class="tile text-center type">
+                    <img src="~/images/community-meal.png" alt="Card image cap" />
+                    <div>
+                        <pb>Community meal</pb>
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <div class="col-md-3 py-1 tile-padding-8" style="cursor:pointer;">
+                <div class="tile text-center type">
+                    <img src="~/images/food-van.png" alt="Card image cap" />
+                    <div>
+                        <pc>Food van</pc>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
 
         <!--<div class="row my-3">
-    <div class="col-md-12 py-1">
-        <form>-->
+        <div class="col-md-12 py-1">
+            <form>-->
         @*<div class="input-group padding-25">
-            <input type="text" class="search-input form-control" placeholder="Fitzroy" />
-            <div class="input-group-btn">
-                <button class="btn btn-default search-button" type="submit">
-                    GO!
-                </button>
-            </div>
-        </div>*@
+                <input type="text" class="search-input form-control" placeholder="Fitzroy" />
+                <div class="input-group-btn">
+                    <button class="btn btn-default search-button" type="submit">
+                        GO!
+                    </button>
+                </div>
+            </div>*@
         <!--</form>
-        </div>
-    </div>-->
-
-        @*<div class="row my-3">
-            <div class="col-md-2 py-1 tile-padding-8">
-                <button type="button" style="width:150px;height:40px;border:3px orange double;background-color:white;" onclick="showAll()" width="50px">Show all</button>
             </div>
-        </div>*@
+        </div>-->
+        @*<div class="row my-3">
+                <div class="col-md-2 py-1 tile-padding-8">
+                    <button type="button" style="width:150px;height:40px;border:3px orange double;background-color:white;" onclick="showAll()" width="50px">Show all</button>
+                </div>
+            </div>*@
 
         <div class="row my-3">
             <div id="googleMap" style="height: 400px; width: 100%"></div>
@@ -143,8 +142,8 @@
                                     @Html.DisplayFor(modelItem => item.Category)
                                 </td>
                                 @*<td>
-                                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                </td>*@
+                                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                    </td>*@
                             </tr>
                             count = count + 1;
                         }
@@ -229,7 +228,10 @@
 
             function showAll() {
                locations = locationSta;
-               names = namesSta;
+                names = namesSta;
+                location0 = [];
+                location1 = [];
+                location2 = [];
                initialize();
                 };
 
@@ -480,6 +482,9 @@
 
 
     </div>
-    </div></body>
+
+
+</body>
+
 </html>
 
