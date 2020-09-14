@@ -180,23 +180,31 @@ namespace foodary.Controllers
         {
             Model3 db = new Model3();
 
+            Expression<Func<recipe, bool>> catWhere = r => 1 == 1;
             Expression<Func<recipe, bool>> exWhere = r => 1 == 1;
+
+            if (category != "all")
+            {
+                catWhere = r => r.category == category;
+            }
+
             if (keys != null && keys.Count > 0)
             {
                 exWhere = r => keys.Any(k => r.directions.Contains(k));
             }
+            
 
             List<recipe> list = new List<recipe>();
             switch (sort)
             {
                 case "cost":
-                    list = db.recipes.Where(r => r.category == category).Where(exWhere).OrderBy(r => r.cost).ToList();
+                    list = db.recipes.Where(catWhere).Where(exWhere).OrderBy(r => r.cost).ToList();
                     break;
                 case "preparationTime":
-                    list = db.recipes.Where(r => r.category == category).Where(exWhere).OrderBy(r => r.total_time_str).ToList();
+                    list = db.recipes.Where(catWhere).Where(exWhere).OrderBy(r => r.total_time_str).ToList();
                     break;
                 case "servingSize":
-                    list = db.recipes.Where(r => r.category == category).Where(exWhere).OrderBy(r => r.servings).ToList();
+                    list = db.recipes.Where(catWhere).Where(exWhere).OrderBy(r => r.servings).ToList();
                     break;
             }
 

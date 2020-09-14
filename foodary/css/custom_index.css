@@ -1,26 +1,4 @@
-﻿
-.bg-navbar {
-    background-color: white;
-    border-bottom: solid;
-    border-width: thin;
-    border-bottom-color: #0277bd;
-}
-
-.bg-card {
-    background-color: whitesmoke;
-}
-
-.navbar-expand-lg .navbar-nav .nav-link {
-    padding-right: 13px;
-    padding-left: 13px;
-    font-size: 18px;
-    font-family: SansSerif;
-    font-weight: bold;
-    color: #01579b;
-    text-transform: uppercase;
-}
-
-.banner_title {
+﻿.banner_title {
     width: 100%;
     font-size: 35px;
     font-family: SansSerif;
@@ -149,7 +127,12 @@
     border: solid;
     border-width: thin;
     border-color: #64b5f6;
+    background-color: white !important;
     color: #64b5f6;
+    font-family: SansSerif;
+    border-bottom: solid !important;
+    border-bottom-width: thin !important;
+    border-bottom-color: #64b5f6 !important;
 }
 
 .footer {
