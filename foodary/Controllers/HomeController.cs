@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -14,6 +15,7 @@ namespace foodary.Controllers
     public class HomeController : Controller
     {
         private Model2 db = new Model2();
+        private Model3 db1 = new Model3();
         public ActionResult Index()
         {
             return View();
@@ -91,7 +93,7 @@ namespace foodary.Controllers
         }
         public ActionResult Details(int? id)
         {
-           
+
             FoodEventSet foodEventSet = db.FoodEventSet.Find(id);
             if (foodEventSet == null)
             {
@@ -102,7 +104,84 @@ namespace foodary.Controllers
 
         public ActionResult FindRecipe()
         {
+
+
+            /*
+        List<recipe> models = db1.recipes.ToList();
+        List<string> nameList = new List<string>();
+        List<string> ingredientList = new List<string>();
+        List<string> directionList = new List<string>();
+        List<int> servingList = new List<int>();
+        List<double> costList = new List<double>();
+        List<string> urlList = new List<string>();
+        List<string> categoryList = new List<string>();
+        List<int> totalTimeList = new List<int>();
+        List<string> timeList = new List<string>();
+        foreach (recipe item in models)
+        {
+            nameList.Add(item.recipe_name);
+            ingredientList.Add(item.ingredients);
+            directionList.Add(item.directions);
+            servingList.Add((int)item.servings);
+            costList.Add((double)item.cost);
+            urlList.Add(item.img_url);
+            categoryList.Add(item.category);
+            totalTimeList.Add((int)item.total_time_min);
+            timeList.Add(item.total_time_str);
+        }
+
+        ViewBag.nameList = JsonConvert.SerializeObject(nameList);
+        ViewBag.ingredientList = JsonConvert.SerializeObject(ingredientList);
+        ViewBag.directionList = JsonConvert.SerializeObject(directionList);
+        ViewBag.servingList = JsonConvert.SerializeObject(servingList);
+        ViewBag.costList = JsonConvert.SerializeObject(costList);
+        ViewBag.urlList = JsonConvert.SerializeObject(urlList);
+        ViewBag.categoryList = JsonConvert.SerializeObject(categoryList);
+        ViewBag.totalTimeList = JsonConvert.SerializeObject(totalTimeList);
+        ViewBag.timeList = JsonConvert.SerializeObject(timeList);
+        ViewBag.models = JsonConvert.SerializeObject(models);
+        db1.recipes.ToList()
+
+        */
+            Model3 db = new Model3();
+            List<product> meatList = db.products.Where(p => p.category == "Meat").ToList();
+            List<product> vegetablesList = db.products.Where(p => p.category == "Vegetables").ToList();
+            List<product> othersList = db.products.Where(p => p.category == "Others").ToList();
+            ViewBag.MeatList = meatList;
+            ViewBag.VegetablesList = vegetablesList;
+            ViewBag.OthersList = othersList;
+
             return View();
         }
+
+        public JsonResult GetFoodaryData(string category, List<string> keys, string sort)
+        {
+            Model3 db = new Model3();
+
+            Expression<Func<recipe, bool>> exWhere = r => 1 == 1;
+            if (keys != null && keys.Count > 0)
+            {
+                exWhere = r => keys.Any(k => r.directions.Contains(k));
+            }
+
+            List<recipe> list = new List<recipe>();
+            switch (sort)
+            {
+                case "cost":
+                    list = db.recipes.Where(r => r.category == category).Where(exWhere).OrderBy(r => r.cost).ToList();
+                    break;
+                case "preparationTime":
+                    list = db.recipes.Where(r => r.category == category).Where(exWhere).OrderBy(r => r.total_time_str).ToList();
+                    break;
+                case "servingSize":
+                    list = db.recipes.Where(r => r.category == category).Where(exWhere).OrderBy(r => r.servings).ToList();
+                    break;
+            }
+
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+
+
+
     }
 }

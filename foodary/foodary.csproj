@@ -214,6 +214,9 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Model1.cs" />
     <Compile Include="Models\Model2.cs" />
+    <Compile Include="Models\Model3.cs" />
+    <Compile Include="Models\product.cs" />
+    <Compile Include="Models\recipe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
