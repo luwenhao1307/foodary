@@ -119,16 +119,19 @@
     color: white;
 }
 
-.tile-recipe-hdr {
+.tile-recipe-bg {
     border: solid;
     border-width: thin;
     border-color: #64b5f6;
     background-color: white !important;
-    color: #64b5f6;
-    font-family: OpenSans-Light;
     border-bottom: solid !important;
     border-bottom-width: thin !important;
     border-bottom-color: #64b5f6 !important;
+}
+
+.tile-recipe-txt {
+    color: black !important;
+    font-family: OpenSans-Light;
 }
 
 .footer {
