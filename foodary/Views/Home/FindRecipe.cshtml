@@ -39,9 +39,9 @@
             <div class="sidebar-box ftco-animate fadeInUp ftco-animated">
                 <div class="categories">
                     <h4 style="margin-bottom:20px">CATEGORIES</h4>
-                    <button class="btn btn-filter-active" id="butAll">All</button>
+                    <button class="btn btn-filter-default" id="butAll">All</button>
                     <button class="btn btn-filter-default" id="butNVegetarian">Non-vegetarian</button>
-                    <button class="btn btn-filter-default" id="butYVegetarian">Vegetarian</button>
+                    <button class="btn btn-filter-active" id="butYVegetarian">Vegetarian</button>
                     <br />
                     <hr />
                 </div>
@@ -181,7 +181,6 @@
             category = "vegetarian";
             $(".categories").find(".btn-filter-active").removeClass("btn-filter-active");
             $(".categories").find(".btn-filter-default").removeClass("btn-filter-default");
-
             $("#butNVegetarian").addClass("btn-filter-default");
             $("#butYVegetarian").addClass("btn-filter-active");
             $("#butAll").addClass("btn-filter-default");
@@ -300,7 +299,11 @@
             success: function (data) {
                 $('#accordion').empty();
                 var html = '';
+                //alert(category);
+                //alert(keys);
+
                 $.each(data, function (i, item) {
+                
                     html += "<div class=\"card\">";
                     html += "<div class=\"card-header tile-recipe-hdr\" id=\"heading" + i + "\">";
                     html += "<h5 class=\"mb-0\">";
