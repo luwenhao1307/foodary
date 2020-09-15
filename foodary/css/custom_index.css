@@ -1,8 +1,7 @@
 ﻿.banner_title {
     width: 100%;
     font-size: 35px;
-    font-family: SansSerif;
-    font-weight: bold;
+    font-family: OpenSans-Bold;
     color: #444444;
     margin-left: 0px;
     text-align: center;
@@ -11,22 +10,21 @@
 .banner_text {
     width: 100%;
     font-size: 25px;
-    font-family: SansSerif;
+    font-family: OpenSans-Light;
     color: #232323;
     margin-left: 0px;
     text-align: center;
 }
 
 .card_title {
-    font-family: SansSerif;
-    font-weight: bold;
+    font-family: OpenSans-Bold;
     color: #01579b;
     text-align: center;
     font-weight: bolder;
 }
 
 .card_text {
-    font-family: SansSerif;
+    font-family: OpenSans-Light;
     font-size: 15px;
 }
 .tile {
@@ -85,15 +83,13 @@
     box-shadow: 0px 6px 6px #d5d0d0;
 }
 .home-tile-text {
-    font-family: SansSerif;
-    font-weight: bold;
+    font-family: OpenSans-Bold;
     font-size: 25px;
     color: #000000;
 }
 
 .home-tile-more {
-    font-family: SansSerif;
-    font-weight: bold;
+    font-family: OpenSans-Bold;
     font-size: 20px;
 }
 
@@ -129,7 +125,7 @@
     border-color: #64b5f6;
     background-color: white !important;
     color: #64b5f6;
-    font-family: SansSerif;
+    font-family: OpenSans-Light;
     border-bottom: solid !important;
     border-bottom-width: thin !important;
     border-bottom-color: #64b5f6 !important;
