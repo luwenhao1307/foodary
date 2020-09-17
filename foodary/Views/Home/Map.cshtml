@@ -104,7 +104,7 @@
                     <thead>
                         <tr>
                             <th>
-                                @Html.DisplayNameFor(model => model.Name)
+                                Name  (click on the <img style="cursor:pointer;" src="~/images/pin.png" /> to locate events)
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.Phone)
@@ -447,13 +447,19 @@
                     title: names[i],
                     icon: img
                 });
-
+                var prev_infowindow = null;
                 //---------自定义信息窗口显示-----------
-                let iw = new google.maps.InfoWindow({
+                var iw = new google.maps.InfoWindow({
                     content: "<div><p>Event name:" + names[i] + "</p><p>Event Time：" + tames[i] + "</p></div>"
                 });
                 //点击信息窗口显示
-                google.maps.event.addListener(point, "click", function (e) { iw.open(map, point); });
+                google.maps.event.addListener(point, "click", function (e) {
+                    if (prev_infowindow != null) {
+                        prev_infowindow.close();
+                    }
+                    iw.open(map, point);
+                    prev_infowindow = iw;
+                });
                 return point;
             });
 
@@ -465,13 +471,21 @@
                     title: names[i],
                     icon: imga
                 });
-
+                var prev_infowindow;
                 //---------自定义信息窗口显示-----------
-                let iw = new google.maps.InfoWindow({
-                    content: "<div><p>Event name:" + names[i] + "</p><p>Event Time：" + tames[i] + "</p></div> "
+                var iw = new google.maps.InfoWindow({
+                    content: "<div><p>Event name:" + names[i] + "</p><p>Event Time：" + tames[i] + "</p></div>"
                 });
                 //点击信息窗口显示
-                google.maps.event.addListener(point, "click", function (e) { iw.open(map, point); });
+                google.maps.event.addListener(point, "click", function (e) {
+
+                    if (prev_infowindow != null) {
+                        prev_infowindow.close();
+                    }
+                    iw.open(map, point);
+                    prev_infowindow = iw;
+                });
+                
                 return point;
             });
 
@@ -482,13 +496,21 @@
                     title: names[i],
                     icon: imgb
                 });
-
+                var prev_infowindow;
                 //---------自定义信息窗口显示-----------
-                let iw = new google.maps.InfoWindow({
+                var iw = new google.maps.InfoWindow({
                     content: "<div><p>Event name:" + names[i] + "</p><p>Event Time：" + tames[i] + "</p></div>"
                 });
                 //点击信息窗口显示
-                google.maps.event.addListener(point, "click", function (e) { iw.open(map, point); });
+                google.maps.event.addListener(point, "click", function (e) {
+
+                    if (prev_infowindow != null) {
+                        prev_infowindow.close();
+                    }
+                    iw.open(map, point);
+                    prev_infowindow = iw;
+                });
+                
                 return point;
             });
 
@@ -499,13 +521,20 @@
                     title: names[i],
                     icon: imgc
                 });
-
+                var prev_infowindow;
                 //---------自定义信息窗口显示-----------
-                let iw = new google.maps.InfoWindow({
+                var iw = new google.maps.InfoWindow({
                     content: "<div><p>Event name:" + names[i] + "</p><p>Event Time：" + tames[i] + "</p></div>"
                 });
                 //点击信息窗口显示
-                google.maps.event.addListener(point, "click", function (e) { iw.open(map, point); });
+                google.maps.event.addListener(point, "click", function (e) {
+
+                    if (prev_infowindow != null) {
+                        prev_infowindow.close();
+                    }
+                    iw.open(map, point);
+                    prev_infowindow = iw;
+                });
                 return point;
             });
 

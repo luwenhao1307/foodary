@@ -34,7 +34,7 @@
     font-size: 15px;
 }
 .tile-active {
-    background-color: #daeaf5;
+    background-color: lightgrey;
 }
 .tile-padding-8{
     padding-left: 7em;
