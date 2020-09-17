@@ -53,7 +53,10 @@ namespace foodary.Controllers
         {
             var Food = from f in db.FoodEventSet
                        select f;
-            Food = Food.Where(f => f.Category.Contains(SearchString));
+            if (SearchString != "Show all")
+            {
+                Food = Food.Where(f => f.Category.Contains(SearchString));
+            }
             List<FoodEventSet> models = await Food.ToListAsync();
             return Content(JsonConvert.SerializeObject(models));
         }

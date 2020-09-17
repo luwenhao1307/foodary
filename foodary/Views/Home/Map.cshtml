@@ -39,11 +39,12 @@
         <hr />
         <div class="row my-3">
             <div class="col-md-3 py-1 tile-padding-8">
-                <div class="container1" style="border:1px #b78846 double; background-color: #f7f6f6; font-size: 15px; text-align: center!important; cursor: pointer;">
-                    <img src="~/images/vegetablesmall.png" alt="Card image cap" style="height:71px" />
+                <div class="tile text-center type" style="cursor:pointer; ">
+                    <img src="~/images/food-parcel.png" alt="Card image cap" />
                     <div>
-                        <p type="button" onclick="showAll()" style="font-weight: bold;">Show all events</p>
+                        <paa>Show all</paa>
                     </div>
+                    <br />
                 </div>
             </div>
             <div class="col-md-3 py-1 tile-padding-8">
@@ -278,6 +279,29 @@
                                 };
                                 locations.push(point);
                                 names.push(new1 [i]["Name"]);
+                            };
+                            initialize();
+                        },
+                    })
+            });
+            $(".type").click(function (e) {
+                var SearchString = $(this).find('paa').html();
+                $.ajax(
+                    {
+                        url: '/Home/GetData',
+                        method: 'post',
+                        data: { 'SearchString': SearchString },
+                        success: function (data) {
+                            var new1 = JSON.parse(data);
+                            locations = [];
+                            names = [];
+                            for (var i = 0; i < new1.length; i++) {
+                                var point = {
+                                    "lat": new1[i]["Latitude"],
+                                    "lng": new1[i]["Longitude"],
+                                };
+                                locations.push(point);
+                                names.push(new1[i]["Name"]);
                             };
                             initialize();
                         },
