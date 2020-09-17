@@ -23,24 +23,23 @@
             <div class="col-md-2 py-1 tile-padding-8">
             </div>
             <div class="col-md-8 py-1 tile-padding-8">
-                @*<h1 class="banner_title" style="font-family:PoiretOne-Regular; font-weight: bold">Find food</h1>*@
-                <h1 class="card_title" style="font-weight: bold; color: #0277bd; font-size:35px">FIND FREE MEALS IN VICTORIA!</h1>
+                <h1 class="card_title" style="font-weight: bold; color: #0277bd; font-size:35px">FIND FREE MEALS IN MELBOURNE!</h1>
             </div>
             <div class="col-md-2 py-1 tile-padding-8" style="cursor:pointer;">
                 <center>
                     <img src="~/images/locate1.png" />
                     <button type="button" style="width:150px;height:40px;border:3px black solid;background-color:white; cursor:pointer;" onclick="getLocation()">Locate me</button>
                 </center>
-            </div>@*"font-family:PoiretOne-Regular;*@
+            </div>
         </div>
         <center>
             <p style="font-size:18px; font-weight:bold;">Lots of places in Melbourne provide free food to the community in the form of Food Parcels, Community meals, Open Tables, etc</p>
         </center>
         <hr />
-        <div class="row my-3">
+        <div class="row my-3 food-categories">
             <div class="col-md-3 py-1 tile-padding-8">
-                <div class="tile text-center type" style="cursor:pointer; ">
-                    <img src="~/images/food-parcel.png" alt="Card image cap" />
+                <div id="tile-all" class="tile-active tile text-center type" style="cursor:pointer; ">
+                    <img src="~/images/vegetablesmall.png" alt="Card image cap" />
                     <div>
                         <paa>Show all</paa>
                     </div>
@@ -48,7 +47,7 @@
                 </div>
             </div>
             <div class="col-md-3 py-1 tile-padding-8">
-                <div class="tile text-center type" style="cursor:pointer; ">
+                <div id="tile-food-parcel" class="tile text-center type" style="cursor:pointer; ">
                     <img src="~/images/food-parcel.png" alt="Card image cap" />
                     <div>
                         <pa>Food parcel</pa>
@@ -57,7 +56,7 @@
                 </div>
             </div>
             <div class="col-md-3 py-1 tile-padding-8" style="cursor:pointer;">
-                <div class="tile text-center type">
+                <div id="tile-community-meal" class="tile text-center type">
                     <img src="~/images/community-meal.png" alt="Card image cap" />
                     <div>
                         <pb>Community meal</pb>
@@ -66,7 +65,7 @@
                 </div>
             </div>
             <div class="col-md-3 py-1 tile-padding-8" style="cursor:pointer;">
-                <div class="tile text-center type">
+                <div id="tile-food-van" class="tile text-center type">
                     <img src="~/images/food-van.png" alt="Card image cap" />
                     <div>
                         <pc>Food van</pc>
@@ -180,7 +179,24 @@
         <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function () {
-
+                $("#tile-all").click(function () {
+                    console.log("tile all");
+                    $(".food-categories").find(".tile-active").removeClass("tile-active");
+                    $("#tile-all").addClass("tile-active");
+                });
+                $("#tile-food-parcel").click(function () {
+                    console.log("food parcel");
+                    $(".food-categories").find(".tile-active").removeClass("tile-active");
+                    $("#tile-food-parcel").addClass("tile-active");
+                });
+                $("#tile-community-meal").click(function () {
+                    $(".food-categories").find(".tile-active").removeClass("tile-active");
+                    $("#tile-community-meal").addClass("tile-active");
+                });
+                $("#tile-food-van").click(function () {
+                    $(".food-categories").find(".tile-active").removeClass("tile-active");
+                    $("#tile-food-van").addClass("tile-active");
+                });
                 $('#table').DataTable({
                     sScrollX: true,
                     initComplete: function () {
