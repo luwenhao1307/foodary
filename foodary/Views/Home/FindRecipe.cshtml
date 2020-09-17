@@ -18,12 +18,9 @@
     <div class="container">
         <h1 class="card_title" style="font-weight: bold; color: #0277bd; font-size:35px">FIND RECIPE!</h1>
         <center>
-            <br />
-            <p style="font-size:18px">
-                There many simple and cheap recipes to help you save money, time and keep adequate nutrition.
-            </p>
+            <p style="font-size:18px;  font-weight:bold;">There are many simple and cheap recipes to help you save money and time.</p>
         </center>
-        <br />
+        <hr />
         <div class="row">
             <div class="col-md-8">
 
@@ -427,21 +424,21 @@
         var bv = $(but).text();
         switch (type) {
             case "M":
-                $('#selMeat').find('[value=' + bv + ']').prop('selected', false);
+                $('#selMeat').find('[value="' + bv + '"]').prop('selected', false);
                 $values = $('#selMeat').val();
                 $('#selMeat').selectpicker('deselectAll');
                 $('#selMeat').selectpicker('val', $values);
                 $('#selMeat').selectpicker('refresh');
                 break;
             case "V":
-                $('#selVegetables').find('[value=' + bv + ']').prop('selected', false);
+                $('#selVegetables').find('[value="' + bv + '"]').prop('selected', false);
                 $values = $('#selVegetables').val();
                 $('#selVegetables').selectpicker('deselectAll');
                 $('#selVegetables').selectpicker('val', $values);
                 $('#selVegetables').selectpicker('refresh');
                 break;
             case "O":
-                $('#selOthers').find('[value=' + bv + ']').prop('selected', false);
+                $('#selOthers').find('[value="' + bv + '"]').prop('selected', false);
                 $values = $('#selOthers').val();
                 $('#selOthers').selectpicker('deselectAll');
                 $('#selOthers').selectpicker('val', $values);

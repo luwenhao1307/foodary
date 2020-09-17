@@ -1,15 +1,22 @@
 ﻿@model IEnumerable<foodary.Models.food_price>
+
 @using Highsoft.Web.Mvc.Charts
 @using Highsoft.Web.Mvc.Charts.Rendering
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=gb2312" />
     <script src="https://code.highcharts.com/highcharts.src.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
     <style>
         /* Make the image fully responsive */
         .carousel-inner img {
@@ -57,52 +64,120 @@
             </a>
 
         </div>
-        <div>
-            @{
-                var foodPriceChartOptions = new Highcharts
-                {
-                    Title = new Title
-                    {
-                        Text = "Grocery average prices in Australia"
-                    },
-                    XAxis = new List<XAxis>
-                                                {
-                        new XAxis
-                        {
-                            Type = "category" ,
-                            Title = new XAxisTitle {
-                                Text = "Product's name"
-                            },
-                            Categories = @ViewData["productData"] as List<String>
-                        }
-                    },
-                    YAxis = new List<YAxis>
-                                                {
-                        new YAxis
-                        {
-                            Min = 0,
-                            Title = new YAxisTitle {
-                                Text = "Price (AUD)"
-                            }
-                        }
-                    },
-                    Series = new List<Series>
-                                                {
-                        new ColumnSeries
-                        {
-                            Name = "Product's price (AUD)",
-                            Data = @ViewData["priceData"] as List<ColumnSeriesData>
-                        }
-                    }
-                };
-                foodPriceChartOptions.ID = "foodPriceChart";
-                var foodPriceChartRenderer = new HighchartsRenderer(foodPriceChartOptions);
-            }
-            @Html.Raw(foodPriceChartRenderer.RenderHtml())
+        <div class="row my-3 text-center">
+            <div class="col-md-12">
+                <p style="font-size:22px;  font-weight:bold;">
+                    Grocery average prices
+                </p>
+            </div>
         </div>
+            <div class="row col-md-12">
+                <div class="col-md-2">
+                    <p><b>Category</b></p>
+                </div>
+                <div class="col-md-10">
+                    <select class="selectpicker" id="selCategory">
+                        <option value="Fruits">Fruits</option>
+                        <option value="Vegetables">Vegetables</option>
+                        <option value="Meat">Meat</option>
+                        <option value="Dairy products">Dairy products</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </div>
+            </div>
+        <div id="chartContainer"></div>
     </div>
     <br />
     <br />
-
 </body>
 </html>
+<script type="text/javascript">
+    $(document).ready(function () {
+        getChartData('Fruits');
+    });
+
+    $("#selCategory").on("change", function () {
+        getChartData($(this).val());
+    });
+
+    function getChartData(category)
+    {
+        $.ajax({
+            type: "POST",
+            url: "/Home/GetGroceryPriceChartData",
+            data: { category: category },
+            dataType: "json",
+            success: function (data) {
+                
+                var products = [];
+                var prices = [];
+
+                for (i = 0; i < data.length; i++) {
+                    products.push(data[i].Product + ' (' + data[i].Measure + ')');
+                    prices.push(data[i].Price);
+                };
+
+                drawChart(products, prices);
+                
+            },
+            failure: function (response) {
+                var r = jQuery.parseJSON(response.responseText);
+                alert("Message: " + r.Message);
+                alert("StackTrace: " + r.StackTrace);
+                alert("ExceptionType: " + r.ExceptionType);
+            }
+        });
+    }
+
+    function drawChart(products, prices) {
+        Highcharts.chart('chartContainer', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: ''
+            },
+            xAxis: {
+                categories: products,
+                title: {
+                    text: "Product's name"
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Price (AUD)'
+                }
+            },
+            tooltip: {
+                valuePrefix: '$'
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -40,
+                y: 80,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor:
+                    Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: "Product's price",
+                data: prices
+            }]
+        });
+    }
+</script>

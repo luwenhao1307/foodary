@@ -9,6 +9,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services;
 using System.Web.UI.WebControls;
 
 namespace foodary.Controllers
@@ -94,28 +95,16 @@ namespace foodary.Controllers
 
         public ActionResult FoodSpend()
         {
-            List<food_price> foodPriceModel = dbFoodPrice.food_price.ToList();
-            
-            List<string> productList = new List<string>();
-            List<double> priceList = new List<double>();
-            foreach (food_price item in foodPriceModel)
-            {
-                productList.Add(item.Product + " (" + item.Measure + ")");
-                priceList.Add((double)item.Price);
-            }
-
-            List<ColumnSeriesData> productPriceData = new List<ColumnSeriesData>();
-
-            priceList.ForEach(p => productPriceData.Add(new ColumnSeriesData
-            {
-                Y = p
-            }));
-
-            ViewData["productData"] = productList;
-            ViewData["priceData"] = productPriceData;
-
             return View();
         }
+
+        [WebMethod]
+        public JsonResult GetGroceryPriceChartData(string category)
+        {
+            List<food_price> foodPriceModel = dbFoodPrice.food_price.Where(p => p.Country == "Australia").Where(p => p.Category == category).ToList();
+            return Json(foodPriceModel.ToList(), JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Details(int? id)
         {
 
