@@ -204,7 +204,7 @@ namespace foodary.Controllers
                     list = db.recipes.Where(catWhere).Where(exWhere).OrderBy(r => r.cost).ToList();
                     break;
                 case "preparationTime":
-                    list = db.recipes.Where(catWhere).Where(exWhere).OrderBy(r => r.total_time_str).ToList();
+                    list = db.recipes.Where(catWhere).Where(exWhere).OrderBy(r => r.total_time_min).ToList();
                     break;
                 case "servingSize":
                     list = db.recipes.Where(catWhere).Where(exWhere).OrderBy(r => r.servings).ToList();

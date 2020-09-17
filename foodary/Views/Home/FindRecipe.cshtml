@@ -30,15 +30,15 @@
                 <h4 class="categories" style="margin-bottom:20px">
                     SORT RECIPES
                 </h4>
-                <div class="row text-center col-md-12">
-                    <button class="btn btn-filter-default" id="butPreparationtime" onclick="GetSort('preparationTime')">Preparation time</button>
-                    &emsp;
-                    <button class="btn btn-filter-active" id="butCost" onclick="GetSort('cost')">Cost</button>
-                    &emsp;
-                    <button class="btn btn-filter-default" id="butServingsize" onclick="GetSort('servingSize')">Serving size</button>
+                <div class="filter-controls">
+                    <ul>
+                        <li class="active" onclick="GetSort('preparationTime')">Preparation time</li>
+                        <li onclick="GetSort('cost')">Cost</li>
+                        <li onclick="GetSort('servingSize')">Serving size</li>
+                    </ul>
                 </div>
-                <br />
-                <div id="accordion" @*class="pre-scrollable"*@>
+              
+                <div id="accordion" @*class="pre-scrollable"*@=>
                 </div>
             </div>
 
