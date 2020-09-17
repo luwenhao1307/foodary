@@ -8,25 +8,34 @@ namespace foodary.Models
 
     public partial class food_price
     {
+        internal object food_price;
+
         public int ID { get; set; }
 
         [Required]
-        [StringLength(9)]
+        [StringLength(50)]
         public string Country { get; set; }
 
         [Required]
-        [StringLength(14)]
+        [StringLength(40)]
         public string Product { get; set; }
 
         [Required]
-        [StringLength(4)]
+        [StringLength(5)]
         public string Currency { get; set; }
 
         [Required]
-        [StringLength(5)]
+        [StringLength(20)]
         public string Measure { get; set; }
 
         [Column(TypeName = "numeric")]
+        public decimal Price_local { get; set; }
+
+        [Column(TypeName = "numeric")]
         public decimal Price { get; set; }
+
+        [Required]
+        [StringLength(20)]
+        public string Category { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace foodary.Controllers
     {
         private Model2 db = new Model2();
         private Model3 db1 = new Model3();
-        private food_price_model dbFoodPrice = new food_price_model();
+        private food_price dbFoodPrice = new food_price();
         public ActionResult Index()
         {
             return View();
