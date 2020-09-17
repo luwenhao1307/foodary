@@ -8,8 +8,6 @@ namespace foodary.Models
 
     public partial class food_price
     {
-        internal object food_price;
-
         public int ID { get; set; }
 
         [Required]
