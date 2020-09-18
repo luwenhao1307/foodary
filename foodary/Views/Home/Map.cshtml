@@ -180,7 +180,6 @@
         <script type="text/javascript">
             $(document).ready(function () {
                 $("#tile-all").click(function () {
-                    console.log("tile all");
                     $(".food-categories").find(".tile-active").removeClass("tile-active");
                     $("#tile-all").addClass("tile-active");
                 });
@@ -449,16 +448,11 @@
                 });
                 var prev_infowindow = null;
                 //---------自定义信息窗口显示-----------
-                var iw = new google.maps.InfoWindow({
-                    content: "<div><p>Event name:" + names[i] + "</p><p>Event Time：" + tames[i] + "</p></div>"
-                });
+                iw = new google.maps.InfoWindow;
                 //点击信息窗口显示
                 google.maps.event.addListener(point, "click", function (e) {
-                    if (prev_infowindow != null) {
-                        prev_infowindow.close();
-                    }
+                    iw.setContent("<div><p>Event name:" + names[i] + "</p><p>Event Time：" + tames[i] + "</p></div>")
                     iw.open(map, point);
-                    prev_infowindow = iw;
                 });
                 return point;
             });
