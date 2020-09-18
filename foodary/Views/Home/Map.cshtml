@@ -356,16 +356,16 @@
                             method: 'post',
                             data: { 'SearchString': SearchString },
                             success: function (data) {
-                                var new2 = JSON.parse(data);
+                                var new1 = JSON.parse(data);
                                 location1 = [];
                                 names = [];
-                                for (var i = 0; i < new2.length; i++) {
+                                for (var i = 0; i < new1.length; i++) {
                                     var point = {
-                                        "lat": new2[i]["Latitude"],
-                                        "lng": new2[i]["Longitude"],
+                                        "lat": new1[i]["Latitude"],
+                                        "lng": new1[i]["Longitude"],
                                     };
                                     location1.push(point);
-                                    names.push(new2[i]["Name"]);
+                                    names.push(new1[i]["Name"]);
                                 };
                                 initialize();
                             },
@@ -380,16 +380,16 @@
                         method: 'post',
                         data: { 'SearchString': SearchString },
                         success: function (data) {
-                            var new3 = JSON.parse(data);
+                            var new1 = JSON.parse(data);
                             location2 = [];
                             names = [];
-                            for (var i = 0; i < new3.length; i++) {
+                            for (var i = 0; i < new1.length; i++) {
                                 var point = {
-                                    "lat": new3[i]["Latitude"],
-                                    "lng": new3[i]["Longitude"],
+                                    "lat": new1[i]["Latitude"],
+                                    "lng": new1[i]["Longitude"],
                                 };
                                 location2.push(point);
-                                names.push(new3[i]["Name"]);
+                                names.push(new1[i]["Name"]);
                             };
                             initialize();
                         },
@@ -467,17 +467,11 @@
                 });
                 var prev_infowindow;
                 //---------自定义信息窗口显示-----------
-                var iw = new google.maps.InfoWindow({
-                    content: "<div><p>Event name:" + names[i] + "</p><p>Event Time：" + tames[i] + "</p></div>"
-                });
+                iw = new google.maps.InfoWindow;
                 //点击信息窗口显示
                 google.maps.event.addListener(point, "click", function (e) {
-
-                    if (prev_infowindow != null) {
-                        prev_infowindow.close();
-                    }
+                    iw.setContent("<div><p>Event name:" + names[i] + "</p><p>Event Time：" + tames[i] + "</p></div>")
                     iw.open(map, point);
-                    prev_infowindow = iw;
                 });
                 
                 return point;
@@ -492,17 +486,11 @@
                 });
                 var prev_infowindow;
                 //---------自定义信息窗口显示-----------
-                var iw = new google.maps.InfoWindow({
-                    content: "<div><p>Event name:" + names[i] + "</p><p>Event Time：" + tames[i] + "</p></div>"
-                });
+                iw = new google.maps.InfoWindow;
                 //点击信息窗口显示
                 google.maps.event.addListener(point, "click", function (e) {
-
-                    if (prev_infowindow != null) {
-                        prev_infowindow.close();
-                    }
+                    iw.setContent("<div><p>Event name:" + names[i] + "</p><p>Event Time：" + tames[i] + "</p></div>")
                     iw.open(map, point);
-                    prev_infowindow = iw;
                 });
                 
                 return point;
@@ -517,17 +505,11 @@
                 });
                 var prev_infowindow;
                 //---------自定义信息窗口显示-----------
-                var iw = new google.maps.InfoWindow({
-                    content: "<div><p>Event name:" + names[i] + "</p><p>Event Time：" + tames[i] + "</p></div>"
-                });
+                iw = new google.maps.InfoWindow;
                 //点击信息窗口显示
                 google.maps.event.addListener(point, "click", function (e) {
-
-                    if (prev_infowindow != null) {
-                        prev_infowindow.close();
-                    }
+                    iw.setContent("<div><p>Event name:" + names[i] + "</p><p>Event Time：" + tames[i] + "</p></div>")
                     iw.open(map, point);
-                    prev_infowindow = iw;
                 });
                 return point;
             });
