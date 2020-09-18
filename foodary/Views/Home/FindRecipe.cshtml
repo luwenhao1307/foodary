@@ -12,6 +12,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+    <style type="text/css">
+
+        .fixed_div {
+            position: fixed;
+            left: 1300px;
+            top: 200px;
+            width: 400px;
+        }
+    </style>
 </head>
 
 <body>
@@ -41,7 +50,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-4 sidebar pl-lg-5 ftco-animate fadeInUp ftco-animated">
+            <div class="fixed_div" >
                 <div class="sidebar-box ftco-animate fadeInUp ftco-animated">
                     <div class="categories">
                         <h4 style="margin-bottom:20px">CATEGORIES</h4>
@@ -426,5 +435,43 @@
         $(but).remove();
     }
 
+    function htmlScroll() {
+        var top = document.body.scrollTop || document.documentElement.scrollTop;
+        if (elFix.data_top < top) {
+            elFix.style.position = 'fixed';
+            elFix.style.top = 0;
+            elFix.style.left = 800;
+        }
+        else {
+            elFix.style.position = 'static';
+        }
+    }
 
+    function htmlPosition(obj) {
+        var o = obj;
+        var t = o.offsetTop;
+        var l = o.offsetRight;
+        while (o = o.offsetParent) {
+            t += o.offsetTop;
+            l += o.offsetRight;
+        }
+        obj.data_top = t;
+        obj.data_right = l;
+    }
+
+    var oldHtmlWidth = document.documentElement.offsetWidth;
+    window.onresize = function () {
+        var newHtmlWidth = document.documentElement.offsetWidth;
+        if (oldHtmlWidth == newHtmlWidth) {
+            return;
+        }
+        oldHtmlWidth = newHtmlWidth;
+        elFix.style.position = 'static';
+        htmlPosition(elFix);
+        htmlScroll();
+    }
+    window.onscroll = htmlScroll;
+
+    var elFix = document.getElementById('div1');
+    htmlPosition(elFix);
 </script>
