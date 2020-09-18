@@ -2550,12 +2550,19 @@ ol {
 	}
 
 	.header-section {
-		
 		padding-left: 85px;
 		padding-right: 85px;
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 9999;
+		width: 100%;
+		height: 100px;
+		background-color: #fff;
+	}
 		
 	}
-}
+
 
 @media only screen and (min-width: 1200px) {
 	.container {
