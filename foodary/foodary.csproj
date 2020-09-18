@@ -351,6 +351,7 @@
     <Content Include="images\serv1.jpeg" />
     <Content Include="images\serv2.jpg" />
     <Content Include="images\serv3.jpeg" />
+    <Content Include="images\serv3copy.jpeg" />
     <Content Include="images\services-bg.png" />
     <Content Include="images\twitter-icon.png" />
     <Content Include="images\twitter-icon1.png" />
