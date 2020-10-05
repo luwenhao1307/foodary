@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/foodarydbserver/databases/foodary",
+      "type": "mssql.azure",
+      "connectionId": "foodaryCloud",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

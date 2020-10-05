@@ -45,99 +45,101 @@
                         <li onclick="GetSort('servingSize')">Serving size</li>
                     </ul>
                 </div>
-              
+
                 <div id="accordion" @*class="pre-scrollable"*@>
                 </div>
             </div>
 
-          
-                <div class="col-lg-4 sidebar pl-lg-5 ftco-animate fadeInUp ftco-animated">
-                    <div class="sidebar-box ftco-animate fadeInUp ftco-animated">
-                        <div class="categories">
-                            <h4 style="margin-bottom:20px">CATEGORIES</h4>
-                            <button class="btn btn-filter-active" id="butAll">All</button>
-                            <button class="btn btn-filter-default" id="butNVegetarian">Non-vegetarian</button>
-                            <button class="btn btn-filter-default" id="butYVegetarian">Vegetarian</button>
-                            <br />
-                            <hr />
-                        </div>
+
+            <div class="col-lg-4 sidebar pl-lg-5 ftco-animate fadeInUp ftco-animated">
+                <div class="sidebar-box ftco-animate fadeInUp ftco-animated">
+                    <div class="categories">
+                        <h4 style="margin-bottom:20px">CATEGORIES</h4>
+                        <button class="btn btn-filter-active" id="butAll">All</button>
+                        <button class="btn btn-filter-default" id="butNVegetarian">Non-vegetarian</button>
+                        <button class="btn btn-filter-default" id="butYVegetarian">Vegetarian</button>
+                        <br />
+                        <hr />
                     </div>
-
-                    <br />
-                    <h4 class="categories" style=" text-align: left;">
-                        SELECT INGREDIENTS
-                    </h4>
-                    <div class="row my-3 text-center">
-                        <div class="col-md-3">
-                            <p>Meat</p>
-                        </div>
-                        <div class="col-md-9">
-                            <select class="selectpicker" multiple="multiple" id="selMeat" data-live-search="true">
-                                @if (ViewBag.MeatList != null && ViewBag.MeatList.Count > 0)
-                                {
-                                    foreach (foodary.Models.product p in ViewBag.MeatList)
-                                    {
-                                        <option value="@p.name">@p.name</option>
-                                    }
-                                }
-                            </select>
-                        </div>
-
-                        <div class="col-md-3">
-                            <p>Vegetables</p>
-                        </div>
-                        <div class="col-md-9">
-                            <select class="selectpicker" multiple="multiple" id="selVegetables" data-live-search="true">
-                                @if (ViewBag.VegetablesList != null && ViewBag.VegetablesList.Count > 0)
-                                {
-                                    foreach (foodary.Models.product p in ViewBag.VegetablesList)
-                                    {
-                                        <option value="@p.name">@p.name</option>
-                                    }
-                                }
-                            </select>
-                        </div>
-
-                        <div class="col-md-3">
-                            <p>Others</p>
-                        </div>
-                        <div class="col-md-9">
-                            <select class="selectpicker" multiple="multiple" id="selOthers" data-live-search="true">
-                                @if (ViewBag.OthersList != null && ViewBag.OthersList.Count > 0)
-                                {
-                                    foreach (foodary.Models.product p in ViewBag.OthersList)
-                                    {
-                                        <option value="@p.name">@p.name</option>
-                                    }
-                                }
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row my-3 ">
-                        <div class="col-md-4" id="divMeat">
-                        </div>
-                        <div class="col-md-4" id="divVegetables">
-                        </div>
-                        <div class="col-md-4" id="divOthers">
-                        </div>
-                    </div>
-                    <div class="row my-3 ">
-                        <p>*Please click on selected ingredient to remove.</p>
-                        <div class="col-md-6">
-                            <button class="btn" style="background-color: #66BB6A; color:white;" onclick="GetData();">Recommend Recipes</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-red" onclick="ClearQuery();">Clear Query</button>
-                        </div>
-                    </div>
-
-                    <hr />
-
-                    <br />
                 </div>
+
                 <br />
+                <h4 class="categories" style=" text-align: left;">
+                    SELECT INGREDIENTS
+                </h4>
+                <div class="row my-3 text-center">
+                    <div class="col-md-3">
+                        <p>Meat</p>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="selectpicker" multiple="multiple" id="selMeat" data-live-search="true" οnchange="GetData();">
+                            @if (ViewBag.MeatList != null && ViewBag.MeatList.Count > 0)
+                            {
+                                foreach (foodary.Models.product p in ViewBag.MeatList)
+                                {
+                                    <option value="@p.name">@p.name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <p>Vegetables</p>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="selectpicker" οnchange="GetData();" multiple="multiple" id="selVegetables" data-live-search="true" >
+                            @if (ViewBag.VegetablesList != null && ViewBag.VegetablesList.Count > 0)
+                            {
+                                foreach (foodary.Models.product p in ViewBag.VegetablesList)
+                                {
+                                    <option value="@p.name">@p.name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <p>Others</p>
+                    </div>
+                    <div class="col-md-9">
+                        <select class="selectpicker" multiple="multiple" id="selOthers" data-live-search="true" οnchange="GetData();">
+                            @if (ViewBag.OthersList != null && ViewBag.OthersList.Count > 0)
+                            {
+                                foreach (foodary.Models.product p in ViewBag.OthersList)
+                                {
+                                    <option value="@p.name">@p.name</option>
+
+                                }
+                               
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="row my-3 ">
+                    <div class="col-md-4" id="divMeat">
+                    </div>
+                    <div class="col-md-4" id="divVegetables">
+                    </div>
+                    <div class="col-md-4" id="divOthers">
+                    </div>
+                </div>
+                <div class="row my-3 ">
+                    <p>*Please click on selected ingredient to remove.</p>
+                    <div class="col-md-6">
+                        <button class="btn" style="background-color: #66BB6A; color:white;" onclick="GetData();">Recommend Recipes</button>
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-red" onclick="ClearQuery();">Clear Query</button>
+                    </div>
+                </div>
+
+                <hr />
+
                 <br />
             </div>
+            <br />
+            <br />
+        </div>
     </div>
 </body>
 </html>
@@ -189,20 +191,24 @@
         if (list != null && list.length > 0) {
             var str = '';
             for (var i = 0; i < list.length; ++i) {
-                str += '<span class="col-md-12 tile-product py-1" style="cursor:pointer;" onclick="ClearThis(this,\'' + type + '\');">' + list[i] + '</span><br />'
+                str += '<span class="col-md-12 tile-product py-1" style="cursor:pointer;" οnchange="GetData()" onclick="ClearThis(this,\'' + type + '\');">' + list[i] + '</span><br />'
             }
             switch (type) {
                 case "M":
                     $("#divMeat").html("");
                     $("#divMeat").html(str);
+                    GetData();
+                    
                     break;
                 case "V":
                     $("#divVegetables").html("");
                     $("#divVegetables").html(str);
+                    GetData();
                     break;
                 case "O":
                     $("#divOthers").html("");
                     $("#divOthers").html(str);
+                    GetData();
                     break;
             }
         } else {
@@ -417,6 +423,7 @@
                 $('#selMeat').selectpicker('deselectAll');
                 $('#selMeat').selectpicker('val', $values);
                 $('#selMeat').selectpicker('refresh');
+                GetData();
                 break;
             case "V":
                 $('#selVegetables').find('[value="' + bv + '"]').prop('selected', false);
@@ -424,6 +431,7 @@
                 $('#selVegetables').selectpicker('deselectAll');
                 $('#selVegetables').selectpicker('val', $values);
                 $('#selVegetables').selectpicker('refresh');
+                GetData();
                 break;
             case "O":
                 $('#selOthers').find('[value="' + bv + '"]').prop('selected', false);
@@ -431,6 +439,7 @@
                 $('#selOthers').selectpicker('deselectAll');
                 $('#selOthers').selectpicker('val', $values);
                 $('#selOthers').selectpicker('refresh');
+                GetData();
                 break;
         }
         $(but).remove();

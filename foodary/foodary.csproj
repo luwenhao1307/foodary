@@ -429,6 +429,7 @@
     <Content Include="fonts\PoiretOne-Regular.ttf" />
     <None Include="Properties\PublishProfiles\foodary20200825225747 - Web Deploy.pubxml" />
     <Content Include="sass\style.scss" />
+    <None Include="Properties\PublishProfiles\foodary20200922000849 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
