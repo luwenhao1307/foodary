@@ -125,10 +125,8 @@
                 </div>
                 <div class="row my-3 ">
                     <p>*Please click on selected ingredient to remove.</p>
-                    <div class="col-md-6">
-                        <button class="btn" style="background-color: #66BB6A; color:white;" onclick="GetData();">Recommend Recipes</button>
-                    </div>
-                    <div class="col-md-6">
+                    
+                    <div class="col-md-6" style="margin-left:100px">
                         <button class="btn btn-red" onclick="ClearQuery();">Clear Query</button>
                     </div>
                 </div>
@@ -215,12 +213,15 @@
             switch (type) {
                 case "M":
                     $("#divMeat").html("");
+                    GetData();
                     break;
                 case "V":
                     $("#divVegetables").html("");
+                    GetData();
                     break;
                 case "O":
                     $("#divOthers").html("");
+                    GetData();
                     break;
             }
         }

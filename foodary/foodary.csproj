@@ -284,6 +284,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\back111.jpeg" />
     <Content Include="images\banner-img.png" />
     <Content Include="images\call-icon.png" />
     <Content Include="images\community-meal.png" />
@@ -352,6 +353,7 @@
     <Content Include="images\serv2.jpg" />
     <Content Include="images\serv3.jpeg" />
     <Content Include="images\serv3copy.jpeg" />
+    <Content Include="images\service2.jpeg" />
     <Content Include="images\services-bg.png" />
     <Content Include="images\twitter-icon.png" />
     <Content Include="images\twitter-icon1.png" />
