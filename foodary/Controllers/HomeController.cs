@@ -203,6 +203,11 @@ namespace foodary.Controllers
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult BudgetCalculator()
+        {
+            return View();
+        }
+
 
 
     }

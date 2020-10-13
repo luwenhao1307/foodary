@@ -122,6 +122,15 @@
     color: white;
 }
 
+.tile-product-red {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: #e57373;
+    padding: 1em;
+    margin-top: 5px;
+    color: white;
+}
+
 .tile-recipe-bg {
     border: solid;
     border-width: thin;
@@ -135,6 +144,13 @@
 .tile-recipe-txt {
     color: black !important;
     font-family: OpenSans-Light;
+}
+
+.custom-input {
+    border: solid !important;
+    border-width: thin !important;
+    border-color: #64b5f6 !important;
+    border-radius: 3px;
 }
 
 .footer {

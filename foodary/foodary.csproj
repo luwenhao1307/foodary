@@ -486,6 +486,7 @@
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\FoodSpend.cshtml" />
     <Content Include="Views\Home\FindRecipe.cshtml" />
+    <Content Include="Views\Home\BudgetCalculator.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\App_LocalResources\" />
