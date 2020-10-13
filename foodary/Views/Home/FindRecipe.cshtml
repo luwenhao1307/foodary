@@ -68,11 +68,11 @@
                     SELECT INGREDIENTS
                 </h4>
                 <div class="row my-3 text-center">
-                    <div class="col-md-3">
+                    <div class="col-md-3" id="meat">
                         <p>Meat</p>
                     </div>
-                    <div class="col-md-9">
-                        <select class="selectpicker" multiple="multiple" id="selMeat" data-live-search="true" οnchange="GetData();">
+                    <div class="col-md-9" id="meat1">
+                        <select class="selectpicker" multiple="multiple" id="selMeat" data-live-search="true" οnchange="GetData();" size="5">
                             @if (ViewBag.MeatList != null && ViewBag.MeatList.Count > 0)
                             {
                                 foreach (foodary.Models.product p in ViewBag.MeatList)
@@ -87,7 +87,7 @@
                         <p>Vegetables</p>
                     </div>
                     <div class="col-md-9">
-                        <select class="selectpicker" οnchange="GetData();" multiple="multiple" id="selVegetables" data-live-search="true" >
+                        <select class="selectpicker" οnchange="GetData();" multiple="multiple" id="selVegetables" data-live-search="true"size="5" >
                             @if (ViewBag.VegetablesList != null && ViewBag.VegetablesList.Count > 0)
                             {
                                 foreach (foodary.Models.product p in ViewBag.VegetablesList)
@@ -102,7 +102,7 @@
                         <p>Others</p>
                     </div>
                     <div class="col-md-9">
-                        <select class="selectpicker" multiple="multiple" id="selOthers" data-live-search="true" οnchange="GetData();">
+                        <select class="selectpicker" multiple="multiple" id="selOthers" data-live-search="true" οnchange="GetData();" size="5">
                             @if (ViewBag.OthersList != null && ViewBag.OthersList.Count > 0)
                             {
                                 foreach (foodary.Models.product p in ViewBag.OthersList)
@@ -166,6 +166,9 @@
             $("#butNVegetarian").addClass("btn-filter-active");
             $("#butYVegetarian").addClass("btn-filter-default");
             $("#butAll").addClass("btn-filter-default");
+            document.getElementById("meat").style.display = "";
+            document.getElementById("meat1").style.display = "";
+            document.getElementById("selmeat").style.display = "";
         } else if (type == 1) {
             category = "vegetarian";
             $(".categories").find(".btn-filter-active").removeClass("btn-filter-active");
@@ -173,6 +176,9 @@
             $("#butNVegetarian").addClass("btn-filter-default");
             $("#butYVegetarian").addClass("btn-filter-active");
             $("#butAll").addClass("btn-filter-default");
+            document.getElementById("meat").style.display = "none";
+            document.getElementById("meat1").style.display = "none";
+            document.getElementById("selmeat").style.display = "none";
         } else {
             category = "all";
             $(".categories").find(".btn-filter-active").removeClass("btn-filter-active");
@@ -181,6 +187,9 @@
             $("#butNVegetarian").addClass("btn-filter-default");
             $("#butYVegetarian").addClass("btn-filter-default");
             $("#butAll").addClass("btn-filter-active");
+            document.getElementById("meat").style.display = "";
+            document.getElementById("meat1").style.display = "";
+            document.getElementById("selmeat").style.display = "";
         }
     }
     function SelectP(type, sel) {
