@@ -11,9 +11,6 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Services;
 using System.Web.UI.WebControls;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
-using System.IO;
 
 namespace foodary.Controllers
 {

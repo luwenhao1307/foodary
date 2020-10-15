@@ -82,7 +82,7 @@
         </div>
         <br />
         <center>
-            <p style="font-size:18px;  font-weight:bold;">The food plan's total cost is   <span id="zongSpan"></span>. Save <span id="chaSpan"></span> for you.</p>
+            <p style="font-size:18px;  font-weight:bold;">The food plan's total cost is $<span id="zongSpan"></span>. Save $<span id="chaSpan"></span> for you.</p>
         </center>
         <div id="accordion">
         </div>
@@ -220,8 +220,8 @@
                     } else {
 
                         $("#zongSpan").text(data.msg);
-                        $("#chaSpan").text(Number($("#txtBudget").val()) - Number(data.msg));
-
+                        $("#chaSpan").text(Number($("#txtBudget").val()) - Number(data.msg)).toFixed(2);
+                        
                         var jsonData = JSON.parse(data.data);
                         $('#collapse1').empty();
 
