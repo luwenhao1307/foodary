@@ -294,9 +294,10 @@ namespace foodary.Controllers
                     total1 = ranList.Sum(r => r.cost_p_s == null ? 0 : r.cost_p_s);
                     num++;
                 
-                if (num == 10)
+                if (num == 20)
                 {
                     ranList = topList;
+                    break;
                 }
                 
             }
