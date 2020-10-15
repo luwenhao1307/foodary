@@ -280,16 +280,31 @@ namespace foodary.Controllers
             }
 
             //average cost
-            decimal? num = budget / top;
+            //decimal? num = budget / top;
 
-            //filter recipes based on average cost
-            List<recipes_budget> ranList = list.Where(s => s.cost_p_s <= num).OrderBy(a => Guid.NewGuid()).Take(top).ToList();
-
-            if (ranList.Count < top)
+            ////filter recipes based on average cost
+            //List<recipes_budget> ranList = list.Where(s => s.cost_p_s <= num).OrderBy(a => Guid.NewGuid()).Take(top).ToList();
+            List<recipes_budget> ranList = list.OrderBy(a => Guid.NewGuid()).Take(top).ToList();
+            decimal? total1 = ranList.Sum(r => r.cost_p_s == null ? 0 : r.cost_p_s);
+            int num = 0;
+            while (budget < total1)
             {
-                return Msg(true, total.ToString(), JsonConvert.SerializeObject(topList));
-                //return Msg(false, "Please remove some of the ingredients that you don't want to eat. There are no enough recipes to serve " + count + " meals per" + day );
+                
+                    ranList = list.OrderBy(a => Guid.NewGuid()).Take(top).ToList();
+                    total1 = ranList.Sum(r => r.cost_p_s == null ? 0 : r.cost_p_s);
+                    num++;
+                
+                if (num == 10)
+                {
+                    ranList = topList;
+                }
+                
             }
+            //if (ranList.Count < top)
+            //{
+            //    return Msg(true, total.ToString(), JsonConvert.SerializeObject(topList));
+            //    //return Msg(false, "Please remove some of the ingredients that you don't want to eat. There are no enough recipes to serve " + count + " meals per" + day );
+            //}
 
             return Msg(true, ranList.Sum(r => r.cost_p_s == null ? 0 : r.cost_p_s).ToString(), JsonConvert.SerializeObject(ranList));
         }

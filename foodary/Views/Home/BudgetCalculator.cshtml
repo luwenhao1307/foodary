@@ -127,14 +127,14 @@
         var category = "Both";
         function ChooseV(type) {
             if (type == 0) {
-                category = "non-vegetarian";
+                category = "vegetarian";
                 $(".categories").find(".btn-filter-active").removeClass("btn-filter-active");
                 $(".categories").find(".btn-filter-default").removeClass("btn-filter-default");
                 $("#butNVegetarian").addClass("btn-filter-active");
                 $("#butYVegetarian").addClass("btn-filter-default");
                 $("#butBoth").addClass("btn-filter-default");
             } else if (type == 1) {
-                category = "vegetarian";
+                category = "non-vegetarian";
                 $(".categories").find(".btn-filter-active").removeClass("btn-filter-active");
                 $(".categories").find(".btn-filter-default").removeClass("btn-filter-default");
                 $("#butNVegetarian").addClass("btn-filter-default");

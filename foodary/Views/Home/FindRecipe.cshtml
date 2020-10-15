@@ -55,9 +55,9 @@
                 <div class="sidebar-box ftco-animate fadeInUp ftco-animated">
                     <div class="categories">
                         <h4 style="margin-bottom:20px">CATEGORIES</h4>
-                        <button class="btn btn-filter-active" id="butAll">All</button>
-                        <button class="btn btn-filter-default" id="butNVegetarian">Non-vegetarian</button>
-                        <button class="btn btn-filter-default" id="butYVegetarian">Vegetarian</button>
+                        <button class="btn btn-filter-active" id="butAll" onclick="GetData();">All</button>
+                        <button class="btn btn-filter-default" id="butNVegetarian" onclick="GetData();">Non-vegetarian</button>
+                        <button class="btn btn-filter-default" id="butYVegetarian" onclick="GetData();">Vegetarian</button>
                         <br />
                         <hr />
                     </div>
@@ -170,6 +170,7 @@
             document.getElementById("meat").style.display = "";
             document.getElementById("meat1").style.display = "";
             document.getElementById("selmeat").style.display = "";
+            GetData();
         } else if (type == 1) {
             category = "vegetarian";
             $(".categories").find(".btn-filter-active").removeClass("btn-filter-active");
@@ -180,6 +181,7 @@
             document.getElementById("meat").style.display = "none";
             document.getElementById("meat1").style.display = "none";
             document.getElementById("selmeat").style.display = "none";
+            GetData();
         } else {
             category = "all";
             $(".categories").find(".btn-filter-active").removeClass("btn-filter-active");
@@ -191,7 +193,9 @@
             document.getElementById("meat").style.display = "";
             document.getElementById("meat1").style.display = "";
             document.getElementById("selmeat").style.display = "";
+            GetData();
         }
+        GetData();
     }
     function SelectP(type, sel) {
 
