@@ -220,7 +220,7 @@
                     } else {
 
                         $("#zongSpan").text(data.msg);
-                        $("#chaSpan").text(Number($("#txtBudget").val()) - Number(data.msg));
+                        $("#chaSpan").text((Number($("#txtBudget").val())*10 - Number(data.msg)*10)/10);
                         
                         var jsonData = JSON.parse(data.data);
                         $('#collapse1').empty();
