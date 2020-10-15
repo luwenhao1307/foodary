@@ -8,8 +8,9 @@
     <title>Budget Calculator</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 </head>
@@ -26,13 +27,13 @@
                 <div class="col-md-4">
                     <label>Enter your Budget: </label>
                     <span>
-                        <input class="custom-input" type="number" placeholder="$50" min="0" max="10000" step="1" value="" required="required" />
+                        <input id="txtBudget" class="custom-input" type="number" placeholder="$50" min="0" max="10000" step="1" value="50" required="required" />
                     </span>
                 </div>
                 <div class="col-md-4">
                     <label>Enter Number of Days: </label>
                     <span>
-                        <input class="custom-input" type="number" placeholder="3" min="0" max="7" step="1" value="" required="required" />
+                        <input id="txtDays" class="custom-input" type="number" placeholder="3" min="0" max="7" step="1" value="3" required="required" />
                     </span>
                 </div>
             </div>
@@ -40,13 +41,11 @@
                 <label>How many meals do you want to eat per day? * </label>
             </div>
             <div class="row justify-content-md-center py-1">
-                <div>
-                    <button class="btn btn-filter-default">1</button>
-                    <button class="btn btn-filter-default">2</button>
-                    <button class="btn btn-filter-active">3</button>
-                    <button class="btn btn-filter-default">4</button>
-                    <button class="btn btn-filter-default">5</button>
-                    <button class="btn btn-filter-default">6</button>
+                <div class="numbers">
+                    <button class="btn btn-filter-default" id="btnOne">1</button>
+                    <button class="btn btn-filter-default" id="btnTwo">2</button>
+                    <button class="btn btn-filter-active" id="btnThree">3</button>
+                    <button class="btn btn-filter-default" id="btnFour">4</button>
                 </div>
             </div>
             <div class="row justify-content-md-center py-1">
@@ -55,127 +54,339 @@
             </div>
             <div class="row justify-content-md-center py-1">
                 <div class="categories">
-                    <button class="btn btn-filter-default">Vegetarian</button>
-                    <button class="btn btn-filter-active">Non-Vegetarian</button>
-                    <button class="btn btn-filter-default">Both</button>
+                    <button class="btn btn-filter-default" id="butNVegetarian">Vegetarian</button>
+                    <button class="btn btn-filter-default" id="butYVegetarian">Non-Vegetarian</button>
+                    <button class="btn btn-filter-active" id="butBoth">Both</button>
                 </div>
             </div>
             <div class="row justify-content-md-center py-1">
-                <label>Do you have any allergies?</label>
+                <label>Do you have any allergies or ingredient you don't want to eat?</label>
                 <p style="color: #bebebe; font-size: 10px;"> (optional)</p>
             </div>
             <div class="row justify-content-md-center py-1">
-                <select class="selectpicker" multiple="multiple" data-live-search="true">
-                    <option value="">Artichokes</option>
-                    <option value="">Garlic</option>
-                    <option value="">Pork</option>
+                <select class="selectpicker" multiple="multiple" data-live-search="true" id="selProduct">
+                    @if (ViewBag.productList != null && ViewBag.productList.Count > 0)
+                    {
+                        foreach (foodary.Models.product p in ViewBag.productList)
+                        {
+                            <option value="@p.name">@p.name</option>
+                        }
+                    }
                 </select>
             </div>
-            <div class="row justify-content-md-center py-1">
-                <span class="tile-product-red py-1" style="cursor:pointer; margin-left: 3px;">Artichokes</span>
-                <span class="tile-product-red py-1" style="cursor:pointer; margin-left: 3px;">Garlic</span>
-                <span class="tile-product-red py-1" style="cursor:pointer; margin-left: 3px;">Pork</span>
+            <div class="row justify-content-md-center py-1" id="divProduct">
             </div>
             <div class="row justify-content-md-center py-2">
-                <button class="btn btn-filter-active" style="border-radius: 0px; font-weight: bold;">GO!</button>
+                <button class="btn btn-filter-active" style="border-radius: 0px; font-weight: bold;" onclick="GetData();">GO!</button>
             </div>
         </div>
-        <br/>
+        <br />
+        <center>
+            <p style="font-size:18px;  font-weight:bold;">The food plan's total cost is   <span id="zongSpan"></span>. Save <span id="chaSpan"></span> for you.</p>
+        </center>
         <div id="accordion">
-            <div class="card">
-                <div class="card-header tile-recipe-bg">
-                    <h4 class="panel-title" style="text-align: center;">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1" style="color: #0277bd;">Day 1
-                            <i class="fas fa-caret-up" style="color:#0277bd;"></i>
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapse1" class="panel-collapse collapse in">
-                    <div class="panel-body col-md-12">
-                        <h4 class="panel-title" style="color: #0277bd;">1. Beef Sauted with Rice</h4>
-                        <div class="row col-md-12">
-                            <div class="col-md-4">
-                                <img src="https://images.media-allrecipes.com/userphotos/560x315/970813.jpg" style="max-width:250px;max-height:250px" />
-                            </div>
-                            <div class="col-md-8" style="text-align: center;">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <p style="color: #0277bd;">Servings</p>
-                                        <p style="color: #0277bd; font-weight:bold;">2</p>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <p style="color: #0277bd;">Preparation Time</p>
-                                        <p style="color: #0277bd; font-weight:bold;">40 minutes</p>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <p style="color: #0277bd;">Cost</p>
-                                        <p style="color: #0277bd; font-weight:bold;">$ 8</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <br />
-                        <div class="row col-md-10 offset-1">
-                            <div class="col-md-5">
-                                <h4 class="panel-title" style="color: #0277bd;">Ingredients</h4>
-                                <label style="color: #0277bd;">| Beef</label><br />
-                                <label style="color: #0277bd;">| Tomato</label><br />
-                                <label style="color: #0277bd;">| Onion</label><br />
-                                <label style="color: #0277bd;">| Vinegar</label><br />
-                                <label style="color: #0277bd;">| Rice</label><br />
-                            </div>
-                            <div class="col-md-5">
-                                <h4 class="panel-title" style="color: #0277bd;">Directions</h4>
-                                <label style="color: #0277bd;">| </label><br />
-                                <label style="color: #0277bd;">| </label><br />
-                                <label style="color: #0277bd;">| </label><br />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-body col-md-12">
-                        <h4 class="panel-title" style="color: #0277bd;">2. Roasted Beef</h4>
-                        <div class="row col-md-12">
-                            SAME AS ABOVE
-                        </div>
-                    </div>
-                    <div class="panel-body col-md-12">
-                        <h4 class="panel-title" style="color: #0277bd;">3. Fried Chicken</h4>
-                        <div class="row col-md-12">
-                            SAME AS ABOVE
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header tile-recipe-bg">
-                    <h4 class="panel-title" style="text-align: center;">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" style="color: #0277bd;" >Day 2
-                            <i class="fas fa-caret-down" style="color:#0277bd;"></i>
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapse2" class="panel-collapse collapse">
-                    <div class="panel-body col-md-12">
-                        SAME AS ABOVE
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-header tile-recipe-bg">
-                    <h4 class="panel-title" style="text-align: center;">
-                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" style="color: #0277bd;" >Day 3
-                            <i class="fas fa-caret-down" style="color:#0277bd;"></i>
-                        </a>
-                    </h4>
-                </div>
-                <div id="collapse3" class="panel-collapse collapse">
-                    <div class="panel-body col-md-12">
-                        SAME AS ABOVE
-                    </div>
-                </div>
-            </div>
         </div>
-        <br/>
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#butNVegetarian").click(function () { ChooseV(0); });
+            $("#butYVegetarian").click(function () { ChooseV(1); });
+            $("#butBoth").click(function () { ChooseV(2); });
+
+            $("#btnOne").click(function () { ChooseC(1); });
+            $("#btnTwo").click(function () { ChooseC(2); });
+            $("#btnThree").click(function () { ChooseC(3); });
+            $("#btnFour").click(function () { ChooseC(4); });
+
+            $('#selProduct').on('changed.bs.select', function () {
+                var list = $(this).val();
+                if (list != null && list.length > 0) {
+                    var str = '';
+                    for (var i = 0; i < list.length; ++i) {
+                        str += '<span class=" tile-product py-1" class="tile-product-red py-1" style="cursor:pointer; margin-left: 3px;" onclick="ClearThis(this);">' + list[i] + '</span>';
+                    }
+                    $("#divProduct").html("");
+                    $("#divProduct").html(str);
+                }
+            });
+        });
+
+        function ClearThis(but) {
+            var bv = $(but).text();
+            $('#selProduct').find('[value="' + bv + '"]').prop('selected', false);
+            $values = $('#selProduct').val();
+            $('#selProduct').selectpicker('deselectAll');
+            $('#selProduct').selectpicker('val', $values);
+            $('#selProduct').selectpicker('refresh');
+            $(but).remove();
+            
+        }
+
+        var category = "Both";
+        function ChooseV(type) {
+            if (type == 0) {
+                category = "non-vegetarian";
+                $(".categories").find(".btn-filter-active").removeClass("btn-filter-active");
+                $(".categories").find(".btn-filter-default").removeClass("btn-filter-default");
+                $("#butNVegetarian").addClass("btn-filter-active");
+                $("#butYVegetarian").addClass("btn-filter-default");
+                $("#butBoth").addClass("btn-filter-default");
+            } else if (type == 1) {
+                category = "vegetarian";
+                $(".categories").find(".btn-filter-active").removeClass("btn-filter-active");
+                $(".categories").find(".btn-filter-default").removeClass("btn-filter-default");
+                $("#butNVegetarian").addClass("btn-filter-default");
+                $("#butYVegetarian").addClass("btn-filter-active");
+                $("#butBoth").addClass("btn-filter-default");
+            } else {
+                category = "Both";
+                $(".categories").find(".btn-filter-active").removeClass("btn-filter-active");
+                $(".categories").find(".btn-filter-default").removeClass("btn-filter-default");
+                $("#butNVegetarian").addClass("btn-filter-default");
+                $("#butYVegetarian").addClass("btn-filter-default");
+                $("#butBoth").addClass("btn-filter-active");
+            }
+        }
+
+
+        var count = 3;
+        function ChooseC(type) {
+            if (type == 1) {
+                count = 1;
+                $(".numbers").find(".btn-filter-active").removeClass("btn-filter-active");
+                $(".numbers").find(".btn-filter-default").removeClass("btn-filter-default");
+
+                $("#btnOne").addClass("btn-filter-active");
+                $("#btnTwo").addClass("btn-filter-default");
+                $("#btnThree").addClass("btn-filter-default");
+                $("#btnFour").addClass("btn-filter-default");
+            } else if (type == 2) {
+                count = 2;
+                $(".numbers").find(".btn-filter-active").removeClass("btn-filter-active");
+                $(".numbers").find(".btn-filter-default").removeClass("btn-filter-default");
+
+                $("#btnOne").addClass("btn-filter-default");
+                $("#btnTwo").addClass("btn-filter-active");
+                $("#btnThree").addClass("btn-filter-default");
+                $("#btnFour").addClass("btn-filter-default");
+            } else if (type == 3) {
+                count = 3;
+                $(".numbers").find(".btn-filter-active").removeClass("btn-filter-active");
+                $(".numbers").find(".btn-filter-default").removeClass("btn-filter-default");
+
+                $("#btnOne").addClass("btn-filter-default");
+                $("#btnTwo").addClass("btn-filter-default");
+                $("#btnThree").addClass("btn-filter-active");
+                $("#btnFour").addClass("btn-filter-default");
+            } else if (type == 4) {
+                count = 4;
+                $(".numbers").find(".btn-filter-active").removeClass("btn-filter-active");
+                $(".numbers").find(".btn-filter-default").removeClass("btn-filter-default");
+
+                $("#btnOne").addClass("btn-filter-default");
+                $("#btnTwo").addClass("btn-filter-default");
+                $("#btnThree").addClass("btn-filter-default");
+                $("#btnFour").addClass("btn-filter-active");
+            }
+        }
+
+        function GetData() {
+            var keys = [];
+            //getkey
+            var plist = $("#selProduct").val();
+            if (plist != null && plist.length > 0) {
+                for (var i = 0; i < plist.length; ++i) {
+                    keys.push(plist[i]);
+                }
+            }
+
+            var total = Number($("#txtDays").val()) * count;
+            $.ajax({
+                type: "POST",
+                url: "/Home/GetBudgetData",
+                data: {
+                    budget: $("#txtBudget").val(),
+                    day: $("#txtDays").val(),
+                    count: count,
+                    category: category,
+                    keys: keys
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (!data.state) {
+                        swal(data.msg);
+                    } else {
+
+                        $("#zongSpan").text(data.msg);
+                        $("#chaSpan").text(Number($("#txtBudget").val()) - Number(data.msg));
+
+                        var jsonData = JSON.parse(data.data);
+                        $('#collapse1').empty();
+
+                        var html = '';
+                        html += "<div class=\"card\">";
+                        for (var i = 1; i <= Number($("#txtDays").val()); ++i) {
+                            html += "<div class=\"card-header tile-recipe-bg\">";
+                            html += "<h4 class=\"panel-title\" style=\"text-align: center;\">";
+                            html += "<a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse" + i + "\" style=\"color: #0277bd;\">";
+                            html += "Day " + i;
+                            html += "<i class=\"fas fa-caret-up\" style=\"color:#0277bd;\"></i>";
+                            html += "</a>";
+                            html += "</h4>";
+                            html += "</div>";
+                            html += "<div id=\"collapse" + i + "\" class=\"panel-collapse collapse in\">";
+
+                            if (jsonData != null && jsonData.length == total) {
+                                for (var m = 0; m < count; ++m) {
+                                    var z = (count * i - count) + m;
+
+                                    //html += "<div class=\"panel-body col-md-12\"  style=\"cursor: pointer\" onclick=\"ShowInfo('" + jsonData[z].ID + "')\">";
+                                    //html += "<h4 class=\"panel-title\" style=\"color: #0277bd;\">" + (m + 1) + ". " + jsonData[z].recipe_name + "</h4>";
+                                    //html += "<div class=\"row col-md-12\">";
+                                    //html += "<div class=\"col-md-4\">";
+                                    //html += "<img src=\"" + jsonData[z].img_url + "\" style =\"max-width:250px;max-height:250px\" />";
+                                    //html += "</div>";
+                                    //html += "<div class=\"col-md-8\" style=\"text-align: center;\">";
+                                    //html += "<div class=\"row\">";
+                                    //html += "<div class=\"col-md-4\">";
+                                    //html += "<p style=\"color: #0277bd;\">Servings</p>";
+                                    //html += "<p style=\"color: #0277bd; font-weight:bold;\">" + jsonData[z].servings + "</p>";
+                                    //html += "</div>";
+                                    //html += "<div class=\"col-md-4\">";
+                                    //html += "<p style=\"color: #0277bd;\">Preparation Time</p>";
+                                    //html += "<p style=\"color: #0277bd; font-weight:bold;\">" + jsonData[z].total_time_str + " minutes</p>";
+                                    //html += "</div>";
+                                    //html += "<div class=\"col-md-4\">";
+                                    //html += "<p style=\"color: #0277bd;\">Cost</p>";
+                                    //html += "<p style=\"color: #0277bd; font-weight:bold;\">$ " + jsonData[z].cost + "</p>";
+                                    //html += "</div>";
+                                    //html += "</div>";
+                                    //html += "</div>";
+                                    //html += "</div>";
+                                    //html += "<br />";
+
+                                    //html += "<div class=\"row col-md-10 offset-1\" style=\"display:none;\" id=\"Info" + jsonData[z].ID + "\">";
+                                    //html += "<div class=\"col-md-5\">";
+                                    //html += "<h4 class=\"panel-title\" style=\"color: #0277bd;\">Ingredients</h4>";
+                                    //var strIngredients = jsonData[z].ingredients.split("**");
+                                    //for (j = 0; j < strIngredients.length; j++) {
+                                    //    if (strIngredients[j].length > 0) {
+                                    //        html += "<label style=\"color: #0277bd;\">| " + strIngredients[j] + "</label><br />";
+                                    //    }
+                                    //}
+                                    //html += "</div>";
+                                    //html += "<div class=\"col-md-5\">";
+                                    //html += "<h4 class=\"panel-title\" style=\"color: #0277bd;\">Directions</h4>";
+                                    //var strDirections = jsonData[z].directions.split("**");
+                                    //for (j = 0; j < strDirections.length; j++) {
+                                    //    if (strDirections[j].length > 0) {
+                                    //        html += "<label style=\"color: #0277bd;\"><b>| Step " + (j + 1) + ": </b>" + strDirections[j] + "</label>";
+                                    //    }
+                                    //}
+                                    //html += "</div>";
+                                    //html += "</div>";
+
+                                    //html += "</div>";
+
+
+
+                                    html += "<div class=\"card-header tile-recipe-bg row col-md-12\" style=\"cursor: pointer;margin:0;\" onclick=\"ShowInfo('" + jsonData[z].ID + "')\">";
+
+                                    html += "<div class=\"col-md-2\">";
+                                    html += "<img src=\"" + jsonData[z].img_url + "\" style=\"max-width:150px;max-height:150px\"/>";
+                                    html += "</div>";
+
+                                    html += "<div class=\"col-md-10\">";
+                                    html += "<h3>";
+                                    html += "<th>";
+                                    html += (m + 1) + ". " + jsonData[z].recipe_name;
+                                    html += "<th>";
+                                    html += "</h3>";
+                                    html += "<table class=\"table table-map display text-center pl-3 pr-3\" width=\"100%\">";
+                                    html += "<thead>";
+                                    html += "<tr>";
+                                    html += "<th>";
+                                    html += "Servings";
+                                    html += "</th>";
+                                    html += "<th>";
+                                    html += "Preparation time";
+                                    html += "</th>";
+                                    html += "<th>";
+                                    html += "Approximate cost";
+                                    html += "</th>";
+                                    html += "</tr>";
+                                    html += "</thead>";
+                                    html += "<tbody class=\"names\">";
+                                    html += "<tr>";
+                                    html += "<th>" + jsonData[z].servings + "</th>";
+                                    html += "<th>" + jsonData[z].total_time_str + "</th>";
+                                    html += "<th>$" + jsonData[z].cost + "</th>";
+                                    html += "</tr>";
+                                    html += "</tbody>";
+                                    html += "</table>";
+                                    html += "</div>";
+                                    html += "</div>";
+
+                                    html += "<div style=\"display:none;\" id=\"Info" + jsonData[z].ID + "\">";
+
+                                    html += "<div class=\"card-body\">";
+                                    html += "<table class=\"table table-map display text-center\" cellspacing=\"0\" width=\"100%\" style=\"margin-top: 2em;\">";
+                                    html += "<tbody class=\"names\">";
+                                    html += "<tr>";
+                                    html += "<th width=\"40%\">";
+                                    html += "Ingredients";
+                                    html += "<div class=\"text-left\">";
+                                    var strIngredients = jsonData[z].ingredients.split("**");
+                                    for (j = 0; j < strIngredients.length; j++) {
+                                        if (strIngredients[j].length > 0) {
+                                            html += "<p><b>|</b> " + strIngredients[j] + "</p>";
+                                        }
+                                    }
+                                    html += "</div>";
+                                    html += "</th>";
+                                    html += "<th colspan=\"2\">";
+                                    html += "Directions";
+                                    html += "<div class=\"text-left\">";
+
+                                    var strDirections = jsonData[z].directions.split("**");
+                                    for (j = 0; j < strDirections.length; j++) {
+                                        if (strDirections[j].length > 0) {
+                                            html += "<p><b>| Step " + (j + 1) + ": </b>" + strDirections[j] + "</p>";
+                                        }
+                                    }
+
+                                    html += "</div>";
+                                    html += "</th>";
+                                    html += "</tr>";
+                                    html += "</tbody>";
+                                    html += "</table>";
+
+                                    html += "</div>";
+                                    html += "</div>";
+
+                                }
+                            }
+
+                            html += "</div>";
+                        }
+                        html += "</div>";
+                        $('#accordion').html(html);
+                    }
+
+                }
+            });
+
+        }
+
+        function ShowInfo(id) {
+            if ($("#Info" + id).css("display") == "none") {
+                $("#Info" + id).css("display", "");//显示
+            } else {
+                $("#Info" + id).css("display", "none");//隐藏
+            }
+        }
+    </script>
 </body>
 </html>

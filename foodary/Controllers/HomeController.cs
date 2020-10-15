@@ -205,10 +205,97 @@ namespace foodary.Controllers
 
         public ActionResult BudgetCalculator()
         {
+            FoodaryCloud fc = new FoodaryCloud();
+            List<product> productList = fc.products.ToList();
+            ViewBag.productList = productList;
             return View();
         }
 
+        private JsonResult Msg(bool state, string msg, string data = "")
+        {
+            return Json(new { state = state, msg = msg, data = data }, JsonRequestBehavior.AllowGet);
+        }
 
+        public JsonResult GetBudgetData(decimal? budget, int? day, int? count, string category, List<string> keys)
+        {
+
+            if (budget == null)
+            {
+                return Msg(false, "Please enter your budget");
+            }
+            if (budget <= 0)
+            {
+                return Msg(false, "The budget must be more than 0");
+            }
+            if (day == null)
+            {
+                return Msg(false, "Please enter the number of day");
+            }
+            if (day <= 0)
+            {
+                return Msg(false, "Please enter the number of day");
+            }
+            if (count == null)
+            {
+                return Msg(false, "Please choose how many meals you want to eat");
+            }
+            if (count <= 0)
+            {
+                return Msg(false, "Please choose how many meals you want to eat");
+            }
+
+            int top = (int)day * (int)count;
+
+            FoodaryCloud fc = new FoodaryCloud();
+
+            Expression<Func<recipes_budget, bool>> catWhere = r => 1 == 1;
+            Expression<Func<recipes_budget, bool>> exWhere = r => 1 == 1;
+
+            if (category != "Both")
+            {
+                catWhere = c => c.category == category;
+            }
+            if (keys != null && keys.Count > 0)
+            {
+                exWhere = r => keys.Any(k => !r.directions.Contains(k));
+            }
+
+            //filter the recipes and sort them 
+            List<recipes_budget> list = new List<recipes_budget>();
+            list = fc.recipes_budget.Where(catWhere).Where(exWhere).OrderBy(c => c.cost_p_s).ToList();
+          
+            //get cheapest recipes
+            List<recipes_budget> topList = list.Take(top).ToList();
+            
+            //sum the cost of x cheapest recipes
+            decimal? total = 0;
+            if (topList != null && topList.Count > 0)
+            {
+                total = topList.Sum(r => r.cost_p_s == null ? 0 : r.cost_p_s);
+            }
+
+            if (budget < total)
+            {
+                return Msg(false, "Your budget is too low, the lowest budget is " + total + ". Please enter the budget again or visit our find food page to find free food.");
+            }
+
+            //average cost
+            decimal? num = budget / top;
+
+            //filter recipes based on average cost
+            List<recipes_budget> ranList = list.Where(s => s.cost_p_s <= num).OrderBy(a => Guid.NewGuid()).Take(top).ToList();
+
+            if (ranList.Count < top)
+            {
+                return Msg(true, total.ToString(), JsonConvert.SerializeObject(topList));
+                //return Msg(false, "Please remove some of the ingredients that you don't want to eat. There are no enough recipes to serve " + count + " meals per" + day );
+            }
+
+            return Msg(true, ranList.Sum(r => r.cost_p_s == null ? 0 : r.cost_p_s).ToString(), JsonConvert.SerializeObject(ranList));
+        }
 
     }
 }
+
+
+
