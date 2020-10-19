@@ -86,6 +86,7 @@
                 </div>
             </div>
         <div id="chartContainer"></div>
+        <p style="text-align:right;"><i>* Note that the average price comes from Australian supermarkets on September, 2020.</i></p>
     </div>
     <br />
     <br />
@@ -132,7 +133,8 @@
     function drawChart(products, prices) {
         Highcharts.chart('chartContainer', {
             chart: {
-                type: 'bar'
+                type: 'bar',
+                height: products.length*30+120
             },
             title: {
                 text: ''
