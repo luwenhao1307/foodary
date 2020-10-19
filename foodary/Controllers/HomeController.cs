@@ -101,7 +101,7 @@ namespace foodary.Controllers
         [WebMethod]
         public JsonResult GetGroceryPriceChartData(string category)
         {
-            List<food_price> foodPriceModel = dbFoodPrice.food_price.Where(p => p.Country == "Australia").Where(p => p.Category == category).ToList();
+            List<food_price> foodPriceModel = dbFoodPrice.food_price.Where(p => p.Country == "Australia").Where(p => p.Category == category).OrderBy(p => p.Product).ToList();
             return Json(foodPriceModel.ToList(), JsonRequestBehavior.AllowGet);
         }
 

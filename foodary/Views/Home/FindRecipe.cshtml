@@ -346,7 +346,7 @@
                     html += "<tr>";
                     html += "<th>" + item.servings + "</th>";
                     html += "<th>" + item.total_time_str + "</th>";
-                    html += "<th>$" + item.cost + "</th>";
+                    html += "<th>$" + parseFloat(item.cost).toFixed(2) + "</th>";
                     html += "</tr>";
                     html += "</tbody>";
                     html += "</table>";

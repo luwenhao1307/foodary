@@ -153,6 +153,23 @@
     border-radius: 3px;
 }
 
+.carousel-control-prev {
+    margin-left: -60px;
+}
+
+.carousel-control-next {
+    margin-right: -60px;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+    filter: invert(100%);
+}
+
+.carousel-indicators{
+    filter: invert(100%);
+}
+
 .footer {
     background-color: white;
     text-align: center;
