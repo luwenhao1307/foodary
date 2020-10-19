@@ -39,98 +39,52 @@
             <div class="col-md-3 py-1 tile-padding-8">
                 <div id="tile-all" class="tile-active tile text-center type" style="cursor:pointer; ">
                     <img src="~/images/vegetablesmall.png" alt="Card image cap" />
-                    <div>
-                        <p>Show all</p>
-                    </div>
-                    <br />
+                    <p>Show all</p>
                 </div>
             </div>
             <div class="col-md-3 py-1 tile-padding-8">
                 <div id="tile-food-parcel" class="tile text-center type" style="cursor:pointer; ">
                     <img src="~/images/food-parcel.png" alt="Card image cap" />
-                    <div>
-                        <p>Food parcel</p>
-                    </div>
-                    <br />
+                    <p>Food parcel</p>
                 </div>
             </div>
             <div class="col-md-3 py-1 tile-padding-8" style="cursor:pointer;">
                 <div id="tile-community-meal" class="tile text-center type">
                     <img src="~/images/community-meal.png" alt="Card image cap" />
-                    <div>
-                        <p>Community meal</p>
-                    </div>
-                    <br />
+                    <p>Community meal</p>
                 </div>
             </div>
             <div class="col-md-3 py-1 tile-padding-8" style="cursor:pointer;">
                 <div id="tile-food-van" class="tile text-center type">
                     <img src="~/images/food-van.png" alt="Card image cap" />
-                    <div>
-                        <p>Food van</p>
-                    </div>
-                    <br />
+                    <p>Food van</p>
                 </div>
             </div>
         </div>
 
         <div class="row my-3">
-            <div id="googleMap" style="height: 400px; width: 100%"></div>
-
-            <div class="col-md-12">
-                <br />
-                <table class="table table-map display" id="table" cellspacing="0" width="100%">
-                    <thead>
-                        <tr>
-                            <th>
-                                Name  (click on the <img style="cursor:pointer;" src="~/images/pin.png" /> to locate events)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Phone)
-                            </th>
-                            <th>
-                                Business Hours
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Cost)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Category)
-                            </th>
-                        </tr>
-                    </thead>
-
-                    <tbody class="names">
-                        @foreach (var item in Model)
-                        {
-                            int count = 0;
-
-                            <tr>
-                                <td id="name">
-                                    @Html.DisplayFor(modelItem => item.Name)<br />
-                                    <img style="cursor:pointer;" src="~/images/pin.png" onclick="showEventPosition(@Html.DisplayFor(modelItem => item.Id))" /> @Html.DisplayFor(modelItem => item.Id) @Html.DisplayFor(modelItem => item.Address),
-                                    @Html.DisplayFor(modelItem => item.Suburb)
-                                </td>
-                                <td id="phone">
-                                    @Html.DisplayFor(modelItem => item.Phone)
-                                </td>
-                                <td id="schedule">
-                                    @Html.DisplayFor(modelItem => item.Timetable)
-                                </td>
-                                <td id="cost">
-                                    @Html.DisplayFor(modelItem => item.Cost)
-                                </td>
-                                <td id="Category">
-                                    @Html.DisplayFor(modelItem => item.Category)
-                                </td>
-                                @*<td>
-                                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                </td>*@
-                            </tr>
-                            count = count + 1;
-                        }
-                    </tbody>
-                </table>
+            <div class="col-md-6">
+                <div class="card p-1">
+                    <div class="card-body">
+                        <div id="googleMap" style="height: 600px; width: 100%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card p-1">
+                    <div class="card-body">
+                        <table class="table table-map display" id="table" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th style="display:none;">
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblBodyFoodEvent" class="names">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="food" style="display:none">
@@ -174,31 +128,8 @@
                     $("#tile-food-van").addClass("tile-active");
                 });
 
-                $('#table').DataTable({
-                    sScrollX: true,
-                    initComplete: function () {
-                        var api = this.api();
-                       this.api().columns([3,4]).every( function (i) {
-                            var column = api.column(i);
-                            var select = $('<select><option value=""></option></select>')
-                                .appendTo( $(column.header()))
-                                .on('change', function () {
-                                    var val = $.fn.dataTable.util.escapeRegex(
-                                        $(this).val()
-                                    );
-                                    column
-                                        .search(val ? '^' + val + '$' : '', true, false)
-                                        .draw();
-                                });
-                            column.data().unique().sort().each(function (d, j) {
-                                select.append('<option value="' + d + '">' + d.substr(0,8) + '</option>')
-                            });
-
-                        });
-                    }
-                });
-
                 getData("Show all");
+
             });
 
 
@@ -232,6 +163,31 @@
                             names.push(obj[i]["Name"]);
                             times.push(obj[i]["Timetable"]);
                         };
+
+                        $('#tblBodyFoodEvent').empty();
+                        var html = '';
+
+                        for (var i = 0; i < obj.length; i++) {
+                            html += '<tr><td id="name" >';
+                            html += '<b>' + obj[i].Name + '-' + obj[i].Cost + '</b><br/>';
+                            html += '<a href="#" style="cursor:pointer;color: #0277bd;" onclick="showEventPosition('+obj[i].Id+')"><img src="/images/pin.png" />  ';
+                            html += obj[i].Id + ' ' + obj[i].Address + ', ' + obj[i].Suburb + '</a><br />';
+                            html += '<img src="/images/clock.png" />  ' + obj[i].Timetable + '<br />';
+                            html += '<img src="/images/phone.png" />  ' + obj[i].Phone;
+                            html += '</td></tr >';
+                        };
+                        
+
+                        if ($.fn.dataTable.isDataTable('#table')) {
+                            $('#tblBodyFoodEvent').html('');
+                            $('#table').DataTable().destroy();
+                        }
+
+                        $('#tblBodyFoodEvent').html(html);
+                        table = $('#table').DataTable({
+                            sScrollX: true
+                        });
+                        
                         initialize();
                     },
                 })
@@ -293,7 +249,6 @@
 
             var x = document.getElementById("demo");
             function getLocation() {
-                alert('ddd');
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(showPosition);
                 }
@@ -318,7 +273,6 @@
                 });
             };
             function showEventPosition(id) {
-
                 map.setCenter(new google.maps.LatLng(data[0][id-1], data[1][id-1])),
                     map.setZoom(16);
             }
