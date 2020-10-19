@@ -17,7 +17,7 @@
 
 <body>
     <div class="container" style="margin-top:100px">
-        <h1 class="card_title" style="font-weight: bold; color: #0277bd; font-size:35px">BUDGET CALCULATOR</h1>
+        <h1 class="card_title" style="font-weight: bold; color: #0277bd; font-size:35px">MEAL PLANNER</h1>
         <center>
             <p style="font-size:18px;  font-weight:bold;">There are many simple and cheap recipes within your budget.</p>
         </center>
@@ -222,8 +222,8 @@
                         swal(data.msg);
                     } else {
 
-                        $("#zongSpan").text(data.msg);
-                        $("#chaSpan").text((Number($("#txtBudget").val())*10 - Number(data.msg)*10)/10);
+                        $("#zongSpan").text(parseFloat(data.msg).toFixed(2));
+                        $("#chaSpan").text(parseFloat((Number($("#txtBudget").val()) * 10 - Number(data.msg) * 10) / 10).toFixed(2));
                         
                         var jsonData = JSON.parse(data.data);
                         $('#collapse1').empty();
@@ -234,7 +234,7 @@
                             html += "<div class=\"card-header tile-recipe-bg\">";
                             html += "<h4 class=\"panel-title\" style=\"text-align: center;\">";
                             html += "<a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse" + i + "\" style=\"color: #0277bd;\">";
-                            html += "Day " + i;
+                            html += "Meal plan for Day " + i;
                             html += "<i class=\"fas fa-caret-up\" style=\"color:#0277bd;\"></i>";
                             html += "</a>";
                             html += "</h4>";
@@ -325,7 +325,7 @@
                                     html += "<tr>";
                                     html += "<th>" + jsonData[z].servings + "</th>";
                                     html += "<th>" + jsonData[z].total_time_str + "</th>";
-                                    html += "<th>$" + jsonData[z].cost + "</th>";
+                                    html += "<th>$" + parseFloat(jsonData[z].cost).toFixed(2) + "</th>";
                                     html += "</tr>";
                                     html += "</tbody>";
                                     html += "</table>";
