@@ -166,6 +166,10 @@
     filter: invert(100%);
 }
 
+.carousel-indicators{
+    filter: invert(100%);
+}
+
 .footer {
     background-color: white;
     text-align: center;
