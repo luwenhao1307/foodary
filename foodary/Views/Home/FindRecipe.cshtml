@@ -55,9 +55,9 @@
                 <div class="sidebar-box ftco-animate fadeInUp ftco-animated">
                     <div class="categories">
                         <h4 style="margin-bottom:20px">CATEGORIES</h4>
-                        <button class="btn btn-filter-active" id="butAll" onclick="getCategory(all);">All</button>
-                        <button class="btn btn-filter-default" id="butNVegetarian" onclick="getCategory(non-vegetarian);">Non-vegetarian</button>
-                        <button class="btn btn-filter-default" id="butYVegetarian" onclick="getCategory(vegetarian);">Vegetarian</button>
+                        <button class="btn btn-filter-active" id="butAll" onclick="getAll();">All</button>
+                        <button class="btn btn-filter-default" id="butNVegetarian" onclick="getNon();">Non-vegetarian</button>
+                        <button class="btn btn-filter-default" id="butYVegetarian" onclick="dss();">Vegetarian</button>
                         <br />
                         <hr />
                     </div>
@@ -154,7 +154,7 @@
         $('#selVegetables').on('changed.bs.select', function () { SelectP('V', this) });
         $('#selOthers').on('changed.bs.select', function () { SelectP('O', this) });
 
-     
+        GetData();
     });
 
     var category = "all";
@@ -170,7 +170,7 @@
             document.getElementById("meat").style.display = "";
             document.getElementById("meat1").style.display = "";
             document.getElementById("selmeat").style.display = "";
-            
+            GetData();
         } else if (type == 1) {
             category = "vegetarian";
             $(".categories").find(".btn-filter-active").removeClass("btn-filter-active");
@@ -181,7 +181,7 @@
             document.getElementById("meat").style.display = "none";
             document.getElementById("meat1").style.display = "none";
             document.getElementById("selmeat").style.display = "none";
-            
+            GetData();
         } else {
             category = "all";
             $(".categories").find(".btn-filter-active").removeClass("btn-filter-active");
@@ -193,9 +193,9 @@
             document.getElementById("meat").style.display = "";
             document.getElementById("meat1").style.display = "";
             document.getElementById("selmeat").style.display = "";
-           
+            GetData();
         }
-        
+        GetData();
     }
     function SelectP(type, sel) {
 
@@ -279,6 +279,22 @@
         GetData();
     }
 
+    function getAll() {
+        category = "all";
+        GetData();
+    }
+
+    function getNon() {
+        category = "non-vegetarian";
+        GetData();
+    }
+
+    function dss() {
+        category = "vegetarian";
+        GetData();
+    }
+
+
     function GetData() {
         var keys = [];
        
@@ -300,7 +316,7 @@
                 keys.push(olist[i]);
             }
         }
-        alert(category);
+       
 
         $.ajax({
             type: "POST",
@@ -421,6 +437,7 @@
 
     function getCategory(cate) {
         category = cate;
+        alert(category);
         GetData();
     }
 
