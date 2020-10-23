@@ -128,7 +128,7 @@
                     $("#tile-food-van").addClass("tile-active");
                 });
 
-                getData("Show all");
+                getData("Show all","common");
 
             });
 
@@ -144,7 +144,7 @@
             };
             var data = JSON.parse('@ViewBag.data');
 
-            function getData(SearchString) {
+            function getData(SearchString, name) {
                 $.ajax({
                     url: '/Home/GetData',
                     method: 'post',
@@ -154,6 +154,7 @@
                         locations = [];
                         names = [];
                         times = [];
+                        Categorys = [];
                         for (var i = 0; i < obj.length; i++) {
                             var point = {
                                 "lat": obj[i]["Latitude"],
@@ -162,20 +163,36 @@
                             locations.push(point);
                             names.push(obj[i]["Name"]);
                             times.push(obj[i]["Timetable"]);
+                            Categorys.push(obj[i]["Category"]);
                         };
 
                         $('#tblBodyFoodEvent').empty();
                         var html = '';
+                        if (name == "common") {
+                            for (var i = 0; i < obj.length; i++) {
+                                html += '<tr><td id="name" >';
+                                html += '<b>' + obj[i].Name + '-' + obj[i].Cost + '</b><br/>';
+                                html += '<a href="#" style="cursor:pointer;color: #0277bd;" onclick="showEventPosition(' + obj[i].Id + ')"><img src="/images/pin.png" />  ';
+                                html += obj[i].Id + ' ' + obj[i].Address + ', ' + obj[i].Suburb + '</a><br />';
+                                html += '<img src="/images/clock.png" />  ' + obj[i].Timetable + '<br />';
+                                html += '<img src="/images/phone.png" />  ' + obj[i].Phone;
+                                html += '</td></tr >';
+                            };
+                        }
 
-                        for (var i = 0; i < obj.length; i++) {
-                            html += '<tr><td id="name" >';
-                            html += '<b>' + obj[i].Name + '-' + obj[i].Cost + '</b><br/>';
-                            html += '<a href="#" style="cursor:pointer;color: #0277bd;" onclick="showEventPosition('+obj[i].Id+')"><img src="/images/pin.png" />  ';
-                            html += obj[i].Id + ' ' + obj[i].Address + ', ' + obj[i].Suburb + '</a><br />';
-                            html += '<img src="/images/clock.png" />  ' + obj[i].Timetable + '<br />';
-                            html += '<img src="/images/phone.png" />  ' + obj[i].Phone;
-                            html += '</td></tr >';
-                        };
+                        if (name != "default") {
+                            for (var i = 0; i < obj.length; i++) {
+                                if (name == obj[i].Name) {
+                                    html += '<tr><td id="name" >';
+                                    html += '<b>' + obj[i].Name + '-' + obj[i].Cost + '</b><br/>';
+                                    html += '<a href="#" style="cursor:pointer;color: #0277bd;" onclick="showEventPosition(' + obj[i].Id + ')"><img src="/images/pin.png" />  ';
+                                    html += obj[i].Id + ' ' + obj[i].Address + ', ' + obj[i].Suburb + '</a><br />';
+                                    html += '<img src="/images/clock.png" />  ' + obj[i].Timetable + '<br />';
+                                    html += '<img src="/images/phone.png" />  ' + obj[i].Phone;
+                                    html += '</td></tr >';
+                                }
+                            };
+                        }
                         
 
                         if ($.fn.dataTable.isDataTable('#table')) {
@@ -185,6 +202,7 @@
 
                         $('#tblBodyFoodEvent').html(html);
                         table = $('#table').DataTable({
+                            iDisplayLength: 5,
                             sScrollX: true
                         });
                         
@@ -196,7 +214,7 @@
             $(".type").click(function (e) {
                 var selectedType = $(this).find('p').html();
                 getPin(selectedType);
-                getData(selectedType);
+                getData(selectedType, "common");
             });
 
             function getPin(selectedType) {
@@ -241,6 +259,7 @@
                     google.maps.event.addListener(point, "click", function (e) {
                         iw.setContent("<div><p>Event name:" + names[i] + "</p><p>Event Time：" + times[i] + "</p></div>")
                         iw.open(map, point);
+                        getData(Categorys[i], names[i])
                     });
                     return point;
                 });
