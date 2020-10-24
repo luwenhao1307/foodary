@@ -16,9 +16,9 @@ namespace foodary.Controllers
 {
     public class HomeController : Controller
     {
-        private Model2 db = new Model2();
-        private Model3 db1 = new Model3();
-        private price_model dbFoodPrice = new price_model();
+        private final db = new final();
+        private final db1 = new final();
+        private final dbFoodPrice = new final();
         public ActionResult Index()
         {
             return View();
@@ -52,7 +52,7 @@ namespace foodary.Controllers
         [HttpPost]
         public async Task<ActionResult> GetData(String SearchString)
         {
-            var Food = from f in db.FoodEventSet
+            var Food = from f in db.FoodEventSets
                        select f;
             if (SearchString != "Show all")
             {
@@ -63,7 +63,7 @@ namespace foodary.Controllers
         }
         public ActionResult Map()
         {
-            List<FoodEventSet> models = db.FoodEventSet.ToList();
+            List<FoodEventSet> models = db.FoodEventSets.ToList();
 
             List<List<decimal>> dataList = new List<List<decimal>>();
             List<decimal> latList = new List<decimal>();
@@ -80,17 +80,17 @@ namespace foodary.Controllers
             ViewBag.name = JsonConvert.SerializeObject(nameList);
             ViewBag.data = JsonConvert.SerializeObject(dataList);
             ViewBag.models = JsonConvert.SerializeObject(models);
-            return View(db.FoodEventSet.ToList());
+            return View(db.FoodEventSets.ToList());
         }
 
         public ActionResult FoodEventSet()
         {
-            return View(db.FoodEventSet.ToList());
+            return View(db.FoodEventSets.ToList());
         }
 
         public ActionResult FoodEvents()
         {
-            return View(db.FoodEventSet.ToList());
+            return View(db.FoodEventSets.ToList());
         }
 
         public ActionResult FoodSpend()
@@ -108,7 +108,7 @@ namespace foodary.Controllers
         public ActionResult Details(int? id)
         {
 
-            FoodEventSet foodEventSet = db.FoodEventSet.Find(id);
+            FoodEventSet foodEventSet = db.FoodEventSets.Find(id);
             if (foodEventSet == null)
             {
                 return HttpNotFound();
@@ -157,7 +157,7 @@ namespace foodary.Controllers
         db1.recipes.ToList()
 
         */
-            Model3 db = new Model3();
+            final db = new final();
             List<product> meatList = db.products.Where(p => p.category == "Meat").ToList();
             List<product> vegetablesList = db.products.Where(p => p.category == "Vegetables").ToList();
             List<product> othersList = db.products.Where(p => p.category == "Others").ToList();
@@ -170,7 +170,7 @@ namespace foodary.Controllers
 
         public JsonResult GetFoodaryData(string category, List<string> keys, string sort)
         {
-            Model3 db = new Model3();
+            final db = new final();
 
             Expression<Func<recipe, bool>> catWhere = r => 1 == 1;
             Expression<Func<recipe, bool>> exWhere = r => 1 == 1;
@@ -206,7 +206,7 @@ namespace foodary.Controllers
        
         public ActionResult BudgetCalculator()
         {
-            FoodaryCloud fc = new FoodaryCloud();
+            final fc = new final();
             List<product> productList = fc.products.ToList();
             ViewBag.productList = productList;
             return View();
@@ -247,7 +247,7 @@ namespace foodary.Controllers
 
             int top = (int)day * (int)count;
 
-            FoodaryCloud fc = new FoodaryCloud();
+            final fc = new final();
 
             Expression<Func<recipes_budget, bool>> catWhere = r => 1 == 1;
             Expression<Func<recipes_budget, bool>> exWhere = r => 1 == 1;

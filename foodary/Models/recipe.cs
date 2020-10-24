@@ -10,18 +10,18 @@ namespace foodary.Models
     {
         public int ID { get; set; }
 
-        [StringLength(49)]
+        [StringLength(100)]
         public string recipe_name { get; set; }
 
         public int? total_time_min { get; set; }
 
-        [StringLength(8)]
+        [StringLength(20)]
         public string total_time_str { get; set; }
 
-        [StringLength(703)]
+        [StringLength(1000)]
         public string ingredients { get; set; }
 
-        [StringLength(997)]
+        [StringLength(1200)]
         public string directions { get; set; }
 
         public int? servings { get; set; }
@@ -29,13 +29,13 @@ namespace foodary.Models
         [Column(TypeName = "numeric")]
         public decimal? cost { get; set; }
 
-        [StringLength(27)]
+        [StringLength(50)]
         public string author { get; set; }
 
-        [StringLength(148)]
+        [StringLength(200)]
         public string img_url { get; set; }
 
-        [StringLength(14)]
+        [StringLength(25)]
         public string category { get; set; }
     }
 }
