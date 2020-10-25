@@ -25,15 +25,16 @@
         <div class="col-md-8 offset-2">
             <div class="row justify-content-md-center py-1">
                 <div class="col-md-4">
-                    <label>Enter your total budget : </label>
+                    <label>Enter your total budget:</label>
                     <span>
-                        <input id="txtBudget" class="custom-input" style="width:50px"  type="number" placeholder="$50" min="0" max="10000" step="1" value="50" required="required" />
+                        <label style="position: relative; left:15px;">$</label>
+                        <input id="txtBudget" class="custom-input" style="width:60px; text-indent: 15px;" type="number" placeholder="50" min="0" max="10000" step="1" value="50" required="required" />
                     </span>
                 </div>
                 <div class="col-md-4">
                     <label>Enter number of Days: </label>
                     <span>
-                        <input id="txtDays" class="custom-input" style="width:50px" type="number" placeholder="3" min="0" max="7" step="1" value="3" required="required" />
+                        <input id="txtDays" class="custom-input" style="width:50px; text-indent: 10px;" type="number" placeholder="3" min="0" max="7" step="1" value="3" required="required" />
                     </span>
                 </div>
             </div>
@@ -50,7 +51,6 @@
             </div>
             <div class="row justify-content-md-center py-1">
                 <label>What kind of meals do you prefer?</label>
-                <p style="color: #bebebe; font-size: 10px;"> (optional)</p>
             </div>
             <div class="row justify-content-md-center py-1">
                 <div class="categories">
@@ -82,12 +82,12 @@
         </div>
         <br />
         <center>
-            <p style="font-size:18px;  font-weight:bold;">The food plan's total cost is $<span id="zongSpan"></span>. Using this plan, you can save $<span id="chaSpan"></span> for yourself.</p>
+            <p id="txtFoodPlan" style="font-size:18px; font-weight:bold; display: none;">The food plan's total cost is $<span id="zongSpan"></span>. Using this plan, you can save $<span id="chaSpan"></span> for yourself.</p>
         </center>
-        <div id="accordion">
+        <div id="accordion" class="accordion">
         </div>
     </div>
-
+    
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -224,7 +224,9 @@
 
                         $("#zongSpan").text(parseFloat(data.msg).toFixed(2));
                         $("#chaSpan").text(parseFloat((Number($("#txtBudget").val()) * 10 - Number(data.msg) * 10) / 10).toFixed(2));
-                        
+                        var txtFoodPlan = document.getElementById("txtFoodPlan");
+                        txtFoodPlan.style.display = "block";
+
                         var jsonData = JSON.parse(data.data);
                         $('#collapse1').empty();
 
@@ -234,8 +236,8 @@
                             html += "<div class=\"card-header tile-recipe-bg\">";
                             html += "<h4 class=\"panel-title\" style=\"text-align: center;\">";
                             html += "<a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse" + i + "\" style=\"color: #0277bd;\">";
-                            html += "Meal plan for Day " + i;
-                            html += "<i class=\"fas fa-caret-down\" style=\"color:#0277bd;\"></i>";
+                            html += "Meal Plan for Day " + i + " ";
+                            html += "<i class=\"fas fa-caret-down js-rotate-if-collapsed\" style=\"color:#0277bd; \"></i>";
                             html += "</a>";
                             html += "</h4>";
                             html += "</div>";
@@ -244,56 +246,6 @@
                             if (jsonData != null && jsonData.length == total) {
                                 for (var m = 0; m < count; ++m) {
                                     var z = (count * i - count) + m;
-
-                                    //html += "<div class=\"panel-body col-md-12\"  style=\"cursor: pointer\" onclick=\"ShowInfo('" + jsonData[z].ID + "')\">";
-                                    //html += "<h4 class=\"panel-title\" style=\"color: #0277bd;\">" + (m + 1) + ". " + jsonData[z].recipe_name + "</h4>";
-                                    //html += "<div class=\"row col-md-12\">";
-                                    //html += "<div class=\"col-md-4\">";
-                                    //html += "<img src=\"" + jsonData[z].img_url + "\" style =\"max-width:250px;max-height:250px\" />";
-                                    //html += "</div>";
-                                    //html += "<div class=\"col-md-8\" style=\"text-align: center;\">";
-                                    //html += "<div class=\"row\">";
-                                    //html += "<div class=\"col-md-4\">";
-                                    //html += "<p style=\"color: #0277bd;\">Servings</p>";
-                                    //html += "<p style=\"color: #0277bd; font-weight:bold;\">" + jsonData[z].servings + "</p>";
-                                    //html += "</div>";
-                                    //html += "<div class=\"col-md-4\">";
-                                    //html += "<p style=\"color: #0277bd;\">Preparation Time</p>";
-                                    //html += "<p style=\"color: #0277bd; font-weight:bold;\">" + jsonData[z].total_time_str + " minutes</p>";
-                                    //html += "</div>";
-                                    //html += "<div class=\"col-md-4\">";
-                                    //html += "<p style=\"color: #0277bd;\">Cost</p>";
-                                    //html += "<p style=\"color: #0277bd; font-weight:bold;\">$ " + jsonData[z].cost + "</p>";
-                                    //html += "</div>";
-                                    //html += "</div>";
-                                    //html += "</div>";
-                                    //html += "</div>";
-                                    //html += "<br />";
-
-                                    //html += "<div class=\"row col-md-10 offset-1\" style=\"display:none;\" id=\"Info" + jsonData[z].ID + "\">";
-                                    //html += "<div class=\"col-md-5\">";
-                                    //html += "<h4 class=\"panel-title\" style=\"color: #0277bd;\">Ingredients</h4>";
-                                    //var strIngredients = jsonData[z].ingredients.split("**");
-                                    //for (j = 0; j < strIngredients.length; j++) {
-                                    //    if (strIngredients[j].length > 0) {
-                                    //        html += "<label style=\"color: #0277bd;\">| " + strIngredients[j] + "</label><br />";
-                                    //    }
-                                    //}
-                                    //html += "</div>";
-                                    //html += "<div class=\"col-md-5\">";
-                                    //html += "<h4 class=\"panel-title\" style=\"color: #0277bd;\">Directions</h4>";
-                                    //var strDirections = jsonData[z].directions.split("**");
-                                    //for (j = 0; j < strDirections.length; j++) {
-                                    //    if (strDirections[j].length > 0) {
-                                    //        html += "<label style=\"color: #0277bd;\"><b>| Step " + (j + 1) + ": </b>" + strDirections[j] + "</label>";
-                                    //    }
-                                    //}
-                                    //html += "</div>";
-                                    //html += "</div>";
-
-                                    //html += "</div>";
-
-
 
                                     html += "<div class=\"card-header tile-recipe-bg row col-md-12\" style=\"cursor: pointer;margin:0;\" onclick=\"ShowInfo('" + jsonData[z].ID + "')\">";
 

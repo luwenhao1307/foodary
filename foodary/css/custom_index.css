@@ -170,6 +170,14 @@
     filter: invert(100%);
 }
 
+[data-toggle="collapse"][aria-expanded="true"] > .js-rotate-if-collapsed {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
 .footer {
     background-color: white;
     text-align: center;

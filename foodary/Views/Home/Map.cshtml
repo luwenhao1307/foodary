@@ -32,7 +32,7 @@
             </div>
         </div>
         <center>
-            <p style="font-size:18px; font-weight:bold;">Lots of places in Melbourne provide free food to the community in the form of Food Parcels, Community meals, Open Tables, etc</p>
+            <p style="font-size:18px; font-weight:bold;">Lots of places in Melbourne provide free food to the community in the form of Food Parcels, Community Meals, Open Tables, etc</p>
         </center>
         <hr />
         <div class="row my-3 food-categories">
@@ -136,12 +136,26 @@
             var locations = [];
             var names = [];
             var times = [];
-            var mapPin = {
-                url: "/images/restlogo.png", // url
+            var pinFoodParcel = {
+                url: "/images/foodicon2.png", // url
                 scaledSize: new google.maps.Size(30, 30), // scaled size
                 origin: new google.maps.Point(0, 0), // origin
                 anchor: new google.maps.Point(0, 0) // anchor
             };
+            var pinCommunityMeal = {
+                url: "/images/food1.png", // url
+                scaledSize: new google.maps.Size(30, 30), // scaled size
+                origin: new google.maps.Point(0, 0), // origin
+                anchor: new google.maps.Point(0, 0) // anchor
+            };
+
+            var pinFoodVan = {
+                url: "/images/foodicon3.png", // url
+                scaledSize: new google.maps.Size(30, 30), // scaled size
+                origin: new google.maps.Point(0, 0), // origin
+                anchor: new google.maps.Point(0, 0) // anchor
+            };;
+
             var data = JSON.parse('@ViewBag.data');
 
             function getData(SearchString, name) {
@@ -213,30 +227,8 @@
 
             $(".type").click(function (e) {
                 var selectedType = $(this).find('p').html();
-                getPin(selectedType);
                 getData(selectedType, "common");
             });
-
-            function getPin(selectedType) {
-                var imgUrl = "/images/restlogo.png";
-                if (selectedType == "Show all") {
-                    imgUrl = "/images/restlogo.png";
-                } else if (selectedType == "Food parcel") {
-                    imgUrl = "/images/foodicon2.png";
-                } else if (selectedType == "Community meal") {
-                    imgUrl = "/images/food1.png";
-                } else if (selectedType == "Food van") {
-                    imgUrl = "/images/foodicon3.png";
-                }
-
-                mapPin = {
-                    url: imgUrl, // url
-                    scaledSize: new google.maps.Size(30, 30), // scaled size
-                    origin: new google.maps.Point(0, 0), // origin
-                    anchor: new google.maps.Point(0, 0) // anchor
-                };
-            }
-
           
             function initialize() {
                 var mapProp = {
@@ -250,10 +242,16 @@
                     var point = new google.maps.Marker({
                         position: location,
                         map: map,
-                        title: names[i],
-                        icon: mapPin
+                        title: names[i]
                     });
 
+                    if (Categorys[i] == 'Food parcel') {
+                        point.setIcon(pinFoodParcel)
+                    } else if (Categorys[i] == 'Community meal') {
+                        point.setIcon(pinCommunityMeal)
+                    } else if (Categorys[i] == 'Food van') {
+                        point.setIcon(pinFoodVan)
+                    }
                     iw = new google.maps.InfoWindow;
 
                     google.maps.event.addListener(point, "click", function (e) {
