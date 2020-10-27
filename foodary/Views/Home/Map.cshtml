@@ -203,7 +203,9 @@
                             $('#tblBodyFoodEvent').html(html);
                             table = $('#table').DataTable({
                                 iDisplayLength: 5,
-                                sScrollX: true
+                                sScrollX: true,
+                                bLengthChange: false
+                                
 
                             });
                             initialize();
@@ -230,7 +232,8 @@
                             table = $('#table').DataTable({
                                 iDisplayLength: 5,
                                 sScrollX: true,
-                                "paging": false
+                                bLengthChange: false
+                                
 
                             });
                             
