@@ -192,6 +192,18 @@
                                 html += '<img src="/images/phone.png" />  ' + obj[i].Phone;
                                 html += '</td></tr >';
                             };
+                            if ($.fn.dataTable.isDataTable('#table')) {
+                                $('#tblBodyFoodEvent').html('');
+                                $('#table').DataTable().destroy();
+                            }
+
+                            $('#tblBodyFoodEvent').html(html);
+                            table = $('#table').DataTable({
+                                iDisplayLength: 5,
+                                sScrollX: true
+
+                            });
+                            initialize();
                         }
 
                         if (name != "default") {
@@ -206,21 +218,24 @@
                                     html += '</td></tr >';
                                 }
                             };
+                            if ($.fn.dataTable.isDataTable('#table')) {
+                                $('#tblBodyFoodEvent').html('');
+                                $('#table').DataTable().destroy();
+                            }
+
+                            $('#tblBodyFoodEvent').html(html);
+                            table = $('#table').DataTable({
+                                iDisplayLength: 5,
+                                sScrollX: true
+
+                            });
+                            
                         }
                         
 
-                        if ($.fn.dataTable.isDataTable('#table')) {
-                            $('#tblBodyFoodEvent').html('');
-                            $('#table').DataTable().destroy();
-                        }
-
-                        $('#tblBodyFoodEvent').html(html);
-                        table = $('#table').DataTable({
-                            iDisplayLength: 5,
-                            sScrollX: true
-                        });
                         
-                        initialize();
+                        
+                        
                     },
                 })
             }
@@ -256,8 +271,9 @@
 
                     google.maps.event.addListener(point, "click", function (e) {
                         iw.setContent("<div><p>Event name:" + names[i] + "</p><p>Event Time：" + times[i] + "</p></div>")
+                        
+                        getData("Show all", names[i]);
                         iw.open(map, point);
-                        getData(Categorys[i], names[i])
                     });
                     return point;
                 });
