@@ -181,6 +181,10 @@
                             times.push(obj[i]["Timetable"]);
                             Categorys.push(obj[i]["Category"]);
                             addresses.push(obj[i]["Address"]);
+
+                            if (obj[i]["Phone"] == 0) {
+                                obj[i]["Phone"] = 'Not applicable'
+                            }
                         };
 
                         $('#tblBodyFoodEvent').empty();
